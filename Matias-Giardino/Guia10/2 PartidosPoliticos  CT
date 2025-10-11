@@ -1,0 +1,102 @@
+// 2.-
+
+type PartidoPolitico is variant {
+    /*
+    proposito: modelar un partido politico
+    */
+
+    case DemocraciaPorLaVerdad{}
+    case UnidosPorLaRepublica{}
+    case LiberalesPorLaLibertad{}
+    case IzquierdaDeLosObreros{}
+
+
+}
+
+
+// 2.- A)
+
+function tieneMasVotantes_Que_(primerPartidoPolitico, segundoPartidoPolitico) {
+    /*
+    proposito: describe quien tiene mas votos entre "primerPartidoPolitico" y "segundoPartidoPolitico"
+    precondiciones: uno de los dos debe tener mas votos que el otro
+    parametros:
+    primerPartidoPolitico - PartidoPolitico - primer partido politico a comparar
+    segundoPartidoPolitico - PartidoPolitico - segundo partido politico a comparar
+    tipo: PartidoPolitico
+    observaciones: 
+    */
+
+    return(choose primerPartidoPolitico when cantidadDeVotosDe_(primerPartidoPolitico) > cantidadDeVotosDe_(segundoPartidoPolitico)) 
+        segundoPartidoPolitico otherwise
+}
+
+
+// 2.- B)
+
+function function elQueTieneMasVotos() {
+    /*
+    proposito: indica la cantidad de votos que recibio un partido
+    tipo: partidopolitico
+    precondicion: es un recorrido de maximo y minimo entre partidos politicos en busca del partido que tiene mas votos
+    */
+
+    partidoActual : = minPartido()
+    elMasVotadoHastaAhora := partidoActual
+    while(partidoACtual /= maxPartido) {
+        partidoActual := siguiente(partidoActual)
+        elMasVotadoHastaAhora := tieneMasVotantes_Que_(partidoActual, elMasVotadoHastaAhora)
+    }
+    return(elMasVotadoHastaAhora)
+
+}
+
+
+// 2.- C)
+
+function habraBallotage() {
+    /*
+    proposito: indica si en estas elecciones habra ballotage
+    precondiciones: ninguna
+    tipo: booleano
+    */
+
+
+    return(notienemasdel50% && diferenciaentreelprimeroyelsegundo)
+}
+
+
+function acumulaMasDel50Porciento() {
+    /*
+    proposito: indica si el partido "partidomasvotado* tiene mas del 50% de los votos
+    precondiciones: debe ser el partido politico mas votado
+    parametros:
+    partidoMasVotado: PartidoPolitico
+    tipo: booleano
+    */
+
+    return(cantidadDeVotosDe_(partidoMasVotado)>cantidadTotalDeVotos()/2)
+}
+
+function cantidadTotalDeVotos() {
+    /*
+    proposito: describe la cantidad total de votos entre todos los partidos politicos
+    precondiciones: ninguna
+    tipo: numero:
+    observaciones: es un recorrido de acumulacion entre partidos politicos para saber la totalidad de votos
+    */
+
+    partidoActual = minPartido()
+    cantidadDeVotosTotalesHastaAhora := cantidadDeVotosDe_(partidoActual)
+    while(partidoActual /= maxPartido()) {
+        partidoActual := siguiente(partidoActual)
+        cantidadDeVotosTotalHastaAhora := cantidadDeVotosTotalesHastaAhora + cantidaddeVotosDe_(partidoActual)
+    }
+    return(cantidadDeVotosTotalesHastaAhora)
+
+
+}
+
+
+
+
