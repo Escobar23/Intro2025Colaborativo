@@ -204,9 +204,30 @@ function sumaParaElEnvidoCon_Y_(primeraCarta,segundaCarta) {
     segundaCarta: CartaEspañola - describe la segundaCarta a evaluar para la suma de tantos
     */
 
-    return(choose valorParaEnvidoDe_(primeraCarta) + valorParaEnvidoDe_(segundaCarta) )
+    return(choose valorParaEnvidoDe_(primeraCarta) + valorParaEnvidoDe_(segundaCarta) when sonDelMismoPalo_Y_(primeraCarta,segundaCarta)
+        mayorValorEntre_Y_(primeraCarta,segundaCarta) otherwise)
 
 }
+
+//3.- L)
+
+function sonMejores_Y_Que_y_(primeraCartaPrimerJugador,segundaCartaPrimerJugador,primeraCartaSegundoJugador,segundaCartaSegundoJugador) {
+    /*
+    proposito: indica si el envido del primer jugador es mas grande que el envido del segundo jugador
+    precondiciones: ninguna
+    tipo: booleano
+    parametros:
+    primeraCartaPrimerJugador: carta - primera carta a evaluar el envido del primer jugador
+    segundaCartaPrimerJugador: carta - segunda carta a evaluar el envido del primer jugador
+    primeraCartaSegundoJugador: carta - primera carta a evaluar el envido del segundo jugador
+    segundaCartaSegundoJugador: carta - segunda carta a evaluar el envido del segundo jugador
+    */
+
+    return(sumarParaEnvidoCon_Y_(primeracartaPrimerJugador,segundaCartaPrimerJugador) > sumaParaEnvidoCon_Y_(primeraCartaSegundoJugador,segundaCartaSegundoJugador))
+
+}
+
+
 
 
 
