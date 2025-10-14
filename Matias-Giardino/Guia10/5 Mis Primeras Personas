@@ -3,6 +3,8 @@ program {
     
 }
 
+// 5.- A)
+
 type Persona is record {
     /*
     proposito: modela una persona
@@ -29,7 +31,7 @@ program {
 */
 
 
-unction personaConDomicilio_Dni_EsDonante_(unDomiiclio,unDni,esDonante) {
+function personaConDomicilio_Dni_EsDonante_(unDomiiclio,unDni,esDonante) {
     /*
     proposito: describe una persona domiciliada en "domicilio" con numero de dni "dni" y "esDonante" es donante
     precondiciones:
@@ -64,7 +66,7 @@ program {
 */
 
 
-// 5.- b
+// 5.- B)
 
 function sonConvivientes_Y_(primeraPersona,segundaPersona) {
     /*
@@ -109,6 +111,9 @@ function sinAsignar() {
 }
 
 
+// 5.- D)
+
+
 function persona_registradaCon_(personaDniSinAsignar,unDni) {
     /*
     prop: describe una persona "persona" registrada con el dni "dni"
@@ -120,6 +125,9 @@ function persona_registradaCon_(personaDniSinAsignar,unDni) {
 
     return(personaDniSinAsignar(dni <- unDni))
 }
+
+// 5.- E)
+
 
 function persona_ConDomicilioNuevoEn_(unaPersona,unDomicilio) {
     /*
@@ -134,3 +142,16 @@ return(Persona(unaPErsona|domicilio <- unDomicilio))
 forma facil de describir empleado solo cambiandole un dato:
 
 return(Empleado(empleado|sueldo <- unSuelto)*/
+
+
+// 5.- F)
+
+function persona_ConSituacionComoDonanteCambiada(unaPersona) {
+    /*
+    proposito: describe una persona "persona" con la situacion como donante cambiada
+    */
+
+    return(Persona(unaPersona | esDonante <- True))
+}
+
+
