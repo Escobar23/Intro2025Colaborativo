@@ -1,0 +1,12 @@
+Sin terminar
+Ejercicios hechos:
+- 1  singularCon_
+- 2 segundoDe_
+- 3 esSingular_
+- 4 Carta
+    A: primerCartaDeLaMano_
+    B: segundaCartaDeLaMano_
+    C: tercerCartaDeLaMano_
+    D: laMano_LuegoDeRobarUnaCartaDe_
+    E: laMano_LuegoDeRobarUnaCartaDe_
+- 6 listaCon_Repetido_Veces SIN TERMINAR

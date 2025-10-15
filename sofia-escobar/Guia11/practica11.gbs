@@ -1,0 +1,114 @@
+program{
+    Prueba()
+}
+
+procedure Prueba(){
+    lista:=[1]
+    if(esSingular_(lista)){
+        Poner(Negro)
+    }
+}
+
+//6
+function  listaCon_Repetido_Veces(elemento, número){
+    /*
+    Proposito:  Describe una lista que tiene tantos elementos como el número *número*, cada elemento es *elemento*.
+    Precondicion: número debe ser mayor a 0
+    Parametro: elemento: Elemento
+}               número: Número
+    Tipo: Lista de Elementos
+    */
+    
+}
+
+//4.e
+function laMano_LuegoDeJugarUnaCarta(mano){
+     /*
+    Proposito:  Describe la tercera carta a jugar de la mano *mano*.
+    Precondicion: Ninguna
+    Parametro: mano: Lista de Cartas
+    Tipo: Lista de Cartas
+    */
+    
+}
+
+//4.d
+function laMano_LuegoDeRobarUnaCartaDe_(mano, mazo){
+     /*
+    Proposito:  x
+    Precondicion: mazo debe ser una lista con al menos una carta
+    no debe ser una lista vacia
+    Parametro: mano: Lista de Cartas.
+                mazo: Lista de Cartas
+    Tipo: Lista de Cartas
+    */
+    return(mano ++ singularCon_(primero(mazo)))
+}
+
+//4.c
+function tercerCartaDeLaMano_(mano){
+    /*
+    Proposito:  Describe la tercera carta a jugar de la mano *mano*.
+    Precondicion: Ninguna
+    Parametro: mano: Lista de Cartas
+    Tipo: Carta
+    */
+    return(primero(resto(resto(mano))))
+}
+
+//4.b
+function segundaCartaDeLaMano_(mano){
+    /*
+    Proposito:  Describe la segunda carta a jugar de la mano *mano*.
+    Precondicion: Ninguna
+    Parametro: mano: Lista de Cartas
+    Tipo: Carta
+    */
+    
+    return(segundoDe_(mano))
+}
+
+//4.a
+function primerCartaDeLaMano_(mano){
+    /*
+    Proposito:  Describe la primera carta a jugar de la mano *mano*.
+    Precondicion: Ninguna
+    Parametro: mano: Lista de Cartas
+    Tipo: Carta
+    */
+    return(primero(mano))
+}
+
+
+//3.  Es singular
+function esSingular_(lista){
+    /*
+    Proposito:  Indica sí la lista es singular.
+    Precondicion: Ninguna
+    Parametro: Lista: Lista de Elementos
+    Tipo: Booleano
+    */
+    return(not esVacía(lista)&&esVacía(resto(lista)))
+}
+
+//2. El segundo
+function segundoDe_(lista){
+    /*
+    Proposito: Describe el segundo elemento de la lista.
+    Precondicion: Ninguna
+    Parametro: Lista: Lista de Elementos
+    Tipo: Elemento
+    */
+    return(primero(resto(lista)))
+}
+
+//1 Singular
+function singularCon_(elemento){
+    /*
+    Proposito:  describe la lista que tiene únicamente el elemento dado.
+    Precondicion: Ninguna
+    Parametro: elemento: Elemento
+    Tipo: Lista de Elementos
+    */
+    return([elemento])
+}
