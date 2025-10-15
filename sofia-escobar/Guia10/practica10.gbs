@@ -1,0 +1,124 @@
+program{
+    
+}
+
+/*5 a.*/
+type Persona is record{
+    /*
+    Modelar una persona
+    */
+    field numeroDni //Numero
+    field domicilio //String
+    field esDonanteDeOrganos //Booleano
+}
+
+/*5 b.*/
+function sonConvivientes_Y_(persona1, persona2){
+    /*
+    Proposito:
+    Precondicion:
+    Parametros:
+            perona1: Persona
+            persona2: Persona 
+    Tipo: Booleano
+    */
+    return(domicilio(persona1)==domicilio(persona2))
+}
+
+/*CLASE */
+type Estudiante is record{
+    /*Proposito: Modelar una carta española
+    Invariante de representacion: el numero esta entre 1 y 12
+    */
+    field legajo //Numero
+    field numeroDocumento //Numero
+    field tipoDeDocumento //TipoDeDocumento
+    field fechaNac //Fecha
+    field nombreCompleto //String
+}
+
+type CartaEspañola is record{
+    /*Proposito: Modelar una carta española
+    Invariante de representacion: el numero esta entre 1 y 12
+    */
+    field palo
+    field numero
+}
+
+type Palo is variant{
+    /**/
+    case Basto{}
+    case Copa{}
+    case Espada{}
+    case Oro{}
+}
+
+function anchoDeBastos(){
+    /*Prop: Describe la carta ancho de bastps
+    Precond: Ninguna
+    Tipo: CartaEspañola
+    */
+    return(CartaEspañola(palo <-Basto , numero <-1))
+}
+
+function laCartas_De_(numeroDeLaCarta, paloDeLaCarta){
+/*Describe la carta de numero *numeroDeLaCarta* del palo *paloDeLaCarta*
+Precondicion: el numeroDeLaCarta debe ser un numero entre 1 y 12
+parametros:
+numeroDeLaCarta: Numero
+paloDeLaCarta:palo
+tipo: CartaEspañola
+*/
+return(CartaEspañola(palo <-paloDeLaCarta, numero <-numeroDeLaCarta))
+}
+
+function esUnAncho_(carta){
+    /*
+    Proposito: infdica si la carta *carta* es un ancho
+    Prec: ning
+    Parametros:
+    carta: CartaEspañola
+    Tipo: booleano
+    obs: anchos son las cartas que tienen numero 1
+    */
+    return(numero(carta) == 1)
+}
+
+
+
+
+type DíaDeLaSemana is variant{
+    /*Proposito: Modela los dias de la semana*/
+    case Lunes{}
+    case Jueves{}
+    case Miercoles{}
+    case Domingo{}
+    case Sabado{}
+    case Viernes{}
+}
+
+function díaSiguiente_ (dia){
+    /*Proposito: Describe el dia siguiente al dia *dia*
+        Precondicion: Ninguna
+        Parametros: dia: DíaDeLaSemana
+        Tipo: DíaDeLaSemana
+    */
+    return(choose Lunes when (dia == Domingo)
+            Martes when (dia == Lunes)
+            Miercoles when (dia == Martes)
+            Jueves when (dia == Miercoles)
+            Viernes when (dia == Jueves)
+            Sabado when (dia == Viernes)
+            Domingo when (dia == Sabado)
+             )
+}
+
+function esDíaDeFinDeSemana_(dia){
+    /*Proposito: Indica si el dia *dia* es fin de semana
+        Precondicion: Ninguna
+        Parametros: dia: DíaDeLaSemana
+        Tipo: Booleano
+        Observacion: un dia de fin de semana es sabado o domingo
+    */
+    return(dia==Sabado)||(dia==Domingo))
+}

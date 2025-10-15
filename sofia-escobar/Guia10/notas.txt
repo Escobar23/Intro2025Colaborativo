@@ -1,0 +1,14 @@
+Sin terminar
+Hay ejercicios hechos en la clase del 6/10
+Ejercicios hechos:
+- 1 DíaDeLaSemana
+    A: diaSiguiente
+    C: esDíaDeFinDeSemana_
+- 3  Palo y el tipo registro Carta
+    B: anchoDeBastos()
+    C: laCartas_De_
+    D: esUnAncho_
+- 5 Persona
+    A: Persona
+    B: sonConvivientes_Y_
+    
