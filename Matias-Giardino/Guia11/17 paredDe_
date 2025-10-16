@@ -1,0 +1,23 @@
+function paresDe_(numeros) {
+    /*
+    prop:
+    prec:
+    param:
+    numeros: Lista de Nuevos
+    tipo: lista de numeros
+    observaciones: es un recorrido de
+    */
+
+    listaResultante :=  []
+    numerosRestantes := numeros
+    while(not esVacia(numerosRestantes)) {
+        listaResultante := listaResultante ++ singular_Si_(unElemento, condicion)
+        numerosRestantes := resto(numerosRestantes)
+    }
+    return(listaResultante)
+
+}
+
+
+
+singular_Si_(unElemento, condicion) //describe un numero de una lista si cumple la condicion
