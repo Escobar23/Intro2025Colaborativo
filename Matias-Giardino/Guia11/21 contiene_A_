@@ -1,0 +1,17 @@
+function contiene_A_(lista,elemento) {
+    /*
+    prop:
+    prec:
+    param:
+    lista: Lista de Elementos
+    tipo:booleano
+    obs:
+    */
+
+    listaResultante :=  []
+    while(not esVacia(listaRestante) && not primero(listaResultante) == elemento) {
+        listaResultante := listaResultante := resto(listaResultante)
+        
+    }
+    return(not esVacia() && primero(listaResultante) == elemento)
+}

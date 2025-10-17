@@ -1,0 +1,20 @@
+function elementoDe_AumentadoEn_(numeros, cantAumentar) {
+    /*
+    prop:
+    prec:
+    param:
+    numero: Lista de Numeros
+    cantAumentar: numero
+    tipo: Lista de Numero
+    obs:
+    */
+
+    listaResultante :=  []
+    numerosRestantes := numeros
+    while(not esVacia(numerosRestantes)) {
+        listaResultante := listaResultante ++ primeroDe_Aumentado(primero(numerosRestantes), cantAumentar)
+        numerosRestantes := resto(numerosRestantes)
+    }
+    return(listaResultante)
+
+}
