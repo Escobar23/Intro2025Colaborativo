@@ -1,4 +1,4 @@
-function maximoEn_(numeros,)
+function maximoEn_(numeros)
 /*
 prop:
 prec: un elemento es mas grande que los demas
@@ -15,3 +15,15 @@ while(not esVacia()) {
     maxHastaAhora := maximoEntre_Y_(maxHastaAhora, primero(listaResultante))
 }
 return(maximoHastaAhora)
+
+//usando foreach
+
+function maximoEn_(numeros) {
+
+    maximoHastaAhora := primero(numeros)
+    foreach numero in resto(numeros) {  //de esta forma no evalua el primer numero 2 veces
+        maxHastaAhora := maximoEntre_Y_(maxHastaAhora, numero))
+    }
+    return(maximoHastaAhora)
+
+}
