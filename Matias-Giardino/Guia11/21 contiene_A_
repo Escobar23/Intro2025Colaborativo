@@ -5,7 +5,8 @@ function contiene_A_(lista,elemento) {
     param:
     lista: Lista de Elementos
     tipo:booleano
-    obs:
+    obs: es un recorrido de busqueda sin saber si lo que busco esta entre elementos de una lista "lista"
+    buscando el elemento "elemento"
     */
 
     listaResultante :=  []
