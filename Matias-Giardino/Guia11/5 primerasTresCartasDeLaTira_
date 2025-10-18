@@ -24,6 +24,8 @@ function primerasTresCartasDeLaTira_(tira) {
     tipo: carta
     */
 
+    function sigueRectaEn_() {
+    }
 
 
 }
