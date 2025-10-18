@@ -1,6 +1,8 @@
-program {
-
-}
+/*
+ El segundo
+ Escribir la función segundoDe_ que dada una lista, describe el segundo elemento de la lista. Puede
+ asumir que la lista tiene al menos dos elementos.
+ */
 
 
 function segundoDe_(lista) {

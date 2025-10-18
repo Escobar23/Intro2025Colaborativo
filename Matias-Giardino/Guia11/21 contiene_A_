@@ -1,3 +1,11 @@
+/*
+ 21.¿Está o no está?
+ BIBLIOTECA Escribir la función contiene_A_, que dada una lista de elementos de cualquier tipo, y un
+ elemento, indica si el elemento dado está en la lista.
+ Ejemplo: contiene_A_([1, 4, 2, 3, 7, 8, 9], 3)describeverdadero,yaque3estáenlalista, mientras
+ que contiene_A_([1, 4, 2, 3, 7, 8, 9], 6)describefalso,yaque6noestáenlalista
+ */
+
 function contiene_A_(lista,elemento) {
     /*
     prop:

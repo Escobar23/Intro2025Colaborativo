@@ -1,7 +1,8 @@
-program {
-
-
-}
+/*
+ Singular
+ Escribir la función singularCon_ que dado un elemento describe la lista que tiene únicamente el
+ elemento dado.
+ */
 
 
 function singularCon_(elemento) {
