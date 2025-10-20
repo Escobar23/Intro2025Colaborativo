@@ -1,3 +1,8 @@
+program{
+    AsignarClub_AMotoquerosConectados(5)
+}
+
+
 //1 c
 procedure AsignarClub_AMotoquerosConectados(númeroDeClub) {
     /*
@@ -9,26 +14,28 @@ procedure AsignarClub_AMotoquerosConectados(númeroDeClub) {
      IncluirEnElClubNúmero_(númeroDeClub)
    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Norte, Este)
     while(haySiguienteCeldaEnUnRecorridoAl_Y_(Norte, Este)){
-        if(tieneDeVecinoAElMotoqueroDelClub_(númeroDeClub)){
+        if(hayMotoqueroAcá() && hayMotoqueroSinClubConVecinoEn_(númeroDeClub)){
             IncluirEnElClubNúmero_(númeroDeClub)
         }
         IrASiguienteCeldaEnUnRecorridoAl_Y_(Norte, Este)
     }
 }
+
 procedure AsignarClub_AlMotoqueroVecino(númeroDeClub){
     /*
     Proposito:  Asigna el club con número *númeroDeClub* al motoquero de la celda actual si tiene de vecino a un motoquero del club *númeroDeClub*.
     Precondicion: El motoquero de la celda actual no debe pertecener a ningun club.
     Parametro: númeroDeClub: Número - numero del club a asignar.
     */
-    if(tieneDeVecinoAElMotoqueroDelClub_(númeroDeClub)){
+    if(hayMotoqueroSinClubConVecinoEn_(númeroDeClub)){
         IncluirEnElClubNúmero_(númeroDeClub)
     }
 }
 
-function tieneDeVecinoAElMotoqueroDelClub_(númeroDeClub){
+//1 d
+function hayMotoqueroSinClubConVecinoEn_(númeroDeClub){
     /*
-    Proposito:  Indica si el motoquero de la celda actual tiene de vecino a un motoquero que pertenece al club con número *númeroDeClub*.
+    Proposito:  Indica si en la convención hay algún motoquero sin club todavía que tenga de vecino otro motoquero que tenga por club *númeroDeClub*.
     Precondicion: Ninguna
     Parametro: númeroDeClub: Número - numero del club a verificar.
     Tipo: Booleano
@@ -49,7 +56,7 @@ function elMotoqueroDe_PerteneceAlClub_(dirAMover, númeroDeClub){
                 númeroDeClub: Número - numero del club a verificar.
     Tipo: Booleano
     */
-    return(choose esElMotoqueroDel_DelClub_(dirAMover, númeroDeClub) when (puedeMover(dirAMover)&& hayMotoqueroAcá()) False otherwise )
+    return(puedeMover(dirAMover) && esElMotoqueroDel_DelClub_(dirAMover, númeroDeClub))
 }
 
 function esElMotoqueroDel_DelClub_(dirAMover, númeroDeClub){
@@ -106,4 +113,72 @@ function esMotoqueroSinClub(){
     Tipo: Booleano    
     */
     return(hayMotoqueroAcá() && elMotoqueroPerteneceAUnClub())
+}
+//Necesarias para probar que funcione
+procedure IncluirEnElClubNúmero_(númeroDeClub){
+    repeat(númeroDeClub){
+        Poner(Rojo)
+    }
+}
+function hayMotoqueroAcá(){
+    return(hayBolitas(Negro))
+}
+function elMotoqueroPerteneceAUnClub(){
+    return(hayBolitas(Rojo))
+}
+procedure IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+{
+ /*
+ PROPÓSITO: ir a la primera celda de un recorrido al dirPrincipal y dirSecundaria
+ PARÁMETROS:
+ * dirPrincipal: Direccion - la direccion principal del recorrido.
+ * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+ PRECONDICIONES:
+ * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    IrAEsquinaAl_Y_(opuesto(dirPrincipal),opuesto(dirSecundaria))
+}
+function haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: indicar si hay una celda siguiente en un recorrido hacia dirPrincipal ,dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    TIPO: booleano
+    PRECONDICIONES:
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+ return (puedeMover(dirPrincipal)||puedeMover(dirSecundaria))
+}
+procedure IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: ir a la siguiente celda en un recorrido hacia dirPrincipal y dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    PRECONDICIONES:
+        * debe haber una celda siguiente en el recorrido
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    if (puedeMover(dirPrincipal)) {
+        Mover(dirPrincipal)
+    } else {
+        IrAlBorde(opuesto(dirPrincipal))
+        Mover(dirSecundaria)
+    }
+}
+procedure IrAEsquinaAl_Y_(primeraDirección,segundaDirección) {
+ /*
+ PROPÓSITO: ir esquina primeraDirección segundaDirección
+ PARÁMETROS:
+ * primeraDirección : Direccion - una de los lados de la esquina a la que se desea ir.
+ * segundaDirección: Direccion - el otro lado de la esquina que se desea ir.
+ PRECONDICIONES:
+ * ambos parametros deben ser distintas y no deben ser opuestos
+ */
+
+    IrAlBorde(primeraDirección)
+    IrAlBorde(segundaDirección)
 }

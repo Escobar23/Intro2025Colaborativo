@@ -4,8 +4,8 @@ Aclaraciones de los Integradores:
             a: Hecho
             b: Hecho
             c: Hecho
-            d: Sin comenzar
-            e: Sin comenzar
+            d: Hecho
+            e: Hecho
     Ejercicio 2: Sin comenzar
             a: Sin comenzar
             b: Sin comenzar
