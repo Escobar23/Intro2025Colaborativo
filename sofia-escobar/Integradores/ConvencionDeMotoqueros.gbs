@@ -1,7 +1,31 @@
 program{
-    AsignarClub_AMotoquerosConectados(5)
+    IrHastaElMotoqueroSinClubConVecinoEn_(3)
 }
 
+//1 e
+procedure IrHastaElMotoqueroSinClubConVecinoEn_(númeroDeClub){
+    /*
+    Proposito: Indica si en la celda actual hay un motoquero sin club con vecino del club *númeroDeClub*.
+    Precondicion: NInguna
+    Parametro: númeroDeClub: Número - numero del club del vecino.
+    Tipo: Booleano
+    Observacion: Es un recorrido de busqueda sabiendo que el motoquero sin club existe, sobre las celdas de la convencion.
+    */
+     IrAPrimeraCeldaEnUnRecorridoAl_Y_(Norte, Este)
+    while(not esMotoqueroSinClubConVecinoDeClub_(númeroDeClub)){
+        IrASiguienteCeldaEnUnRecorridoAl_Y_(Norte, Este)
+    }
+}
+
+function esMotoqueroSinClubConVecinoDeClub_(númeroDeClub){
+    /*
+    Proposito: Indica si en la celda actual hay un motoquero sin club con vecino del club *númeroDeClub*.
+    Precondicion: NInguna
+    Parametro: númeroDeClub: Número - numero del club del vecino.
+    Tipo: Booleano
+    */
+    return(hayMotoqueroAcá() && hayMotoqueroSinClubConVecinoEn_(númeroDeClub))
+}
 
 //1 c
 procedure AsignarClub_AMotoquerosConectados(númeroDeClub) {
@@ -36,7 +60,7 @@ procedure AsignarClub_AlMotoqueroVecino(númeroDeClub){
 function hayMotoqueroSinClubConVecinoEn_(númeroDeClub){
     /*
     Proposito:  Indica si en la convención hay algún motoquero sin club todavía que tenga de vecino otro motoquero que tenga por club *númeroDeClub*.
-    Precondicion: Ninguna
+    Precondicion: Debe haber un motoquero en la celda actual. //creo q no
     Parametro: númeroDeClub: Número - numero del club a verificar.
     Tipo: Booleano
     Observacion: Es un recorrido de busqueda sin saber si hay un motoquero del club *númeroDeClub* sobre las direcciones vecinas del motoquero actual.
