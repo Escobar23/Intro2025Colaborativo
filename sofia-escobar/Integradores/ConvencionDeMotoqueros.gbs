@@ -34,6 +34,7 @@ procedure AsignarClub_AMotoquerosConectados(númeroDeClub) {
     Precondicion: El motoquero de la celda actual no debe pertecener a ningun club.
     Parametro: númeroDeClub: Número - numero del club a asignar.
     Observacion: Es un recorrido de. //duda
+    Mati: es un recorrido de transformacion/procesamiento sobre motoqueros de una convencion sin club asignandole un club al mismo.
     */
      IncluirEnElClubNúmero_(númeroDeClub)
    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Norte, Este)
@@ -41,7 +42,7 @@ procedure AsignarClub_AMotoquerosConectados(númeroDeClub) {
         if(hayMotoqueroAcá() && hayMotoqueroSinClubConVecinoEn_(númeroDeClub)){
             IncluirEnElClubNúmero_(númeroDeClub)
         }
-        IrASiguienteCeldaEnUnRecorridoAl_Y_(Norte, Este)
+        IrASiguienteCeldaEnUnRecorridoAl_Y_(Norte, Este) //Mati: no habia caso de borde aca?
     }
 }
 
@@ -205,4 +206,19 @@ procedure IrAEsquinaAl_Y_(primeraDirección,segundaDirección) {
 
     IrAlBorde(primeraDirección)
     IrAlBorde(segundaDirección)
+}
+
+
+//Mati
+
+procedure IrAPrimerMotoqueroAl_YAl_(primeraDireccion, segundaDireccion) {
+    /*
+    proposito: se posiciona en el primer motoquero en direccion al "primeraDireccion" y "segundaDireccion"
+    precondicion: debe haber al menos un motoquero en la direccion al "primeraDireccion" y al "segundaDireccion"
+    parametro:
+    primeraDireccion: direccion - primera direccion a la que situa el cabezal
+    segundaDireccion: direccion - segunda direccion a la que situa el cabezal
+    */
+
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Norte,Este)
 }
