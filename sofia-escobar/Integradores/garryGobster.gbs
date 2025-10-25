@@ -11,12 +11,25 @@ function categoriaDePersonajeConMayorPoderMágico(){
         Obs: Es un recorrido de acumulación sobre las categorias, acumulando el personaje de mayor poder,
     */
     categoriaActual := minCategoria()
-    categoriaDeMayorPoderHastaAhora := categoriaActual
+    categoriaDeMayorPoderHastaAhora := siguienteCategoria_(categoriaActual)
     while(categoriaActual /= maxCategoria()){
         categoriaDeMayorPoderHastaAhora := categoriaDeMayorPoderEntre_Y_(categoriaActual, categoriaDeMayorPoderHastaAhora)
         categoriaActual:= siguienteCategoria_(categoría)
     }
     return(categoriaDeMayorPoderEntre_Y_(categoriaActual, categoriaDeMayorPoderHastaAhora))
+}
+
+function categoriaDeMayorPoderEntre_Y_(primerCategoria, segundaCategoria){
+    /* 
+        Proposito: Describe la categoria del personaje con mayor poder magico entre *primerCategoria* y *segundaCategoria*.
+        Precondicion: Ninguna
+        Parametros: 
+            * primerCategoria - Número : Describe el numero de la primera categoria
+            * segundaCategoria - Número : Describe el numero de la segunda categoria
+        Tipo: Número
+    */
+    return(choose primerCategoria when (poderMagicoTotalDeLos_(primerCategoria) > poderMagicoTotalDeLos_(segundaCategoria))
+                    segundaCategoria otherwise)
 }
 
 //Ejercicio 3)

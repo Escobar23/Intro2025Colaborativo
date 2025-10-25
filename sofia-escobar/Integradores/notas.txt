@@ -14,4 +14,4 @@ Aclaraciones de los Integradores:
         Ejercicio 1: Hecho
         Ejercicio 2: Hecho
         Ejercicio 3: Hecho
-        Ejercicio 4: Hecho (revisar)
+        Ejercicio 4: Hecho
