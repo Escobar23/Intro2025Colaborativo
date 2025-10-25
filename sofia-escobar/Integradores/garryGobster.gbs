@@ -1,0 +1,286 @@
+program{
+    
+}
+
+//Ejercicio 4)
+function categoriaDePersonajeConMayorPoderMágico(){
+    /* 
+        Proposito: Describe la categoria del personaje con mayor poder magico en Gobwarts.
+        Precondicion: Ninguna
+        Tipo: Número
+        Obs: Es un recorrido de acumulación sobre las categorias, acumulando el personaje de mayor poder,
+    */
+    categoriaActual := minCategoria()
+    categoriaDeMayorPoderHastaAhora := categoriaActual
+    while(categoriaActual /= maxCategoria()){
+        categoriaDeMayorPoderHastaAhora := categoriaDeMayorPoderEntre_Y_(categoriaActual, categoriaDeMayorPoderHastaAhora)
+        categoriaActual:= siguienteCategoria_(categoría)
+    }
+    return(categoriaDeMayorPoderEntre_Y_(categoriaActual, categoriaDeMayorPoderHastaAhora))
+}
+
+//Ejercicio 3)
+procedure EliminarEnemigosPorDestrucciónDelDiario(){
+    /*proposito: Eliminar a los dementores y mortifagos de Gobwarts
+    precondicion: Ninguna
+    Obs: Es un recorrido de Transformacion sobre las habitaciones de Gobswarts eliminando a los enemigos
+    */
+    IrAPrimeraHabitacion()
+    while(haySiguienteHabitacion){
+        EliminarPersonajeSiEsMalo()
+        IrASiguienteHabitacion()
+    }
+    EliminarPersonajeSiEsMalo()
+}
+
+procedure EliminarPersonajeSiEsMalo(){
+    /*proposito: Eliminar los mortifagos o dementores si se encuentran en la habitacion actual
+    precondicion : Ninguna
+    
+    */
+    if(hayPersonajeDeCategoría_(categoríaMortifago()) || hayPersonajeDeCategoría_(categoríaDementor())){
+        EliminarPersonaje()
+    }
+}
+
+//Ejercicio 2)
+function estáElSeñorGobscuroEnGobwarts(){
+    /*Proposito: Indica si el señor Gobscuro se encuentra en Gobswarts
+    precondicion Ninguna
+    tipo: Booleanoes un recorrido de [clase] sobre [elemento], [haciendo]
+    obs: Es un recorrido de busqueda sin saber sobre las habitacion de Go    */
+    IrAPrimeraHabitacion()
+    while(not(estaElSeñorGobscuro()) && haySiguienteHabitacion()){
+        IrASiguienteHabitacion()
+    }
+    return(estaElSeñorGobscuro())
+}
+
+function  estaESeñorGobscuro(){
+    /*proposito: Indica si el señor Gobscuro se encuentra en la mazmorra
+    precondicion:Ninguna
+    tipo:Booleano
+    */
+    return(tipoDeHabitación() == habitaciónMazmorra() 
+    && hayPersonajeDeCategoría_(categoríaMortifago()) 
+    && poderMágicoDelPersonaje() == 1)
+}
+
+//Ejercicio 1)
+function puedeGanarBatallaMagosContraMortifagos(){                                                //1
+    /*proposito: Indica si el poder magico total de los magos es mayor al de los mortifagos
+    precondicion: ninguna
+    tipo: Booleano
+    */
+    return(poderMagicoTotalDeLos_(categoriaMago()) > poderMagicoTotalDeLos_(categoriaMortifago()))
+}
+
+function poderMagicoTotalDeLos_(categoria){
+    /*proposito: Describe el poder magico total de la categoria *categoria*
+    precondicion: ninguna
+    tipo: Numero
+    parametro: *categoria* - Numero : Describe el numero de la categoria
+    obs : Es un recorrido de acumulacion sobre las habitaciones de gobwarts que acumula el poder magico de los personajes de la categoria *categoria* 
+    */
+    IrAPrimeraHabitacion()
+    poderMagicoTotalHastaAhora := 0
+    while(haySiguienteHabitacion()){
+        poderMagicoTotalHastaAhora := poderMagicoTotalHastaAhora + poderDeCategoria_AcaSiHay(categoria)
+        IrASiguienteHabitacion()
+    }
+    return(poderMagicoTotalHastaAhora)
+}
+
+function poderDeCategoria_AcaSiHay(categoria){
+    /*proposito: Describe el poder magico de la categoria *categoria* si esta en la habitacion actual
+    precondicion: ninguna
+    tipo: Numero
+    parametro: *categoria* - Numero : Describe el numero de la categoria/   */
+    return(choose poderMagicoDelPersonaje() when (hayPersonajeDeCategoria_(categoria))
+                    0               otherwise)
+}
+
+
+
+
+//PRIMITIVAS ----------------------------
+
+procedure EliminarPersonaje(){
+    /*
+    proposito: Elimina el personaje de la celda actual
+    precondicion: Debe haber un personaje en la celda actual
+    tipo: procedimiento
+    */
+    SacarTodasLasDeColor_(Rojo)
+}
+
+function poderMágicoDelPersonaje(){
+    /*
+    proposito: Indica el poder magico del personaje en la celda actual
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return()
+}
+
+function hayPersonajeDeCategoría_(categoría){
+    /*
+    proposito: Indica si en la celda actual hay un personaje de la categoria *categoria*
+    precondicion: ninguna
+    tipo: Booleano
+    parametro: *categoria* - Numero : Describe el numero de la categoria
+    */
+    return(hayPersonajeAcá() && categoríaDelPersonajeAcá() == categoría)
+}
+
+function categoríaMago(){
+    /*
+    proposito: Indica el numero de categoria que representa a los magos
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return(1)
+}
+
+function categoríaMortifago(){
+    /*
+    proposito: Indica el numero de categoria que representa a los mortifagos
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return(2)
+}
+
+function categoríaMuggle(){
+    /*
+    proposito: Indica el numero de categoria que representa a los muggles
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return(3)
+}
+
+function categoríaDementor(){
+    /*
+    proposito: Indica el numero de categoria que representa a los dementores
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return(4)
+}
+
+function poderMágicoDelPersonaje(){
+    /*
+    proposito: Indica el poder magico del personaje en la celda actual
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return()
+}
+function habitaciónDormitorio(){
+    /*
+    PROPÓSITO: Describe el número que representa el tipo de habitación de los dormitorios.
+    PRECONDICIÓN: Ninguna
+    TIPO: Número
+    */
+    return(1)
+}   
+function habitacionBaño(){
+    /*
+    PROPÓSITO: Describe el número que representa el tipo de habitación de los baños.
+    PRECONDICIÓN: Ninguna
+    TIPO: Número
+    */
+    return(2)
+}
+
+function tipoDeHabitación(){
+    /*
+    proposito: Indica el tipo de habitacion de la celda actual
+    precondicion: ninguna
+    tipo: Numero
+    */
+ 
+
+}
+procedure IrAPrimeraHabitacion(){
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Norte, Este)
+}
+
+function haySiguienteHabitacion(){
+    return(haySiguienteCeldaEnUnRecorridoAl_Y_(Norte, Este))
+}
+
+procedure IrASiguienteHabitacion(){
+    IrASiguienteCeldaEnUnRecorridoAl_Y_(Norte, Este)
+}
+
+//BIIBLIOTECA---------------------------------------------------------------------
+procedure SacarTodasLasDeColor_(colorASacar) {
+ /*
+ PROPÓSITO: sacar todas las bolitas de color colorASacar
+ PARÁMETROS:
+ * colorASacar: Color - el color de las bolitas que se desea sacar de la celda.
+ PRECONDICIONES:
+ *no tiene
+ */
+    Sacar_DeColor_(nroBolitas(colorASacar),colorASacar)
+}
+procedure IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+{
+ /*
+ PROPÓSITO: ir a la primera celda de un recorrido al dirPrincipal y dirSecundaria
+ PARÁMETROS:
+ * dirPrincipal: Direccion - la direccion principal del recorrido.
+ * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+ PRECONDICIONES:
+ * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    IrAEsquinaAl_Y_(opuesto(dirPrincipal),opuesto(dirSecundaria))
+}
+procedure IrAEsquinaAl_Y_(primeraDirección,segundaDirección) {
+ /*
+ PROPÓSITO: ir esquina primeraDirección segundaDirección
+ PARÁMETROS:
+ * primeraDirección : Direccion - una de los lados de la esquina a la que se desea ir.
+ * segundaDirección: Direccion - el otro lado de la esquina que se desea ir.
+ PRECONDICIONES:
+ * ambos parametros deben ser distintas y no deben ser opuestos
+ */
+
+    IrAlBorde(primeraDirección)
+    IrAlBorde(segundaDirección)
+}
+
+function haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: indicar si hay una celda siguiente en un recorrido hacia dirPrincipal ,dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    TIPO: booleano
+    PRECONDICIONES:
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+ return (puedeMover(dirPrincipal)||puedeMover(dirSecundaria))
+}
+
+procedure IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: ir a la siguiente celda en un recorrido hacia dirPrincipal y dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    PRECONDICIONES:
+        * debe haber una celda siguiente en el recorrido
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    if (puedeMover(dirPrincipal)) {
+        Mover(dirPrincipal)
+    } else {
+        IrAlBorde(opuesto(dirPrincipal))
+        Mover(dirSecundaria)
+    }
+}
