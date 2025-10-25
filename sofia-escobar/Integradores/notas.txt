@@ -1,11 +1,17 @@
 Aclaraciones de los Integradores:
 * Convencion de motoqueros:
-    Ejercicio 1: sin terminar
+        Ejercicio 1: sin terminar
             a: Hecho
             b: Hecho
             c: Hecho
             d: Hecho
             e: Hecho
-    Ejercicio 2: Sin comenzar
+        Ejercicio 2: Sin comenzar
             a: Sin comenzar
             b: Sin comenzar
+
+* Garry Gobster:
+        Ejercicio 1: Hecho
+        Ejercicio 2: Hecho
+        Ejercicio 3: Hecho
+        Ejercicio 4: Hecho (revisar)
