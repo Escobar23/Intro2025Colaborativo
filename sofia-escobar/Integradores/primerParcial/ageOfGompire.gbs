@@ -127,7 +127,7 @@ function hayRecurso_EnElSector(recurso){
     Tipo: Booleano
     Obs: Es un recorrido de busqueda sin saber sobre direcciones buscando el recurso *recurso*    */
     dirActual:=minDir()
-    while(not hayRecursoAcá(recurso)){
+    while(puedeMover(dirActual) && not hayRecursoAcá(recurso)){
         Mover(dirActual)
     }
     return(hayRecursoAcá(recurso))
