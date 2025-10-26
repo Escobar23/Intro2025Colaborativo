@@ -2,27 +2,134 @@ program{
 
 }
 
+//Ejercicio 2
+procedure AumentarEn_RecursoDeMenorRiqueza(número){
+    /*
+    Proposito: Aumenta en 1 la cantidad del recurso de menor riqueza en todo el mapa.
+    Precondicion: Ninguna
+    */
+    recursoMenorRiqueza:=recursoDeMenorRiquezaEnElMapa()
+    IrAPrimerParcela()
+    while(haySiguienteParcela()){  
+        IncrementarEn_SiHayRecurso_Acá(número, recursoMenorRiqueza)
+        IrASiguienteParcela()
+    }
+}
+
+procedure IncrementarEn_SiHayRecurso_Acá(número, recursoMenorRiqueza){
+    /*
+    Proposito: Incrementa en *número* las unidades del recurso *recursoMenorRiqueza* en la parcela actual si es que hay al menos una unidad de dicho recurso.
+    Precondicion: Ninguna
+    Parametros:
+        * número - Número : Cantidad a incrementar
+        * recursoMenorRiqueza - Color : Color que representa el recurso a incrementar
+    */
+    if(hayRecursoAcá(recursoMenorRiqueza)){
+        IncrementarEn_Recurso_Acá(número, recursoMenorRiqueza)
+    }
+}
+
+procedure IncrementarEn_Recurso_Acá(número, recurso){
+    /*
+    Proposito: Incrementa en *número* las unidades del recurso *recurso* en la parcela actual.
+    Precondicion: Ninguna
+    Parametros:
+        * número - Número : Cantidad a incrementar
+        * recurso - Color : Color que representa el recurso a incrementar
+    */
+    repeat(número){
+        IncrementarRecurso_Acá(recurso)
+    }
+}
+
+function recursoDeMenorRiquezaEnElMapa(){
+    /*
+    Proposito: Describe el recurso de menor riqueza en el mapa actual.
+    Precondicion: Ninguna
+    Tipo: Color
+    Obs: Es un recorrido de [clase] sobre [e], [haciendo]
+    */
+    recursoActual:=minRecurso()
+    recursoDeMenorRiqueza:=siguienteRecursoA_(recursoActual)
+    while(recursoActual/=maxRecurso()){
+        recursoDeMenorRiqueza:= recursoDeMenorRiquezaEntre_Y_(recursoActual, recursoDeMenorRiqueza)
+        recursoActual:=siguienteRecursoA_(recursoActual)
+    }
+    return(recursoDeMenorRiquezaEntre_Y_(recursoActual, recursoDeMenorRiqueza))
+
+}
+
+function recursoDeMenorRiquezaEntre_Y_(primerRecurso, segundoRecurso){
+    /*
+    Proposito: Describe el recurso de menor riqueza entre *primerRecurso* y *segundoRecurso*.
+    Precondicion: Ninguna
+    Parametros:
+        * primerRecurso - Color : Describe el color del primer recurso
+        * segundoRecurso - Color : Describe el color del segundo recurso
+    Tipo: Color
+    */
+    return(choose primerRecurso when (intensidadTotalDelRecurso_(primerRecurso) < intensidadTotalDelRecurso_(segundoRecurso))
+                    segundoRecurso otherwise)
+}
+
+function intensidadTotalDelRecurso_(recurso){
+    /*
+    Proposito: Describe la intensidad total del recurso *recurso* en el mapa actual.
+    Precondicion: Ninguna
+    Parametros:
+        * recurso - Color : Describe el color del recurso
+    Tipo: Número
+    Obs: Es un recorrido de acumulacion sobre las parcelas del mapa, acumulando la intensidad del recurso *recurso*
+    */
+    IrAPrimerParcela()
+    intensidadTotalHastaAhora:=intensidadDelRecurso_Acá(recurso)
+    while(haySiguienteParcela()){
+        intensidadTotalHastaAhora:= intensidadTotalHastaAhora + intensidadDelRecurso_Acá(recurso)
+        IrASiguienteParcela()
+    }
+    return(intensidadTotalHastaAhora + intensidadDelRecurso_Acá(recurso))
+}
+
 //Ejercicio 1
 function puntosAObtenerEnSector(){
     /*
-        Proposito: Describe los puntos a obtener en el sector actual.
-        Precondicion: Ninguna
-        Tipo: Número 
-        El puntaje que obtiene un jugador tiene que ver con el concepto de "sector", que refiere a la parcela donde se ubica el cabezal (parcela actual) y todas las parcelas vecinas de manera ortogonal (hacia cada una de las direcciones). En ese sentido, los puntajes obtenidos tienen que ver con saber qué recursos hay disponibles en la totalidad del sector, siguiendo las reglas:
-    .
-    Se obtienen 15 puntos si en el sector hay oro, o si hay alimento (solo 15 por cualquiera de los dos, no 15 por cada uno).
-    Se obtienen 10 puntos si en el sector hay piedra, o si hay madera (solo 10 por cualquiera de los dos, no 15 por cada uno).
-    Se obtienen 10 puntos adicionales si hay de los 4 tipos de recursos en el sector.
-    */
-    return(puntajesObtenidosPor_Y_(recursoOro(), recursoAlimento()) + puntajesObtenidosPor_Y_(recursoPiedra(), recursoMadera()) + puntajesObtenidosPorTenerLos4Recursos())
-}
-
-function puntajesObtenidosPor_Y_(primerRecurso, segundoRecurso){
-    /*
-    Proposito: Describe los puntos obtenidos por la presencia de al menos uno de los dos recursos dados en el sector actual.
+    Proposito: Devuelve la cantidad de puntos a obtener en el sector actual.
     Precondicion: Ninguna
     Tipo: Número
-    Obs: Es un recorrido [clase] sobre [elemento], [haciendo]
     */
-    
+    return(puntos_aObtenerSiHay_O_(15, recursoOro(), recursoAlimento()) 
+    + puntos_aObtenerSiHay_O_(10, recursoPiedra(), recursoMadera()) 
+    + puntosAObtenerSiHayTodosLosRecursos())
 }
+
+function puntos_aObtenerSiHay_O_(puntos, recurso1, recurso2){
+    /*
+    Proposito: Devuelve la cantidad de puntos a obtener si en el sector actual hay ambos recursos.
+    Precondicion: Ninguna
+    Tipo: Número
+    */
+    return(choose puntos when (hayRecurso_EnElSector(recurso1) || hayRecurso_EnElSector(recurso2)) 0 otherwise)
+}
+
+function puntosAObtenerSiHayTodosLosRecursos(){
+    /*
+    Proposito: Devuelve la cantidad de puntos a obtener si en el sector actual hay todos los recursos.
+    Precondicion: Ninguna
+    Tipo: Número
+    */
+    return(choose 10 when (hayRecurso_EnElSector(recursoOro()) && hayRecurso_EnElSector(recursoAlimento()) && hayRecurso_EnElSector(recursoPiedra()) && hayRecurso_EnElSector(recursoMadera())) 0 otherwise)
+}
+
+function hayRecurso_EnElSector(recurso){
+    /*
+    Proposito: Indica si en el sector actual hay al menos una unidad del recurso dado.
+    Precondicion: Ninguna
+    Tipo: Booleano
+    Obs: Es un recorrido de busqueda sin saber sobre direcciones buscando el recurso *recurso*    */
+    dirActual:=minDir()
+    while(not hayRecursoAcá(recurso)){
+        Mover(dirActual)
+    }
+    return(hayRecursoAcá(recurso))
+}
+
