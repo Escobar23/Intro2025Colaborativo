@@ -1,4 +1,14 @@
 Aclaraciones de los Integradores:
+* Primer Parcial del 1er cuatri:
+        Ejercicio 1: sin hacer
+        Ejercicio 2: sin hacer
+        Ejercicio 3: sin hacer
+
+* Primer Parcial del 2do cuatri:
+        Ejercicio 1: sin hacer
+        Ejercicio 2: sin hacer
+        Ejercicio 3: sin hacer
+
 * Convencion de motoqueros:
         Ejercicio 1: sin terminar
             a: Hecho
@@ -10,8 +20,15 @@ Aclaraciones de los Integradores:
             a: Sin comenzar
             b: Sin comenzar
 
-* Garry Gobster:
+* Garry Gobster: Hecho
         Ejercicio 1: Hecho
         Ejercicio 2: Hecho
         Ejercicio 3: Hecho
         Ejercicio 4: Hecho
+
+*Guber: 
+        Ejercicio 1:
+        Ejercicio 2:
+        Ejercicio 3:
+        Ejercicio 4:
+        Ejercicio 5:

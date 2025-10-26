@@ -1,0 +1,28 @@
+program{
+
+}
+
+//Ejercicio 1
+function puntosAObtenerEnSector(){
+    /*
+        Proposito: Describe los puntos a obtener en el sector actual.
+        Precondicion: Ninguna
+        Tipo: Número 
+        El puntaje que obtiene un jugador tiene que ver con el concepto de "sector", que refiere a la parcela donde se ubica el cabezal (parcela actual) y todas las parcelas vecinas de manera ortogonal (hacia cada una de las direcciones). En ese sentido, los puntajes obtenidos tienen que ver con saber qué recursos hay disponibles en la totalidad del sector, siguiendo las reglas:
+    .
+    Se obtienen 15 puntos si en el sector hay oro, o si hay alimento (solo 15 por cualquiera de los dos, no 15 por cada uno).
+    Se obtienen 10 puntos si en el sector hay piedra, o si hay madera (solo 10 por cualquiera de los dos, no 15 por cada uno).
+    Se obtienen 10 puntos adicionales si hay de los 4 tipos de recursos en el sector.
+    */
+    return(puntajesObtenidosPor_Y_(recursoOro(), recursoAlimento()) + puntajesObtenidosPor_Y_(recursoPiedra(), recursoMadera()) + puntajesObtenidosPorTenerLos4Recursos())
+}
+
+function puntajesObtenidosPor_Y_(primerRecurso, segundoRecurso){
+    /*
+    Proposito: Describe los puntos obtenidos por la presencia de al menos uno de los dos recursos dados en el sector actual.
+    Precondicion: Ninguna
+    Tipo: Número
+    Obs: Es un recorrido [clase] sobre [elemento], [haciendo]
+    */
+    
+}
