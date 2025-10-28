@@ -2,7 +2,8 @@ program{
     
 }
 
-//Ejercicio 4)
+//Ejercicio 4) mal
+
 function categoriaDePersonajeConMayorPoderMágico(){
     /* 
         Proposito: Describe la categoria del personaje con mayor poder magico en Gobwarts.
