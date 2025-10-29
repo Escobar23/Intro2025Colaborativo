@@ -143,9 +143,9 @@ function poderMagicoDeCategoria_(categoria) {
         
         categoriaActual:= minCategoria()
         categoriaMasPoderosaHastaAhora:= categoriaActual() 
-        while(haySiguienteHabitacion()) {
+        while(categoriaActual/= maxCategoria()) {
             categoriaActual:= siguiente(categoriaActual)
-            categoriaMasPoderosaHastaAhora:= categoriaMasPoderosaHastaAhora + categoriaActual   
+            categoriaMasPoderosaHastaAhora:= categoriaMasPoderosaEntre_Y_(categoriaMasPoderosaHastaAhora, categoriaActual)
         }
         return(categoriaMasPoderosaHastaAhora)
 
@@ -153,5 +153,20 @@ function poderMagicoDeCategoria_(categoria) {
 
     }
 
+    function categoriaMasPoderosaEntre_Y_(primeraCategoria,segundaCategoria) {
+        /*
+        prop: describe la categoria mas poderosa entrea "primeraCategoria" y "segundaCategoria"
+        prec: una categoria es mas poderosa que la otra
+        tipo: numero
+        parm:
+        primeraCategoria: Numero- numero que describe la primeraCategoria a evaluar
+        segundaCategoria: Numero- numero que describe la segundacategoria a evaluar
+        */
+
+        return(choose primeraCategoria when poderMagicoDeCategoria_(primeraCategoria) > poderMagicoDeCategoria_(segundaCategoria)
+            segundaCategoria otherwise)
+
+
+    }
 
   
