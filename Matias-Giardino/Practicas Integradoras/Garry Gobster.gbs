@@ -163,10 +163,29 @@ function poderMagicoDeCategoria_(categoria) {
         segundaCategoria: Numero- numero que describe la segundacategoria a evaluar
         */
 
-        return(choose primeraCategoria when poderMagicoDeCategoria_(primeraCategoria) > poderMagicoDeCategoria_(segundaCategoria)
+        return(choose primeraCategoria when personajeMasPoderosoDeCategoria_(primeraCategoria) > personajeMasPoderosoDeCategoria__(segundaCategoria)
             segundaCategoria otherwise)
 
 
     }
 
-  
+    function personajeMasPoderosoDeCategoria_(categoria) {
+        /*
+        prop: describe el personaje mas poderoso de la categoria "categoria"
+        prec: debe haber 1 persona mas poderoso que los demas
+        tipo: 
+        obs: es un recorrido de maximo minimo entre personajes de una categoria
+        para encontrar el personaje que tenga mayor poder magico
+        */
+
+        IrAPrimeraHabitacion()
+        elPersonajeMasPoderosoHastaAhora:=poderMagicoDePersonajeCategoria_SiHay()
+        while(haySiguienteHabitacion) {
+            IrASiguienteHabitacion()
+            elPersonajeMasPoderosoHastaAhora:=personajeMasPoderosoEntre_Y_(elPersonajeMasPoderosoHastaAhora,
+             poderMagicoDePersonajeCategoria_SiHay())
+
+        }
+        return(elPersonajeMasPoderosoHastaAhora)
+        }
+    }
