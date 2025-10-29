@@ -1,0 +1,292 @@
+//PRIMITIVAS ----------------------------
+
+procedure EliminarPersonaje(){
+    /*
+    proposito: Elimina el personaje de la celda actual
+    precondicion: Debe haber un personaje en la celda actual
+    tipo: procedimiento
+    */
+    SacarTodasLasDeColor_(Rojo)
+}
+
+function poderMágicoDelPersonaje(){
+    /*
+    proposito: Indica el poder magico del personaje en la celda actual
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return()
+}
+
+function hayPersonajeDeCategoría_(categoría){
+    /*
+    proposito: Indica si en la celda actual hay un personaje de la categoria *categoria*
+    precondicion: ninguna
+    tipo: Booleano
+    parametro: *categoria* - Numero : Describe el numero de la categoria
+    */
+    return(hayPersonajeAcá() && categoríaDelPersonajeAcá() == categoría)
+}
+
+function categoríaMago(){
+    /*
+    proposito: Indica el numero de categoria que representa a los magos
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return(1)
+}
+
+function categoríaMortifago(){
+    /*
+    proposito: Indica el numero de categoria que representa a los mortifagos
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return(2)
+}
+
+function categoríaMuggle(){
+    /*
+    proposito: Indica el numero de categoria que representa a los muggles
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return(3)
+}
+
+function categoríaDementor(){
+    /*
+    proposito: Indica el numero de categoria que representa a los dementores
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return(4)
+}
+
+function poderMágicoDelPersonaje(){
+    /*
+    proposito: Indica el poder magico del personaje en la celda actual
+    precondicion: ninguna
+    tipo: Numero
+    */
+    return()
+}
+function habitaciónDormitorio(){
+    /*
+    PROPÓSITO: Describe el número que representa el tipo de habitación de los dormitorios.
+    PRECONDICIÓN: Ninguna
+    TIPO: Número
+    */
+    return(1)
+}   
+function habitacionBaño(){
+    /*
+    PROPÓSITO: Describe el número que representa el tipo de habitación de los baños.
+    PRECONDICIÓN: Ninguna
+    TIPO: Número
+    */
+    return(2)
+}
+function habitaciónMazmorras(){
+    /*PROPÓSITO: Describe el número que representa
+    el tipo de habitación de las mazmorras.
+    PRECONDICIÓN: Ninguna
+    TIPO: Número
+*/
+}
+function tipoDeHabitación(){
+    /*
+    proposito: Indica el tipo de habitacion de la celda actual
+    precondicion: ninguna
+    tipo: Numero
+    */
+ 
+
+}
+procedure IrAPrimeraHabitacion(){
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Norte, Este)
+}
+
+function haySiguienteHabitacion(){
+    return(haySiguienteCeldaEnUnRecorridoAl_Y_(Norte, Este))
+}
+
+procedure IrASiguienteHabitacion(){
+    IrASiguienteCeldaEnUnRecorridoAl_Y_(Norte, Este)
+}
+//PRIMITIVAS ----------------------------
+
+//BIIBLIOTECA---------------------------------------------------------------------
+procedure IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+{
+ /*
+ PROPÓSITO: ir a la primera celda de un recorrido al dirPrincipal y dirSecundaria
+ PARÁMETROS:
+ * dirPrincipal: Direccion - la direccion principal del recorrido.
+ * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+ PRECONDICIONES:
+ * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    IrAEsquinaAl_Y_(opuesto(dirPrincipal),opuesto(dirSecundaria))
+}
+procedure IrAEsquinaAl_Y_(primeraDirección,segundaDirección) {
+ /*
+ PROPÓSITO: ir esquina primeraDirección segundaDirección
+ PARÁMETROS:
+ * primeraDirección : Direccion - una de los lados de la esquina a la que se desea ir.
+ * segundaDirección: Direccion - el otro lado de la esquina que se desea ir.
+ PRECONDICIONES:
+ * ambos parametros deben ser distintas y no deben ser opuestos
+ */
+
+    IrAlBorde(primeraDirección)
+    IrAlBorde(segundaDirección)
+}
+
+function haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: indicar si hay una celda siguiente en un recorrido hacia dirPrincipal ,dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    TIPO: booleano
+    PRECONDICIONES:
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+ return (puedeMover(dirPrincipal)||puedeMover(dirSecundaria))
+}
+
+procedure IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: ir a la siguiente celda en un recorrido hacia dirPrincipal y dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    PRECONDICIONES:
+        * debe haber una celda siguiente en el recorrido
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    if (puedeMover(dirPrincipal)) {
+        Mover(dirPrincipal)
+    } else {
+        IrAlBorde(opuesto(dirPrincipal))
+        Mover(dirSecundaria)
+    }
+}
+//BIIBLIOTECA---------------------------------------------------------------------
+
+// Ejercicio 1)
+
+function puedenGanarBatallaMagosContraMortifagos(){
+    /*
+    PROPÓSITO: Indica si los magos pueden ganar una batalla contra los mortifagos
+    PRECONDICIÓN: Ninguna 
+    TIPO: Booleano   
+    */
+    return (poderMágicoTotalDePersonajesDeCategoría_(categoríaMago()) > poderMágicoTotalDePersonajesDeCategoría_(categoríaMortifago())) 
+
+}
+
+function poderMágicoTotalDePersonajesDeCategoría_(categoria){
+    /*
+    PROPOSITO: Decribe el poder mágico total de los personajes de la categoria **categoria**
+    PRECONDICIÓN: Ninguna
+    TIPO: Número
+    PARÁMETRO: **categoria** - Número : Describe el número de la categoría  
+    OBSERVACIONES: Es un recorrido de acumulación sobre habitaciones acumulando el poder mágico de los personajes de la categoria **categoria**
+    */
+    poderMágicoTotalHastaAhora := 0
+    IrAPrimeraHabitacion()
+    while (haySiguienteHabitacion()) {
+        poderMágicoTotalHastaAhora := poderMágicoTotalHastaAhora + poderMágicoDePersonajeDeCategoríaEnHabitación_(categoria)   
+        IrASiguienteHabitacion()
+    }
+    return (poderMágicoTotalHastaAhora + poderMágicoDePersonajeDeCategoríaEnHabitación_(categoria)) 
+}
+
+function poderMágicoDePersonajeDeCategoríaEnHabitación_(categoria){
+    /*
+    PROPOSITO: Describe el poder mágico del personaje de la categoria **categoria** en la habitación actual
+    PRECONDICIÓN: Ninguna
+    TIPO: Número
+    PARÁMETRO: **categoria** - Número : Describe el número de la categoría  
+    */
+    return(choose poderMágicoDelPersonaje() when(hayPersonajeDeCategoría_(categoria ))
+                     0 otherwise)
+}   
+
+// Ejercicio 2)
+
+function estáElSeñorGobscuroEnGobwarts(){
+    /*
+    PROPOSITO: Indica si el señor gobscuro está en Gobwarts
+    PRECONDICIÓN: Ninguna
+    TIPO: Booleano
+    OBSERVACIONES: Es un recorrido de búsqueda sobre habitaciones buscando al señor gobscuro sin saber si esta en gobwarts
+    */
+    IrAPrimeraHabitacion()
+    while(haySiguienteHabitacion() && not(estáElSeñorGobscuroEnHabitación())){
+        IrASiguienteHabitacion()
+    }
+    return(estáElSeñorGobscuroEnHabitación())
+}
+
+function estáElSeñorGobscuroEnHabitación(){
+    /*
+    PROPOSITO: Indica si el señor gobscuro está en la habitación actual
+    PRECONDICIÓN: Ninguna
+    TIPO: Booleano
+    */
+    return((tipoDeHabitación() == habitaciónMazmorras()) && (estáElSeñorGobscuro()))
+}
+
+function estáElSeñorGobscuro(){
+    /*
+    PROPOSITO: Indica si el señor gobscuro está en la habitación actual
+    PRECONDICIÓN: Ninguna
+    TIPO: Booleano
+    OBSERVACIONES: Para que el señor gobscuro esté en la habitación actual debe haber un mortifago y su poder mágico debe ser igual a 1
+    */
+    return((hayPersonajeDeCategoría_(categoríaMortifago())) && (poderMágicoDelPersonaje() == 1))
+}
+
+// Ejercicio 3)
+
+procedure EliminarEnemigosPorDestrucciónDelDiario(){
+    /*
+    PROPOSITO: Elimina a todos los enemigos del diario
+    PRECONDICIÓN: Ninguna
+    OBSERVACIONES: Es un recorrido de trasformación sobre habitaciones eliminando dementores y mortifagos
+    */
+    IrAPrimeraHabitacion()
+    while(haySiguienteHabitacion()){
+        EliminarEnemigosDelDiarioEnHabitación()
+        IrASiguienteHabitacion()
+    }
+    EliminarEnemigosDelDiarioEnHabitación()
+}
+
+procedure EliminarEnemigosDelDiarioEnHabitación(){
+    /*
+    PROPOSITO: Elimina a los enemigos del diario en la habitación actual
+    PRECONDICIÓN: Ninguna
+    */
+    if(hayPersonajeDeCategoría_(categoríaDementor()) || hayPersonajeDeCategoría_(categoríaMortifago())){
+        EliminarPersonaje()
+    }
+}
+
+// Ejercicio 4)
+
+function categoriaDePersonajeConMayorPoderMágico(){
+    /*
+    PROPOSITO: Describe la categoría del personaje con mayor poder mágico en Gobwarts
+    PRECONDICIÓN: Ninguna
+    TIPO: Número
+    OBSERVACIONES: Es un recorrido de acumulación sobre habitaciones acumulando la categoría del personaje con mayor poder mágico
+    */
+    
+}
