@@ -131,7 +131,7 @@ function poderMagicoDeCategoria_(categoria) {
 
 
     // 4)
-d
+
     function categoriaDePersonajeConMayorPoderMágico() {
         /*
         prop: describe la categoria del personaje que posee el mayor poder magico en todo gobwarts
@@ -141,14 +141,17 @@ d
         el personaje con mayor poder magico
         */
         
-        IrAPrimeraHabitacion()
-        categoriaMasPoderosaHastaAhora:= 
+        categoriaActual:= minCategoria()
+        categoriaMasPoderosaHastaAhora:= categoriaActual() 
         while(haySiguienteHabitacion()) {
-            IrASiguienteHabitacion()
-            categoriaMasPoderosaHastaAhora:= categoriaMasPoderosaHastaAhora +   
+            categoriaActual:= siguiente(categoriaActual)
+            categoriaMasPoderosaHastaAhora:= categoriaMasPoderosaHastaAhora + categoriaActual   
         }
         return(categoriaMasPoderosaHastaAhora)
 
 
 
     }
+
+
+  
