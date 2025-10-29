@@ -291,7 +291,6 @@ function categoriaDePersonajeConMayorPoderMágico(){
     categoriaActual:= minCategoria()
     categoriaMasPoderosaHastaAhora:= categoriaActual() 
     while(categoriaActual() /= maxCategoria()){
-        poderMágicoTotalDePersonajesDeCategoría_(categoriaActual)
         categoriaMasPoderosaHastaAhora:= categoriaDeMayorPoderEntre_Y_(categoriaActual, siguiente(categoriaActual))
         categoriaActual:= siguiente(categoriaActual)
     }
