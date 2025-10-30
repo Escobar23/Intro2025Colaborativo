@@ -1,0 +1,92 @@
+// Primitivas 
+
+function recursoMadera(){
+    /*
+    PROPOSITO: Describe el color con el que se representa el recurso "madera"
+    TIPO: Color
+    PRECONDICIONES: Ninguna.
+    */
+}
+
+function recursoPiedra(){
+    /*
+    PROPOSITO: Describe el color con el que se representa el recurso "piedra"
+    TIPO: Color
+    PRECONDICIONES: Ninguna
+    */
+}
+
+function recursoOro(){
+    /*
+    PROPOSITO: Describe el color con el que se representa el recurso "oro
+    TIPO: Color
+    PRECONDICIONES: Ninguna
+    */
+}
+
+function recursoAlimento(){
+    /*
+    PROPOSITO: Describe el color con el que se representa el recurso "alimento"
+    TIPO: Color
+    PRECONDICIONES: Ninguna
+    */
+}
+
+function minRecurso(){
+    /*
+    PROPOSITO: Describe el primero de los recursos
+    TIPO: Color
+    PRECONDICIONES: Ninguna 
+    */
+}
+
+function maxRecurso(){
+    /*
+    PROPOSITO: Describe el ultimo de los recursos       
+    TIPO: Color 
+    PRECONDICIONES: Ninguna
+    */
+}
+
+function siguienteRecursoAcá(recurso){
+    /*
+    PROPOSITO: Describe el recurso siguiente a **recurso**
+    PARAMETROS: -*recurso*: Color - recurso para el cuál se describe su siguiente
+    TIPO: Color
+    PRECONDICIONES: Ninguna
+    */
+}
+
+function hayRecursoAcá(recurso){
+    /*
+    PROPOSITO: Indica si hay unidades del recurso **recurso** en la parcela actual      
+    PRECONDICION: Ninguna
+    PARAMETROS: -*recurso*: Color - color que representa el recurso para el cual se indica si hay en la parcela actual
+    TIPO: Booleano    
+    */
+}
+
+procedure IncrementarRecurso_Acá(recurso){
+    /*
+    PROPOSITO: Incrementar en 1 las unidades del recurso **recurso** en la parcela actual.
+    PARAMETROS: -*recurso*: Color - color que representa el recurso a incrementar
+    PRECONDICION: Ninguna
+    */
+}
+
+procedure DecrementarRecurso_Acá(recurso){
+    /*
+    PROPOSITO: Decrementar en 1 la cantidad del recurso *recurso* en la parcela actual
+    PARÁMETROS: -*recurso*: Color - color que represeta el recurso a decrementar
+    PRECONDICIONES: - Debe haber al menos una unidad del recurso **recurso** en la parcela actual
+    */
+}
+
+function intensidadDelRecurso_Acá(recurso){
+    /*
+    PROPOSITO: Describe la cantidad de unidades del recurso **recurso** de la parcela actual.
+    PARÁMETROS: -*recurso*: Color - color que representa el recurso a determinar sus unidades.
+    PRECONDICION: Ninguna
+    Tipo: Número
+    */
+}

@@ -198,7 +198,7 @@ procedure RevelarSiEsMasRiesgosa(){
     PRECONDICIÓN: La casilla actual está cubierta.
     OBSERVACIÓN: Utiliza una variable global para almacenar el nivel de riesgo de la casilla mas riesgosa revelada hasta el momento.
     */
-    if(esCasillaMásRiesgosaCubierta){
+    if(){
         Revelar()
     }
 }
