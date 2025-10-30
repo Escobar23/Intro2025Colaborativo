@@ -90,3 +90,113 @@ function intensidadDelRecurso_Acá(recurso){
     Tipo: Número
     */
 }
+//BIIBLIOTECA---------------------------------------------------------------------
+procedure IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+{
+ /*
+ PROPÓSITO: ir a la primera celda de un recorrido al dirPrincipal y dirSecundaria
+ PARÁMETROS:
+ * dirPrincipal: Direccion - la direccion principal del recorrido.
+ * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+ PRECONDICIONES:
+ * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    IrAEsquinaAl_Y_(opuesto(dirPrincipal),opuesto(dirSecundaria))
+}
+procedure IrAEsquinaAl_Y_(primeraDirección,segundaDirección) {
+ /*
+ PROPÓSITO: ir esquina primeraDirección segundaDirección
+ PARÁMETROS:
+ * primeraDirección : Direccion - una de los lados de la esquina a la que se desea ir.
+ * segundaDirección: Direccion - el otro lado de la esquina que se desea ir.
+ PRECONDICIONES:
+ * ambos parametros deben ser distintas y no deben ser opuestos
+ */
+
+    IrAlBorde(primeraDirección)
+    IrAlBorde(segundaDirección)
+}
+
+function haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: indicar si hay una celda siguiente en un recorrido hacia dirPrincipal ,dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    TIPO: booleano
+    PRECONDICIONES:
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+ return (puedeMover(dirPrincipal)||puedeMover(dirSecundaria))
+}
+
+procedure IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: ir a la siguiente celda en un recorrido hacia dirPrincipal y dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    PRECONDICIONES:
+        * debe haber una celda siguiente en el recorrido
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    if (puedeMover(dirPrincipal)) {
+        Mover(dirPrincipal)
+    } else {
+        IrAlBorde(opuesto(dirPrincipal))
+        Mover(dirSecundaria)
+    }
+}
+//BIIBLIOTECA---------------------------------------------------------------------
+
+
+// Ejercicio 1)
+
+function puntosAObtenerEnSector(){
+    /*
+    PROPOSITO: Devuelve la cantidad de puntos a obtener en el sector actual
+    PRECONCICION: Ninguna
+    TIPO: Número
+    */
+    return((puntos_AObtenerSiHay_0_(15, recursoOro(), recursoAlimento())) + (puntos_aObtenerSiHay_0_(10, recursoPiedra(), recursoMadera())) + (puntosAObtenerSiHayTodosLosRecursos())) 
+
+}
+
+function puntos_AObtenerSiHay_0_(puntos, recurso1, recurso2){
+    /*
+    PROPOSITO: Describe la cantidad de puntos **puntos** a obtener si en el sector actual hay recursos **recurso1** o **recurso2** 
+    PRECONCICION: Ninguna
+    TIPO: Número
+    */
+    return(choose puntos when (hayRecurso_EnElSector(recurso1) || hayRecurso_EnElSector(recurso2)) 0 otherwise)
+}
+
+function puntosAObtenerSiHayTodosLosRecursos(){
+    /*
+    PROPOSITO:
+    PRECONDICIONES:
+    TIPO:
+    */
+    return(choose 10 when ((hayRecurso_EnElSector(recursoOro())) && (hayRecurso_EnElSector(recursoAlimento())) && (hayRecurso_EnElSector(recursoMadera())) && (hayRecurso_EnElSector(recursoPiedra()))))
+}
+
+function hayRecurso_EnElSector(recurso){
+    /*
+    PROPOSITO: Indica si hay el recurso **recurso** en el sector actual.   
+    PRECONDICION: Ninguna
+    TIPO: Booleano
+    OBSERVACIONES: Es un recorrido de busqueda sobre parcelas sin saber si el recurso **recurso** está.
+    */
+    direcciónActual := minDir()
+    while(puedeMover(direcciónActual) && (not(hayRecursoAcá(recurso)))){
+        Mover(direcciónActual)
+        direcciónActual := siguiente(direcciónActual)
+    }
+    return(hayRecursoAcá(recurso))
+}
+
+//Ejercicio 2)
+
+
