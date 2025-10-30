@@ -12,25 +12,63 @@ function categoriaDePersonajeConMayorPoderMágico(){
         Obs: Es un recorrido de acumulación sobre las categorias, acumulando el personaje de mayor poder,
     */
     categoriaActual := minCategoria()
-    categoriaDeMayorPoderHastaAhora := siguienteCategoria_(categoriaActual)
+    categoriaDelPersonajeConMayorPoderHastaAhora := siguienteCategoria_(categoriaActual)
     while(categoriaActual /= maxCategoria()){
-        categoriaDeMayorPoderHastaAhora := categoriaDeMayorPoderEntre_Y_(categoriaActual, categoriaDeMayorPoderHastaAhora)
+        categoriaDelPersonajeConMayorPoderHastaAhora := categoriaDelPersonajeDeMayorPoderEntre_Y_(categoriaActual, categoriaDelPersonajeConMayorPoderHastaAhora)
         categoriaActual:= siguienteCategoria_(categoría)
     }
-    return(categoriaDeMayorPoderEntre_Y_(categoriaActual, categoriaDeMayorPoderHastaAhora))
+    return(categoriaDeMayorPoderEntre_Y_(categoriaActual, categoriaDelPersonajeConMayorPoderHastaAhora))
 }
 
-function categoriaDeMayorPoderEntre_Y_(primerCategoria, segundaCategoria){
-    /* 
-        Proposito: Describe la categoria del personaje con mayor poder magico entre *primerCategoria* y *segundaCategoria*.
-        Precondicion: Ninguna
-        Parametros: 
-            * primerCategoria - Número : Describe el numero de la primera categoria
-            * segundaCategoria - Número : Describe el numero de la segunda categoria
-        Tipo: Número
+function categoriaDelPersonajeDeMayorPoderEntre_Y_(categoria1, categoria2){
+    /*
+    Proposito: Describe la categoria del personaje con mayor poder magico entre las categorias *categoria1* y *categoria2*
+    Precondicion: Ninguna
+    Tipo: Número
+    Parametros: *categoria1* - Numero : Describe el numero de la categoria 1    
+                *categoria2* - Numero : Describe el numero de la categoria 2
     */
-    return(choose primerCategoria when (poderMagicoTotalDeLos_(primerCategoria) > poderMagicoTotalDeLos_(segundaCategoria))
-                    segundaCategoria otherwise)
+    return(choose categoria1 when (poderMagicoDelPersonajeDeCategoria_(categoria1) > poderMagicoDelPersonajeDeCategoria_(categoria2))
+                    categoria2 otherwise)
+}
+
+function poderMagicoDelPersonajeDeCategoria_(categoria){
+    /*
+    Proposito: Describe el poder magico del personaje con mayor poder magico de la categoria *categoria*
+    Precondicion: Ninguna
+    Tipo: Numero
+    Parametros: *categoria* - Numero : Describe el numero de la categoria
+    Obs: Es un recorrido de busqueda sobre las habitaciones de Gobwarts buscando el personaje de la categoria *categoria*
+    */
+    IrAPrimeraHabitacion()
+    poderMagicoDelPersonajeDeCategoriaHastaAhora := 0
+    while(haySiguienteHabitacion()){
+        poderMagicoDelPersonajeDeCategoriaHastaAhora := poderMagicoMayorEntre_Y_(poderMagicoDelPersonajeDeCategoriaHastaAhora, poderMagicoDelPersonajeDeCategoria_Aca(categoria))
+    }
+    return(poderMagicoDelPersonajeDeCategoriaHastaAhora)
+}
+
+function poderMagicoDelPersonajeDeCategoria_Aca(categoria){
+    /*
+    Proposito: Describe el poder magico del personaje de la categoria *categoria* si esta en la habitacion actual
+    Precondicion: Ninguna
+    Tipo: Numero
+    Parametros: *categoria* - Numero : Describe el numero de la categoria
+    */
+    return(choose poderMágicoDelPersonaje() when (hayPersonajeDeCategoría_(categoria))
+                    0               otherwise)
+}
+
+function poderMagicoMayorEntre_Y_(poder1, poder2){
+    /*
+    Proposito: Describe el mayor poder magico entre *poder1* y *poder2*
+    Precondicion: Ninguna
+    Tipo: Numero
+    Parametros: *poder1* - Numero : Describe el primer poder magico
+                *poder2* - Numero : Describe el segundo poder magico
+    */
+    return(choose poder1 when (poder1 > poder2)
+                    poder2 otherwise)
 }
 
 //Ejercicio 3)
