@@ -1,3 +1,18 @@
+Basados en este modelo y asumiendo en todos los casos que sobre el tablero hay un mapa de Age of Gompire bien representado, se pide:
+Ejercicio 1)
+    El puntaje que obtiene un jugador tiene que ver con el concepto de "sector", que refiere a la parcela donde se ubica el cabezal (parcela actual) y todas las parcelas vecinas de manera ortogonal (hacia cada una de las direcciones). En ese sentido, los puntajes obtenidos tienen que ver con saber qué recursos hay disponibles en la totalidad del sector, siguiendo las reglas:
+    .
+    Se obtienen 15 puntos si en el sector hay oro, o si hay alimento (solo 15 por cualquiera de los dos, no 15 por cada uno).
+    Se obtienen 10 puntos si en el sector hay piedra, o si hay madera (solo 10 por cualquiera de los dos, no 15 por cada uno).
+    Se obtienen 10 puntos adicionales si hay de los 4 tipos de recursos en el sector.
+    Se pide que escriba la función puntosAObtenerEnSector() que describe los puntos obtenidos en el sector centrado en la parcela actual.
+Ejercicio 2)
+    Para recompensar a los jugadores que han pasado varias horas de juego, "Age of Gompire" tiene el criterio de aumentar las cantidades del recurso de menor riqueza en una cantidad variable. Para modelar este comportamiento, se pide implementar el procedimiento AumentarEn_RecursoDeMenorRiqueza que, dado un número que representa la cantidad en la cual aumentar el recurso, aumenta cada parcela que contenga al menos una unidad del recurso de menor riqueza en todo el mapa tantas unidades como el número dado.
+Ejercicio 3)
+    El juego también sigue criterios para penalizar a algunos jugadores, penalizando parcelas específicas. La forma de penalizar consiste en eliminar todas las unidades de oro que hubiera en la parcela, y restar 15 unidades de todos los otros recursos.
+
+    Considere la siguiente implementación de PenalizarParcelaActual(), y asuma la existencia del procedimiento DejarParcelaCon_Oro_Madera_PiedraY_Alimento que, dados cuatro números mayores o iguales a cero, y como su nombre sugiere, deja la parcela actual con exactamente tantas unidades de cada correcto recurso como el número correspondiente dado.
+
 // Primitivas 
 
 function recursoMadera(){
@@ -199,4 +214,28 @@ function hayRecurso_EnElSector(recurso){
 
 //Ejercicio 2)
 
+procedure AumentarEn_RecursoDeMenorRiqueza(númeroAAumentar){
+    /*
+    PROPOSITO: Aumenta en **númeroAAumentar** el recurso de menor riqueza 
+    PRECONDICIONES: Ninguna 
+    OBSERVACIONES: Es un recorrido de transformación sobre parcelas, aumentando en *númeroAAumentar* los recursos de menor riqueza.    
+    */
+    IrAPrimerParcela()
+    while(haySiguienteParcela()){
+        AumentarEn_AlRecurso_(númeroAAumentar, recursoDeMenorRiqueza)
+        IrASiguienteParcela()
+    }
+    AumentarEn_AlRecurso_Acá(númeroAAumentar, recursoDeMenorRiqueza)
+}
 
+procedure AumentarEn_AlRecurso_(número, recurso){
+    /*
+    PROPOSITO: Aumenta en *número* a la cantidad del recurso **recurso**
+    PRECONDICIONES: Ninguna 
+    PARAMETROS: *número : Numero - la cantidad del recurso a aumentar
+                *recurso: Color - el recurso a aumentar
+    */
+    if(hayRecurso_Aca(recurso)){
+        
+    }
+}
