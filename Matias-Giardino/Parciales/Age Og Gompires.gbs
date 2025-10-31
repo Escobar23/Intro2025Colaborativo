@@ -1,1 +1,103 @@
-    
+    // parcela = celda
+    // mapa = tablero
+    // recursos = colores
+    // sector = parcela actual y lindantes
+
+
+    //puntos a obtener por alimento u oro
+    //puntos a obtener por madera o piedra
+    // plus por tener todos
+
+
+
+
+
+
+    function puntosAObtenerEnSector() {
+        /*
+        prop: describe los puntos obtenidos en el sector centrado en la parcela actual
+        prec: ninguna
+        tipo: numero
+        */
+
+        return(puntos_AObtenerSiHayRecurso_O_EnElSector(15,recursoOro(), recursoAlimento() + 
+            puntos_AObtenerSiHayRecurso_O_EnElSector(10,recursoMadera(), recursoPiedra() 
+            + puntos_AdicionalesPorHaberTodosLosRecursosEnElSector(10))
+
+    }
+
+
+    function puntos_AObtenerSiHayRecurso_O_EnElSector(puntos, primerRecurso, segundoRecurso) {
+        /*
+        prop:describe los "puntos" puntos a obtener si hay recurso "primerRecurso" o recurso "segundoRecurso" en el sector
+        prec: ninguna
+        tipo: numero
+        param:
+        puntos: Numero - numero que describe los puntos a obtener si hay alguno de los recursos
+        primeRecurso: Color - color que describe el primerRecurso a evaluar
+        segundoRecurso: Color - color que describe el segundoRecurso a evaluar
+        obs:
+        */
+
+        return(choose puntos when hayRecurso_EnSector(primerrecurso) || hayRecurso_EnSector(segundoRecurso))
+    }
+
+    function hayRecurso_EnSector(unRecurso) {
+        /*
+        prop: indica si en el sector hay recurso "unRecurso" en el sector
+        prec: ninguna
+        tipo: booleano
+        param:
+        unRecurso: Color - describe el color que representa el recurso a evaluar
+        */
+
+        return(hayRecurso_Aca(unRecurso) || hayRecurso_EnLindantes(unRecurso)
+    }
+
+    function hayRecurso_EnLindantes(unRecurso) {
+        /*
+        prop: indica si en las parcelas lindantes hay recurso "UnRecurso"
+        prec: ninguna
+        tipo: booleano
+        param: 
+        unRecurso: Color - describe el color que representa el recurso a evaluar
+        obs: es un recorrido de busqueda sin saber si lo que busco esta, sobre direcciones para saber si en las parcelas lindantes 
+        ortogonales a la parcela actual, hay el recurso dado
+        */
+
+        direccionActual:=minDir()
+        while(direccionActual/=maxDir() && not hayRecurso_Al_(unRecurso,direccionActual)) {
+            direccionActual:=siguiente(direccionActual)
+        }
+        return(hayRecurso_Al_(unRecurso,direccionActual))
+        
+    }
+
+    function hayRecurso_Al_(unRecurso,direccion) {
+        /*
+        prop: describe si hay un recurso "unRecurso" en la direccion "direccion"
+        prec: ninguna
+        tipo: booleano
+        param:
+        */
+
+        return(puedoMover(direccion) && hayRecurso_EnLindanteAl_(unRecurso,direccion))
+
+
+    }
+
+    function hayRecursoEnLindante(unRecurso,direccion) {
+        /*
+        prop: indica si hay un recurso "unRecurso" en la direccion lindante al "direccion"
+        prec: ninguna
+        tipo: booleano
+        param:
+        unRecurso: Color - color que describe el recurso a evaluar
+        direccion: Direccion - direccion lindante a evaluar*/
+
+
+        mover(direccion)
+        return(hayRecurso_Aca())
+    }
+
+
