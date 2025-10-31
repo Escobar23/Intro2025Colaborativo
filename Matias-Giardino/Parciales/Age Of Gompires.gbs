@@ -104,7 +104,7 @@
 
     function puntos_AdicionalesPorHaberTodosLosRecursosEnElSector(unNumero) {
         /*
-        prop: describe "unNumero" puntos adicionales a obtener por tener todos los recursos en el sector
+        prop: describe "unNumero" puntos adicionales a obtener por tener todos los recursos en el sector de lo contrario devuelve 0
         prec: ninguna
         tipo: numero
         param:
@@ -112,12 +112,55 @@
         */
 
 
-        return(choose unNumero when hayRecurso_EnSector(recursoOro()) && hayRecurso_EnSector(recursoAlimento()) && hayRecurso_EnSector(recursoPiedra()) 
-            && hayRecurso_EnSector(recursoMadera())
+        return(choose unNumero when hayTodosLosRecursosEnElSector())
             0 otherwise)
 
 
     }
 
+    function hayTodosLosRecursosEnElSector(){
+        /*
+        prop: indica si estan todos los recursos en el sector actual
+        prec: ninguna
+        tipo: booleano
+        */
 
-    
+        return(hayecurso_REnSector(recursoOro()) && hayRecurso_EnSector(recursoAlimento()) && hayRecurso_EnSector(recursoPiedra()) 
+            && hayRecurso_EnSector(recursoMadera())
+
+
+    }
+
+    function recursoConMenorRiqueza() {
+        /*
+        prop: describe el recurso con menor riqueza en el mapa
+        prec: ninguna
+        tipo: Color
+        obs: es un recorrido de maximo minimo entre recursos de un mapa para saber cual es el recurso con menor riquesa
+        */
+    }
+
+
+    recursoActual := minRecurso()
+    recursoConMenorRiquezaHastaAhora:= recursoActual
+    while (recursoActual/=maxRecurso()) {
+    recursoActual:= siguiente(recursoActual)
+    recursoConMenorRiquezaHastaAhora := recursoConMenorRiquesaEntre_Y_(recursoConMenorRiquezaHastaAhora, recursoActual)
+    }
+    return ( recursoConMenorRiquezaHastaAhora )
+
+
+
+    function recursoConMenorRiquesaEntre_Y_(primerRecurso,segundoRecurso) {
+        /*
+        prop:describe el menor recurso entre "primerRecurso" y "segundoRecurso"
+        prec: uno debe ser menor que el otro, en caso de ser iguales retorna el primero
+        tipo: Color
+        param:
+        primerRecurso: Color - color que describe el primer recurso a evaluar
+        segundoRecurso: Color - color que describe el segundo recurso a evaluar
+        */
+
+
+        return(choose primerRecurso when )
+    }
