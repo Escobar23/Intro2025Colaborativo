@@ -20,8 +20,8 @@
         tipo: numero
         */
 
-        return(puntos_AObtenerSiHayRecurso_O_EnElSector(15,recursoOro(), recursoAlimento() + 
-            puntos_AObtenerSiHayRecurso_O_EnElSector(10,recursoMadera(), recursoPiedra() 
+        return(puntos_AObtenerSiHayRecurso_O_EnElSector(15,recursoOro(), recursoAlimento()) + 
+            puntos_AObtenerSiHayRecurso_O_EnElSector(10,recursoMadera(), recursoPiedra()) 
             + puntos_AdicionalesPorHaberTodosLosRecursosEnElSector(10))
 
     }
@@ -101,3 +101,23 @@
     }
 
 
+
+    function puntos_AdicionalesPorHaberTodosLosRecursosEnElSector(unNumero) {
+        /*
+        prop: describe "unNumero" puntos adicionales a obtener por tener todos los recursos en el sector
+        prec: ninguna
+        tipo: numero
+        param:
+        unNumero: Numero - numero que describe la cantidad de puntos a obtener por tener todos los recursos
+        */
+
+
+        return(choose unNumero when hayRecurso_EnSector(recursoOro()) && hayRecurso_EnSector(recursoAlimento()) && hayRecurso_EnSector(recursoPiedra()) 
+            && hayRecurso_EnSector(recursoMadera())
+            0 otherwise)
+
+
+    }
+
+
+    
