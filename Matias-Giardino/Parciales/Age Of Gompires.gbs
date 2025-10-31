@@ -125,7 +125,7 @@
         tipo: booleano
         */
 
-        return(hayecurso_REnSector(recursoOro()) && hayRecurso_EnSector(recursoAlimento()) && hayRecurso_EnSector(recursoPiedra()) 
+        return(hayRecurso_EnSector(recursoOro()) && hayRecurso_EnSector(recursoAlimento()) && hayRecurso_EnSector(recursoPiedra()) 
             && hayRecurso_EnSector(recursoMadera())
 
 
@@ -162,5 +162,9 @@
         */
 
 
-        return(choose primerRecurso when )
+        return(choose primerRecurso when intensidadDeRecurso_(primerRecurso) < intensidadDeRecurso_(segundoRecurso),
+            segundoRecurso when intensidadDeRecurso_(primerRecurso) > intensidadDeRecurso_(segundoRecurso)
+            primerRecurso otherwise)
     }
+
+    
