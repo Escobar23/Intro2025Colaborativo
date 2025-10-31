@@ -1,0 +1,210 @@
+// Primitivas 
+
+function estáCubierta(){
+    /*PROPÓSITO: Indica si la casilla actual
+    está cubierta.
+    TIPO: Booleano.
+    PRECONDICIÓN: Ninguna.
+    */
+}
+
+function hayVecinaCubiertaAl_(dirección){
+    /*PROPÓSITO: Indica si hay una casilla vecina
+    en la dirección dada y además esa casilla está cubierta.
+    TIPO: Booleano.
+    PRECONDICIÓN: Ninguna. 
+*/
+}
+
+function hayIndicadorAcá(){
+    /*
+    PROPÓSITO: Indica si hay un indicador en
+    la casilla actual.
+    TIPO: Booleano.
+    PRECONDICIÓN: La casilla actual está
+    revelada.
+    */
+}
+
+function indicadorAcá(){
+    /*PROPÓSITO: Describe el valor del indicador
+    numérico en la casilla actual.
+    TIPO: Número.
+    PRECONDICIÓN: La casilla actual está revelada
+    y contiene un indicador.
+    */
+}
+
+function tieneMarca(){
+    /*
+    PROPÓSITO: Indica si hay una marca en la
+    casilla actual.
+    TIPO: Booleano.
+    PRECONDICIÓN: La casilla actual está
+    cubierta.
+    */
+}
+
+function tieneMina(){
+    /*
+    PROPÓSITO: Indica si hay una mina en la
+    casilla actual.
+    TIPO: Booleano.
+    PRECONDICIÓN: La casilla actual está revelada.
+    */
+}
+
+procedure Revelar(){
+    /*
+    PROPÓSITO: Revela el contenido de la casilla actual.
+    PRECONDICIÓN: La casilla actual está cubierta.
+    */
+}
+
+procedure Marcar(){
+    /*
+    PROPÓSITO: Marca la casilla actual con una
+    bandera.
+    PRECONDICIÓN: La casilla actual está cubierta
+    y no está marcada.
+    */
+}
+
+//Primitivas
+
+
+// BIBLIOTECA 
+procedure IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+{
+ /*
+ PROPÓSITO: ir a la primera celda de un recorrido al dirPrincipal y dirSecundaria
+ PARÁMETROS:
+ * dirPrincipal: Direccion - la direccion principal del recorrido.
+ * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+ PRECONDICIONES:
+ * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    IrAEsquinaAl_Y_(opuesto(dirPrincipal),opuesto(dirSecundaria))
+}
+procedure IrAEsquinaAl_Y_(primeraDirección,segundaDirección) {
+ /*
+ PROPÓSITO: ir esquina primeraDirección segundaDirección
+ PARÁMETROS:
+ * primeraDirección : Direccion - una de los lados de la esquina a la que se desea ir.
+ * segundaDirección: Direccion - el otro lado de la esquina que se desea ir.
+ PRECONDICIONES:
+ * ambos parametros deben ser distintas y no deben ser opuestos
+ */
+
+    IrAlBorde(primeraDirección)
+    IrAlBorde(segundaDirección)
+}
+
+function haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: indicar si hay una celda siguiente en un recorrido hacia dirPrincipal ,dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    TIPO: booleano
+    PRECONDICIONES:
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+ return (puedeMover(dirPrincipal)||puedeMover(dirSecundaria))
+}
+
+procedure IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: ir a la siguiente celda en un recorrido hacia dirPrincipal y dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    PRECONDICIONES:
+        * debe haber una celda siguiente en el recorrido
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    if (puedeMover(dirPrincipal)) {
+        Mover(dirPrincipal)
+    } else {
+        IrAlBorde(opuesto(dirPrincipal))
+        Mover(dirSecundaria)
+    }
+}
+
+//BIBLIOTECA
+
+// Ejercicio 1)
+
+function esCasillaSegura(){
+    /*
+    PROPÓSITO: Indica si la casilla actual es segura para ser revelada
+    TIPO: Booleano.
+    PRECONDICIÓN: Ninguna.
+    */
+    return(choose esCasillaSegura() when(not(hayVecinaCubiertaAl_(dirección)) && (not(hayIndicadorAcá()))))
+}
+
+
+//Ejercicio 2)
+
+procedure Arriesgar(){
+    /*
+    PROPÓSITO: Revela la casilla cubiera mas riesgosa de la grilla
+    PRECONDICIÓN: Ninguna.
+    OBSERVACIÓN: Es un recorrido de busqueda sobre casillas cubiertas, revelando la casillas cubierta mas riesgosas de la grilla.
+    */
+    IrAPrimeraCasilla()
+    while(haySiguienteCasilla() && not(esCasillaMásRiesgosaCubierta())){
+        IrASiguienteCasilla()
+    }
+    RevelarSiEsMasRiesgosa()
+}
+
+function esCasillaMásRiesgosaCubierta(){
+    /*
+    PROPÓSITO: Indica si la casilla actual es mas riesgosa que la casilla mas riesgosa revelada hasta el momento.
+    PRECONDICIÓN: La casilla actual está cubierta.
+    TIPO: Booleano.
+    OBSERVACIÓN: Es un recorrido de acumulación sobre las casillas cubiertas, comparando el nivel de riesgo de las casillas cubiertas.
+    */
+    direcciónActual := minDir()
+    nivelDeRiesgo := 0
+    nivelMáximoDeRiesgoPorAhora := nivelDeRiesgo
+    while(direcciónActual /= maxDir()){
+        direcciónActual := siguienteDir(direcciónActual)
+        nivelMáximoDeRiesgoPorAhora := nivelMáximoDeRiesgoEntre_Y_(nivelDeRiesgo, nivelMáximoDeRiesgoPorAhora)
+    }
+    return(nivelMáximoDeRiesgoEntre_Y_(nivelDeRiesgo, nivelMáximoDeRiesgoPorAhora))
+}
+
+function nivelMáximoDeRiesgoEntre_Y_(nivelMáximo1, nivelMáximo2){
+    /*
+    PROPÓSITO: Describe el nivel de riesgo máximo entre dos niveles de riesgo dados.
+    PARÁMETROS:
+        * nivelMáximo1: Número - el primer nivel de riesgo a comparar.
+        * nivelMáximo2: Número - el segundo nivel de riesgo a comparar.
+    TIPO: Número.
+    PRECONDICIÓN: Ninguna.
+    */
+    return(choose nivelMáximo1 when (nivelMáximo1 > nivelMáximo2)
+        nivelMáximo2 otherwise)
+}
+
+procedure RevelarSiEsMasRiesgosa(){
+    /*
+    PROPÓSITO: Revela la casilla actual si es mas riesgosa que la casilla mas riesgosa 
+    PRECONDICIÓN: La casilla actual está cubierta.
+    OBSERVACIÓN: Utiliza una variable global para almacenar el nivel de riesgo de la casilla mas riesgosa revelada hasta el momento.
+    */
+    if(){
+        Revelar()
+    }
+}
+
+
+
+
+// Ejercicio 3)
+

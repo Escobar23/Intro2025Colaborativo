@@ -1,0 +1,113 @@
+//Primitivas
+
+function hayPaquete()
+/* PROPÓSITO: indica si en la ubicación actual
+hay un paquete que el camión debe recoger
+PRECONDICIÓN: ninguna
+RESULTADO: Booleano */
+
+function idDePaqueteEnCamión()
+/* PROPÓSITO: indica el número de ID que
+identifica al paquete que se cargó en el
+camión, o cero si el camión no cargó
+ningún paquete.
+PRECONDICIÓN: el cabezal está sobre el camión
+RESULTADO: Número (entre 0 y 4999)
+*/
+
+function idDePaquete()
+/* PROPÓSITO: indica el número de ID con el cual se
+identifica al paquete en la ubicación actual
+PRECONDICIONES:
+* hay un paquete en la ubicación actual
+RESULTADO: Número (entre 1 y 499) */
+
+procedure RecogerPaquete_(idPaquete)
+/* PROPÓSITO: carga en el camión el paquete con el
+ID idPaquete.
+PARÁMETROS: idPaquete es un número, que
+indica el paquete que se recogerá
+PRECONDICIONES:
+* el cabezal se encuentra sobre el camión
+* el cabezal se encuentra sobre el paquete con
+el ID dado
+* el camión no está cargado con otro paquete
+* idPaquete está entre 1 y 499 */
+
+procedure EntregarPaquete_AComprador(idPaquete)
+/* PROPÓSITO: deja el paquete con el ID dado
+a su comprador.
+PARÁMETROS: idPaquete es un número, que
+indica el paquete al cual se desea entregar
+PRECONDICIONES:
+* el cabezal se encuentra sobre el camión
+* el camión está cargado con el paquete con
+el ID dado
+* el camión se encuentra sobre el comprador del
+paquete con el ID dado
+* idPaquete está entre 1 y 4999 */
+
+function estáElCompradorDe_(idPaquete)
+/* PROPÓSITO: indica si en la ubicación actual se
+encuentra el comprador del paquete cuyo ID
+es el dado
+PARÁMETROS: idPaquete es un número, que
+indica el paquete del cual se desea saber si
+su comprador está o no en la ubicación actual
+PRECONDICIONES: idPaquete está entre 1 y 4999
+RESULTADO: Booleano */
+
+procedure MoverCamiónAl_(dirección)
+/* PROPÓSITO: mueve el camión una posición en el
+mapa hacia la dirección dada; el cabezal
+termina sobre el camión
+PARÁMETROS: dirección es una dirección, que
+indica la dirección en la cual mover el
+camión
+PRECONDICIONES:
+* el cabezal se encuentra sobre el camión
+* hay una ubicación del mapa en la
+dirección dada */
+
+// Primitivas
+
+
+//Ejercicio 1)
+
+procedure LlevarCamiónAlInicioDeUnRecorrido(){
+    /*
+    PROPOSITO: Ubica el camion en una esquina Este-Sur
+    PRECONDICIONES:Ninguna
+    */
+    IrALaPrimeraCeldaDeUnRecorridoAl_Y_(Norte,Oeste)
+}
+
+function elCamiónEstáAlFinalDeUnRecorrido(){
+    /*
+    PROPOSITO: Indica si el camion esta al final de un recorrido
+    PRECONDICION: Ninguna
+    TIPO: Booleano
+    */
+    return(haySiguienteCeldaEnUnRecorridoAl_Y_(Norte, Oeste))
+}
+
+procedure MoverCamiónAPróximaUbicación(){
+    /*
+    PROPOSITO: Mueve al camion a la proxima ubicacion en un recorrido hacia el oeste y norte
+    PRECONDICION: Debe haber al menos una ubicación al norte y oeste
+    */
+    IrASiguienteCeldaEnUnRecorridoAl_Y_(Norte, Oeste)
+}
+
+//Ejercicio 2)
+
+function direcciónHaciaLaCuálEstáElComprador(){
+    /*
+    PROPOSITO: Indica la dirección hacia la cual esta el comprador
+    PRECONDICIONES: Ninguna
+    TIPO: Dirección
+    */ 
+
+
+}
+

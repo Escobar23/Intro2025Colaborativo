@@ -1,0 +1,173 @@
+// Primitivas 
+function componenteC()
+/*
+PROPÓSITO: Describe la componente “cyan” del píxel
+           actual.
+PRECONDICIONES: Ninguna.
+TIPO: Color
+*/
+
+function componenteM()
+/*
+PROPÓSITO: Describe la componente “magenta” del
+           píxel actual.
+PRECONDICIONES: Ninguna.
+TIPO: Color
+*/
+
+function componenteY()
+/*
+PROPÓSITO: Describe la componente “yellow” del 
+           píxel actual.
+PRECONDICIONES: Ninguna.
+TIPO: Color
+*/
+
+function componenteK()
+/*
+PROPÓSITO: Describe la componente “key” del
+           píxel actual.
+PRECONDICIONES: Ninguna.
+TIPO: Color
+*/
+
+function minComponente()
+/*
+PROPÓSITO: Describe la componente más pequeña.
+PRECONDICIONES: Ninguna.
+TIPO: Color
+*/
+
+function maxComponente()
+/*
+PROPÓSITO: Describe la componente más grande.
+PRECONDICIONES: Ninguna.
+TIPO: Color
+*/
+
+
+function siguienteComponente_(componente)
+/*
+PROPÓSITO: Describe la componente siguiente a 
+           **componente**.
+PRECONDICIONES: Ninguna.
+PARÁMETROS:
+- *componente*: Color - color del componente
+TIPO: Color
+*/
+
+function intensidadDeComponente_Acá(componente)
+/*
+PROPÓSITO: Describe la intensidad de la
+     componente **componente** del píxel actual.
+PRECONDICIÓN: Ninguna.
+PARÁMETROS:
+- *componente* : Color - color del componente
+TIPO: Número.
+*/
+
+procedure IncrementarComponente_Acá(componente)
+/*
+PROPÓSITO: Incrementar en 1 la intensidad de la
+        componente *componente* del píxel actual.
+PRECONDICIONES:
+- La componente *componente* del píxel actual es menor a 255.
+PARÁMETROS:
+- *componente* : Color - color del componente
+*/
+
+procedure DecrementarComponente_Acá(componente)
+/*
+PROPÓSITO: Decrementar en 1 el valor de la
+       componente *componente* del píxel actual.
+PRECONDICIONES:
+- La componente *componente* del píxel actual es
+  mayor a 0.
+PARÁMETROS:
+- *componente* : Color - color del componente
+*/
+
+
+function componenteDeMenorTemperaturaEnLaImagen()
+/*
+PROPÓSITO: Describe a la componente de menor temperatura en la imagen actual.
+PRECONDICIÓN: Existe una componente de menor temperatura en la imagen actual. 
+TIPO: Color
+OBSERVACIÓN: La componente de menor temperatura de una imagen es aquella para la cual la sumatoria de las intensidades de dicha componente en todos los píxeles es la menor.
+*/
+
+// Primitivas
+
+//BIIBLIOTECA---------------------------------------------------------------------
+procedure IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+{
+ /*
+ PROPÓSITO: ir a la primera celda de un recorrido al dirPrincipal y dirSecundaria
+ PARÁMETROS:
+ * dirPrincipal: Direccion - la direccion principal del recorrido.
+ * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+ PRECONDICIONES:
+ * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    IrAEsquinaAl_Y_(opuesto(dirPrincipal),opuesto(dirSecundaria))
+}
+procedure IrAEsquinaAl_Y_(primeraDirección,segundaDirección) {
+ /*
+ PROPÓSITO: ir esquina primeraDirección segundaDirección
+ PARÁMETROS:
+ * primeraDirección : Direccion - una de los lados de la esquina a la que se desea ir.
+ * segundaDirección: Direccion - el otro lado de la esquina que se desea ir.
+ PRECONDICIONES:
+ * ambos parametros deben ser distintas y no deben ser opuestos
+ */
+
+    IrAlBorde(primeraDirección)
+    IrAlBorde(segundaDirección)
+}
+
+function haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: indicar si hay una celda siguiente en un recorrido hacia dirPrincipal ,dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    TIPO: booleano
+    PRECONDICIONES:
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+ return (puedeMover(dirPrincipal)||puedeMover(dirSecundaria))
+}
+
+procedure IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal,
+dirSecundaria) {
+ /*
+    PROPÓSITO: ir a la siguiente celda en un recorrido hacia dirPrincipal y dirSecundaria
+    PARÁMETROS:
+        * dirPrincipal: Direccion - la direccion principal del recorrido.
+        * dirSecundaria: Direccion - la direccion secundaria del recorrido.
+    PRECONDICIONES:
+        * debe haber una celda siguiente en el recorrido
+        * dirPrincipal y dirSecundaria no deben ser opuestas ni iguales
+ */
+    if (puedeMover(dirPrincipal)) {
+        Mover(dirPrincipal)
+    } else {
+        IrAlBorde(opuesto(dirPrincipal))
+        Mover(dirSecundaria)
+    }
+}
+//BIIBLIOTECA---------------------------------------------------------------------
+
+// Ejercicio 1)
+
+function esPixelSaturadoAcá(){
+    /*
+    PROPÓSITO: Indica si el píxel actual está saturado.
+    TIPO: Booleano
+    PRECONDICIONES: Ninguna.
+    OBSERVACIONES: 
+
+    */
+    
+}

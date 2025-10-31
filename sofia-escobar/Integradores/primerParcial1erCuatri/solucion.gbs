@@ -1,1 +1,9 @@
-sin hacer
+//Ejercicio 1
+function esPixelSaturadoAcá(){
+    /*
+    Proposito: indica si el pixel actual está saturado en alguna de sus componentes.
+    Precondiciones: eNinguna.
+    Tipo: Booleano
+    */
+   
+}
