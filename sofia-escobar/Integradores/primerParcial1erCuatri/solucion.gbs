@@ -1,9 +1,109 @@
+/*
+celda=pixel
+tablero= matriz bidimensional
+cada color= cada componente
+numero de bolitas = intensidad del componente
+*/
+//Ejercicio 2
+procedure SaturarComponenteDeMayorTemperatura(){
+    /*
+    Proposito: Satura el componente de mayor temperatura en toda la imagen.
+    Precondiciones: Ninguna.
+    Obs:Es un recorrido de [clase] sobre [e] [haciendo]
+    */
+    componenteDeMayorTemperatura:=componenteDeMayorTemperatura()
+    componenteDeMenorTemperatura:=componenteDeMenorTemperatura()
+    IrAPrimerPixelEnUnRecorridoAl_Y_(Norte, Este)
+    while(haySiguientePixelEnUnRecorridoAl_Y_(Norte, Este)){
+        SaturarComponente_ConContrasteDelComponente(componenteDeMayorTemperatura,componenteDeMenorTemperatura)
+        IrASiguientePixelEnUnRecorridoAl_Y_(Norte, Este)
+    }
+}
+
+function componenteDeMayorTemperatura(){
+    /*
+    Proposito: Devuelve el componente de mayor temperatura en la imagen.
+    Precondiciones: Ninguna.
+    Tipo: Color
+    Obs: Es un recorrido de maximo-minimo sobre componentes para encontrar el componente de mayor temperatura.
+    */
+    componenteDeMayorTemperaturaHastaAhora:=minComponente()
+    while(componenteDeMayorTemperaturaHastaAhora/=maxComponente()){
+       componenteDeMayorTemperaturaHastaAhora:=componenteDeMayorTemperaturaEntre_Y_()
+    }
+
+}
+
+function componenteDeMenorTemperatura(){
+    /*
+    Proposito: Devuelve el componente de menor temperatura en la imagen.
+    Precondiciones: Ninguna.
+    Tipo: Color
+    Obs: Es un recorrido de maximo-minimo sobre componentes para encontrar el componente de menor temperatura.
+    */
+
+
+}
+
 //Ejercicio 1
 function esPixelSaturadoAcá(){
     /*
-    Proposito: indica si el pixel actual está saturado en alguna de sus componentes.
-    Precondiciones: eNinguna.
+    Proposito: indica si el pixel actual está saturado en alguno de sus componentes.
+    Precondiciones: Ninguna.
     Tipo: Booleano
+    Obs: Es un recorrido de busqueda sobre componentes, buscando algun componente saturado.
     */
-   
+    componenteActual:=minComponente();
+    while(componenteActual/=maxComponente()&&not(esComponente_Saturado(componenteActual))){
+        componenteActual:=siguienteComponente_(componenteActual)
+    }
+    return(esComponente_Saturado(componenteActual));
+}
+
+function esComponente_Saturado(componente){
+    /*
+    Proposito: indica si el componente *componente* está saturado.
+    Precondiciones: Ninguna
+    Parametros: componente: Color - el componente a evaluar
+    Tipo: Booleano
+    Obs: Un componente está saturado si la intensidad del componente en el pixel actual es mayor a la intensidad del mismo componente en los pixeles lindantes.
+    */
+    return(intensidadDeComponente_Acá(componente)>intensidadDelComponente_EnLindantes(componente))
+}
+
+function intensidadDelComponente_EnLindantes(componente){
+    /*
+    Proposito: Describe la intensidad del componente *componente* en los pixeles lindantes.
+    Precondiciones: Ninguna
+    Parametros: componente: Color - el componente a evaluar
+    Tipo: Numero
+    Obs: Es un recorrido de acumulacion sobre pixeles lindantes, acumulando la intensidad del componente *componente*.
+    */
+    dirActual:=minDir()
+    intensidadDelComponenteHastaAhora:=0
+    while(dirActual/=maxDir()){
+        intensidadDelComponenteHastaAhora:=intensidadDelComponenteHastaAhora+intensidadDelComponente_En_(componente,dirActual)
+        dirActual:=siguiente(dirActual)
+    }
+    return(intensidadDelComponenteHastaAhora+intensidadDelComponente_En_(componente,dirActual))
+}
+
+function intensidadDelComponente_En_(componente,dir){
+    /*
+    Proposito: Describe la intensidad del componente *componennte* en la dirección *dir*.
+    Precondiciones: Ninguna
+    Parametros: componente: Color - el componente a evaluar
+                dir: Direccion - la direccion en la que se quiere evaluar
+    Tipo: Numero
+    */
+    return(puedeMover(dir)&&intensidadDelComponente_EnLindanteAl_(componente,dir))
+}
+function intensidadDelComponente_EnLindanteAl_(componente,dir){
+    /*
+    Proposito: Describe la intensidad del componente *componente* en la celda lindante en la dirección *dir*.
+    Precondiciones: Debe haber al menos un pixel en la direccion *dir*
+    Tipo: Numero
+    */
+    mover(dir)
+    return(intensidadDeComponente_Acá(componente) )
 }

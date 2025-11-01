@@ -22,9 +22,9 @@ function cantidadDeClubesEnLaConvencion(){
 //c
 procedure AsignarClub_AMotoquerosConectados(númeroDeClub){
     /*
-    Proposito: asigna un club a todos los motoqueros conectados al motoquero sin club de la celda actual.
+    Proposito: asigna un club a todos los motoqueros conectados al motoquero sin club de la ubicacion actual.
     Precondiciones: el cabezal debe estar posicionado en un motoquero sin club
-    Obs: Es un recorrido de transformacion sobre las celdas de la convención asignando el club indicado a los motoqueros conectados al motoquero sin club de la celda actual.
+    Obs: Es un recorrido de transformacion sobre las ubicaciones de la convención asignando el club indicado a los motoqueros conectados al motoquero sin club de la ubicacion actual.
     */
     IncluirEnElClubNúmero_(númeroDeClub)
     IrAPrimerMotoqueroAl_YAl_(Norte,Este)
@@ -36,7 +36,7 @@ procedure AsignarClub_AMotoquerosConectados(númeroDeClub){
 
 procedure AsignarClub_AMotoqueroAca(númeroDeClub){
     /*
-    Proposito: asigna un club al motoquero en la celda actual si no pertenece a ningún club.
+    Proposito: asigna un club al motoquero en la ubicacion actual si no pertenece a ningún club.
     Precondiciones: Ninguna
     */
     if(hayMotoqueroVecinoDeMotoqueroDelClub_(númeroDeClub)){
@@ -45,7 +45,7 @@ procedure AsignarClub_AMotoqueroAca(númeroDeClub){
 }
 function hayMotoqueroVecinoDeMotoqueroDelClub_(númeroDeClub){
     /*
-    Proposito: indica si hay un motoquero en la celda actual y tiene un vecino que pertenece al club indicado.
+    Proposito: indica si hay un motoquero en la ubicacion actual y tiene un vecino que pertenece al club indicado.
     Precondiciones: Ninguna.
     Tipo: Booleano
     */
@@ -78,7 +78,7 @@ function hayVecinoEn_DelClub_(dir,númeroDeClub){
 function esVecinoEn_DelClub_(dir,númeroDeClub){
     /*
     Proposito: indica si el vecino en la dirección indicada pertenece al club indicado.
-    Precondiciones: Tiene que haber al menos una celda en la dirección indicada.
+    Precondiciones: Tiene que haber al menos una ubicacion en la dirección indicada.
     Tipo: Booleano
     */
     Mover(dir)
@@ -98,7 +98,7 @@ procedure IrAMotoqueroSinClub(){
     /*
     Proposito: se posiciona en un motoquero sin club
     Precondiciones: debe haber al menos un motoquero sin club
-    Obs: Es un recorrido de busqueda sobre celdas de la convencion buscando al motoquero sin club.
+    Obs: Es un recorrido de busqueda sobre ubicacion de la convencion buscando al motoquero sin club.
     */
     IrAPrimeraCeldaEnUnRecorridoAl_Y_(Norte,Este)
     while(haySiguienteCeldaEnUnRecorridoAl_Y_(Norte,Este)&&not (hayMotoqueroSinClubAcá())){
@@ -112,7 +112,7 @@ function hayMotoquerosSinClub(){
     Proposito: indica si hay motoqueros sin club en la convención
     Precondiciones: Ninguna.
     Tipo: Booleano
-    Obs: Es un recorrido de [clase] sobre [e] [haciendo]
+    Obs: Es un recorrido de busqueda sobre ubicaciones en la convencion de motoqueros buscando un motoquero sin club asignado.
     */
     IrAPrimeraCeldaEnUnRecorridoAl_Y_(Norte,Este)
     while(haySiguienteCeldaEnUnRecorridoAl_Y_(Norte,Este)&&not (hayMotoqueroSinClubAcá())){
@@ -123,7 +123,7 @@ function hayMotoquerosSinClub(){
 
 function hayMotoqueroSinClubAcá(){
     /*
-    Proposito: indica si el motoquero en la celda actual no pertenece a ningún club
+    Proposito: indica si el motoquero en la ubicacion actual no pertenece a ningún club
     Precondiciones: Ninguna.
     Tipo: Booleano
     */
