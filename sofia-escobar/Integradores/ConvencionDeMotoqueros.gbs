@@ -39,13 +39,13 @@ procedure AsignarClub_AMotoqueroAca(númeroDeClub){
     Proposito: asigna un club al motoquero en la celda actual si no pertenece a ningún club.
     Precondiciones: Ninguna
     */
-    if(ayMotoqueroVecinoDeMotoqueroDelClub_(númeroDeClub)){
+    if(hayMotoqueroVecinoDeMotoqueroDelClub_(númeroDeClub)){
         IncluirEnElClubNúmero_(númeroDeClub)
     }
 }
 function hayMotoqueroVecinoDeMotoqueroDelClub_(númeroDeClub){
     /*
-    Proposito: indica si hay un motoquero en la celda actual  y tiene un vecino que pertenece al club indicado.
+    Proposito: indica si hay un motoquero en la celda actual y tiene un vecino que pertenece al club indicado.
     Precondiciones: Ninguna.
     Tipo: Booleano
     */
@@ -87,10 +87,10 @@ function esVecinoEn_DelClub_(dir,númeroDeClub){
 }
 function elMotoqueroPerteneceAlClubNúmero_(númeroDeClub){
     /*
-    Proposito: indica si el motoquero en la celda actual pertenece al club indicado.
+    Proposito: indica si el motoquero en la ubicacion actual pertenece al club indicado.
     Precondiciones: Debe haber un motoquero en la posicion actual.
     Tipo: Booleano
-    */
+    */  
     return(elMotoqueroPerteneceAUnClub()&&clubAlQuePerteneceUnMotoquero()==númeroDeClub)
 
 //b

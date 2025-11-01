@@ -47,7 +47,7 @@ function recursoDeMenorRiquezaEnElMapa(){
     Proposito: Describe el recurso de menor riqueza en el mapa actual.
     Precondicion: Ninguna
     Tipo: Color
-    Obs: Es un recorrido de [clase] sobre [e], [haciendo]
+    Obs: Es un recorrido de maximo minimo sobre recursos, quedando el recurso de menor riqueza en el mapa
     */
     recursoActual:=minRecurso()
     recursoDeMenorRiqueza:=siguienteRecursoA_(recursoActual)
@@ -117,7 +117,20 @@ function puntosAObtenerSiHayTodosLosRecursos(){
     Precondicion: Ninguna
     Tipo: Número
     */
-    return(choose 10 when (hayRecurso_EnElSector(recursoOro()) && hayRecurso_EnElSector(recursoAlimento()) && hayRecurso_EnElSector(recursoPiedra()) && hayRecurso_EnElSector(recursoMadera())) 0 otherwise)
+    return(choose 10 when (hayTodosLosRecursos()) 0 otherwise)
+}
+
+function hayTodosLosRecursos(){
+    /*
+    Proposito: Devuelve la cantidad de puntos a obtener si en el sector actual hay todos los recursos.
+    Precondicion: Ninguna
+    Tipo: Número
+    */
+    recursoActual:=minRecurso()
+    while(recursoActual/=maxRecurso()&&hayRecurso_EnElSector(recursoActual)){
+        recursoActual:=siguiente(recursoActual)
+    }
+    return(hayRecurso_EnElSector(recursoActual))
 }
 
 function hayRecurso_EnElSector(recurso){
@@ -129,6 +142,7 @@ function hayRecurso_EnElSector(recurso){
     dirActual:=minDir()
     while(puedeMover(dirActual) && not hayRecursoAcá(recurso)){
         Mover(dirActual)
+        dirActual:=siguiente(dirActual)
     }
     return(hayRecursoAcá(recurso))
 }
