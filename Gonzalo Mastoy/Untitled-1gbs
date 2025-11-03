@@ -1,0 +1,84 @@
+// Parcial pixel
+
+//Ejercicio 1
+
+function esPixelSaturadoAca(){
+    /*
+    proposito:indica si el pixel donde se encuentra esta saturado. 
+    precondicion: Ninguna
+    tipo: Booleano
+    obs: es un recorrido de busqueda sin saber, sobre direcciones buscando si algun componente esta saturado
+    */
+    componenteActual:=minComponente()
+    while(componenteActual /= maxComponente()&& not(esComponente_Saturado(componenteActual))){
+        componenteActual:=siguienteComponente_(componenteActual)
+    }
+    return(esComponente_Saturado(componenteActual))
+}
+
+function esComponente_Saturado(componente){
+    /*
+    proposito:indica si el componente esta saturado respecto a las lindantes
+    precondicion: Ninguna
+    tipo:Booleano
+    parametro: *componente* - Color: color del componente buscado
+    */
+    return(intensidadDelComponente_Aca(componente) > intensidadDeComponente_EnLindantes(componente))
+}
+
+function intensidadDeComponente_EnLindantes(componente){
+    /*
+    proposito:describe la suma de las intensidades del componente *componente*
+    precondicion:Ninguna
+    tipo:numero
+    obs:Es un recorrido de acumulacion sobre direcciones acumulando la intensidad del componente *componente*
+    */
+
+    dirActual:=minDir()
+    intensidadDeLindantes := intensidadDeComponente_Al_(componente,dirActual)
+    while(dirActual /= maxDir()){
+        dirActual:= siguiente(dirActual)
+        intensidadDeLindantes:= intensidadDeLindantes + intensidadDeComponente_Al_(componente,dirActual)
+    }
+    dirActual:=siguiente(dirActual)
+    return(intensidadDeLindantes)
+}
+
+function intensidadDeComponente_Al_(componente,direccion){
+    /*
+    proposito:describe la intesidad del componente *componente* en el pixel lindante en direccion *direccion*
+    precondicion: Ninguna
+    tipo:Numero
+    */
+    return(puedeMover(direccion) && intensidadDel_Al_(componente,direccion))
+}
+
+function intensidadDel_Al_(componente,direccion){
+    /*
+    proposito:describe la intesidad del componente *componente* en el pixel lindante en direccion *direccion*
+    precondicion: Ninguna
+    tipo:Numero
+    */
+    Mover(direccion)
+    return(intensidadDeComponente_Aca(componente))
+}
+
+// Ejercicio 2 
+
+procedure SaturarComponenteDeMayorTemperatura(){
+    /*
+    proposito: saturar en todos los pixeles de la imagen el componente de mayor temperatura
+    precondicion: Ninguna
+    Obs: Es un recorrido de transformacion sobre el tablero que satura todos los pixeles de la imagen
+    */
+    IrAlInicioEnUnRecorridoAl_YAl_(Este,Norte)
+    while(haysiguienteCeldaEnUnRecorridoAl_YAl_(Este,Norte)){
+        SaturarComponenteEnElPixelActual()
+        IrASiguienteCeldaEnUnRecorridoAl_YAl_(Este,Norte)
+    }
+    SaturarComponenteEnElPixelActual()
+}
+
+procedure SaturarComponenteEnElPixelActual(){
+
+}
