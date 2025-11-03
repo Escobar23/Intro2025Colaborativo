@@ -1,5 +1,5 @@
 /*
-
+los variant se pueden comparar
 */
 
 type ComidaGobiana is record {
@@ -19,4 +19,107 @@ case América {}
 case Asia {}
 case Europa {}
 case Oceanía {}
+}
+
+//Ejercicio 7
+function hayUnaBolitaDeFraileEn_(listaDeComidas){
+    /*
+    Proposito: Indica si en la lista de comidas gobianas *listaDeComidas* hay al menos una bolita de fraile.
+    Precondiciones: Ninguna.
+    Parametros: listaDeComidas: Lista de ComidaGobiana - la lista a evaluar
+    Tipo: Booleano
+    Obs: Es un recorrido de búsqueda sobre la lista, buscando una bolita de fraile.
+    */
+    comidaActual:=primeraDe_(listaDeComidas)
+    while(comidaActual/=ultimaDe_(listaDeComidas)&&not(esBolitaDeFraile_(comidaActual))){
+        comidaActual:=siguienteDe_(comidaActual, listaDeComidas)
+    }
+    return(esBolitaDeFraile_(comidaActual))
+
+}
+
+
+//Ejercicio 6
+function albondigueada(){
+    /*
+    Proposito: Describe una lista con comidas gobianas que representa a la albondigueada.
+    Precondiciones: Ninguna.
+    Tipo: Lista de ComidaGobiana
+    */
+    albondigueadaPorAhora:=[]
+    foreach caloria in [3..7]{
+        albondigueadaPorAhora:=albondigueadaPorAhora ++ []
+    }
+    
+}
+
+//Ejercicio 5
+function comida_enmantecada(comida){
+    /*
+    Proposito: Describe una comida gobiana que representa a la comida gobiana *comida* enmantecada.
+    Precondiciones: Ninguna.
+    Parametros: comida: ComidaGobiana - la comida a enmantecar
+    Tipo: ComidaGobiana
+    Obs: La comida enmantecada tiene 200 calorías más que la comida original.
+    */
+    //funcion modificadora
+    return(ComidaGobiana(ComidaGobiana(comida | calorías <- calorías(comida)+200)));
+}
+
+//Ejercicio 4
+function proviene_De_(comida, continente){
+    /*
+    Proposito: Indica si la comida gobiana *comida* proviene del continente *continente*.
+    Precondiciones: Ninguna.
+    Parametros: comida: ComidaGobiana - la comida a evaluar
+                continente: Continente - el continente a evaluar
+    Tipo: Booleano
+    */
+    return(origen(comida) == continente);
+
+}
+
+//Ejercicio 3
+function comidaMásSaludableEntre_Y_(comida1, comida2){
+    /*
+    Proposito: Describe la comida gobiana más saludable entre las comidas gobianas *comida1* y *comida2*, si son igual de saludables devuelve la primera.
+    Precondiciones: Ninguna.
+    Parametros: comida1: ComidaGobiana - la primera comida a comparar
+                comida2: ComidaGobiana - la segunda comida a comparar
+    Tipo: ComidaGobiana
+    Obs: la comida mas saludable es la que tiene menos calorías.
+    */
+    return(choose comida1 when(not(tiene_MásCaloriasQue_(comida1, comida2)))
+        comida2 otherwise)
+}
+
+//Ejercicio 2
+function tiene_MásCaloriasQue_(comida1, comida2){
+    /*
+    Propostio: Indica si la comida gobiana *comida1* tiene más calorías que la comida gobiana *comida2*.
+    Precondiciones: Ninguna.
+    Parametros: comida1: ComidaGobiana - la primera comida a comparar
+                comida2: ComidaGobiana - la segunda comida a comparar
+    Tipo: Booleano
+    */
+    return(calorías(comida1)>calorías(comida2));
+}
+
+//Ejercicio 1 a y b
+function bolitasDeFraile(){
+    /*
+    Proposito: Describe una comida gobiana que representa a las bolitas de fraile.
+    Precondiciones: Ninguna.
+    Tipo: ComidaGobiana
+    */
+    return(ComidaGobiana(nombre <- "Bolita de Fraile", origen <- América, calorías <- 500));
+}
+
+function bolitasDeQueso(){
+    /*
+    Proposito: Describe una comida gobiana que representa a las bolitas de queso.
+    Precondiciones: Ninguna.
+    Tipo: ComidaGobiana
+    */
+    return(ComidaGobiana(nombre <- "Bolita de Queso", origen <- Europa, calorías <- 150));
 }
