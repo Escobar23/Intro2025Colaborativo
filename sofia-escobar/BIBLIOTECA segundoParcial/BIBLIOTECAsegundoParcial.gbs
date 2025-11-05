@@ -1,0 +1,157 @@
+//Segundo Parcial Biblioteca
+function laLista_Ordenada(lista){
+
+}
+
+function estáOrdenada_(lista){
+
+}
+
+function sinDuplicados_(lista){
+
+}
+
+function elementosEn_SinPrimeraApariciónDe_{
+
+}
+
+function elementosEn_DespuésDe_(lista, índiceInicio){
+
+}
+
+function elementosEn_Desde_(lista, índiceInicio){
+
+}
+
+function elementosEn_AntesDe_(lista, índiceFin){
+
+}
+
+funtion elementosEn_Hasta_(lista, índiceInicio, índiceFin){
+
+}
+
+function máximoElementoEn_(lista){
+
+}
+
+function minimoElementoEn_(lista){
+
+}
+
+//importante
+function indiceEn_De_(lista, elemento){
+    
+}
+
+//importante
+function contiene_A_(lista, elemento){
+
+}
+
+function elementosDe_SinAparicionesDe_(lista, elementoAExcluir){
+
+}
+
+function reversoDe_(lista){
+
+}
+
+//importante
+function siguientesDe_{
+
+}
+
+function opuestasDe_(listaDeDirecciones){
+
+}
+
+function productoriaDe_(lista){
+
+}
+
+function sumatoriaDe_(lista){
+    
+}
+
+function longitudDe_(lista){
+    /*
+    Proposito: Indica la cantidad de elementos que tiene la lista dada.
+    Precondicion: Ninguna
+    Parametro: lista: Lista de Elementos
+    Tipo: Número
+    */
+    contador:=0
+    foreach elemento in lista{
+        contador:=contador + 1
+    }
+    return(contador)
+}
+
+//importaante
+function singular_Si_(elemento, booleano){
+    /*
+    Proposito: Describe una lista que tiene un solo elemento si el booleano es verdadero, y una lista vacía si el booleano es falso.
+    Precondicion: Ninguna
+    Parametro: elemento: Elemento
+                booleano: Booleano
+    Tipo: Lista de Elementos
+    */
+    return(choose singularCon_(elemento) when (booleano) [] otherwise)
+}
+
+function listaDesde_Hasta_(elementoInicio, elementoFin){
+    /*
+    Proposito: describe una lista con que tiene tantos elementos como el número dado, en donde cada elemento es el dado.
+    Precondicion: elementoFin debe ser mayor o igual a elementoInicio
+    Parametro: elementoInicio: Elemento
+                elementoFin: Elemento
+    Tipo: Lista de Elementos
+    */
+    listaPorAhora:=[]
+    contadorDeElementos:=elementoInicio
+    while(contadorDeElementos /= elementoFin){
+        listaPorAhora:= listaPorAhora ++ [siguiente(contadorDeElementos)]
+        contadorDeElementos:=siguienteDe_(contadorDeElementos)
+    }
+    return(listaPorAhora)
+}
+
+function  listaCon_Repetido_Veces(elemento, número){
+    /*
+    Proposito:  Describe una lista que tiene tantos elementos como el número *número*, cada elemento es *elemento*.
+    Precondicion: número debe ser mayor a 0
+    Parametro: elemento: Elemento
+               número: Número
+    Tipo: Lista de Elementos
+    */
+    lista:=[]
+    repeat(número){
+        lista:=lista ++ [elemento]
+    }
+    return(lista)
+}  
+
+function esSingular_(lista){
+    /*
+    Proposito:  Indica sí la lista es singular.
+    Precondicion: Ninguna
+    Parametro: Lista: Lista de Elementos
+    Tipo: Booleano
+    */
+    return(not esVacía(lista)&&esVacía(resto(lista)))
+}
+
+function siguientesDe_(lista){
+    /*
+    Proposito: Describe la lista donde cada elemento es el siguiente del dado.
+    Precondicion: Ninguna
+    Parametro: lista: Lista de Elementos
+    Tipo: Lista de Elementos
+    */
+    listaPorAhora:[]
+    foreach elemento in lista{
+        listaPorAhora:=listaPorAhora ++ [siguienteDe_(elemento)]
+    }
+    return(listaPorAhora)
+}
