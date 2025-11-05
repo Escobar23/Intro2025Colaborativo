@@ -47,7 +47,7 @@ function esBolitaDeFraile() {
     tipo: booleano
     */
 
-    return(persona(ComidaGobianalio <- "Bolita De Fraile", Origen <- "America", calorias <- 500 ))
+    return(ComidaGobiana(Nombre <- "Bolita De Fraile", Origen <- "America", calorias <- 500 ))
 
     
 }
@@ -58,7 +58,7 @@ function esBolitaDeQueso() {
     tipo: booleano
     */
 
-    return(persona(ComidaGobianalio <- "Bolita De Queso", Origen <- "Europa", calorias <- 150 ))
+    return(ComidaGobiana(Nombre <- "Bolita De Queso", Origen <- "Europa", calorias <- 150 ))
 
     
 }
@@ -74,6 +74,14 @@ Deseamos determinar si, dadas dos comidas gobianas, la primera tiene más calor�
 la segunda. Para ello, realizar la función tiene_MásCaloriasQue_ que dadas dos
 comidas gobianas, indica sí la primera tiene más calorías que la segunda.
 */
+
+function tiene_MásCaloriasQue_(primeraComida,segundaComida){
+    /*
+    */
+
+    return(choose primeraComida when ComidaGobiana(primeraComida(calorias)) > ComidaGobiana(segundaComida(calorias))
+        segundaComida when ComidaGobiana(segundaComida(calorias)) primeraComida otherwise)
+}
 
 
 /*
