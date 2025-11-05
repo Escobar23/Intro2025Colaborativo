@@ -1,0 +1,32 @@
+program{
+    
+}
+
+function esCélulaViva(){
+    /*
+    PROPOSITO: Indica si la célula en la celda actual está viva o no.
+    PRECONDICION: Ninguna
+    TIPO: Booleano
+    */
+    return(hayBolitas(Verde))
+}
+
+function nroDeVecinasVivas(){
+    /*
+    PROPOSITO:  Describe el número de células vivas que son vecinas de
+la célula actual.
+    PRECONDICION: Ninguna
+    TIPO: Número
+    */
+        return(nroDeVecinasVivasDiagonales() + nroDeVecinasOctogonales())
+}
+
+function nroDeVecinasVivasDiagonales(){
+    /*
+    PROPOSITO:  Describe el número de células vivas que son vecinas de
+la célula actual.
+    PRECONDICION: Ninguna
+    TIPO: Número
+    */
+    
+}

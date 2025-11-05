@@ -29,14 +29,54 @@ function BolitasDeQueso(){
 
 }
 
-// la otra funcion es lo mismo reeemplazando los datos
+function bolitasDeFraile(){
+    /**/
+    return(ComidaGobiana(
+        nombre <-"Bolitas De Fraile",
+        calorias <- 150,
+        origen <- Europa
+        ))
+
+}
 
 // 2 Ejercicio
 
 function tiene_MásCaloriasQue_(primeraComidaGobiana,segundaComidaGobiana){
     /*
+    proposito: Indica si la comida *primeraComidaGobiana* tiene mas calorias que la comida *segundaComidaGobiana*
+    precondicion: Ninguna
     tipo: Booleano
+    parámetros *primeraComidaGobiana*: ComidaGobiana - la primera comida a comparar
+               *segundaComidaGobiana*: ComidaGobiana - la segunda comida a comparar
     */
     return(calorias(primeraComidaGobiana) > calorias(segundaComidaGobiana) )
 
+}
+
+// 3 Ejercicio
+
+function comidaMásSaludableEntre_Y_(primeraComidaGobiana, segundaComidaGobiana){
+    /*
+    proposito: Describe la comida mas saludable entre *primeraComidaGobiana* y *segundaComidaGobiana*, si tienen las mismas calorias devuelve la primera
+    precondicion : Ninguna
+    tipo: ComidaGobiana
+    Obs: Se define saludable por la menor cantidad de calorias
+    parámetros *primeraComidaGobiana*: ComidaGobiana - la primera comida a comparar
+               *segundaComidaGobiana*: ComidaGobiana - la segunda comida a comparar
+    */
+    return( choose primeraComidaGobiana when (not(tiene_MásCaloriasQue_(primeraComidaGobiana,segundaComidaGobiana)))
+                   segundaComidaGobiana otherwise)
+}
+
+// 4 Ejercicio
+
+function proviene_De_(unaComidaGobiana,region){
+    /*
+    proposito: Indica si la comida *unaComidaGobiana* proviene de la region *region*
+    precondicion: Ninguna
+    tipo: Booleano
+    parametros: *unaComidaGobiana*: ComidaGobiana - una comida gobiana
+                *region* : Continente - una region
+    */
+    return(origen(unaComidaGobiana) == region)
 }

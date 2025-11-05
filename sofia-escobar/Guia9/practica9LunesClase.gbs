@@ -1,0 +1,77 @@
+program{
+    CopiarOrigenEnEsquinas()
+}
+
+procedure CopiarOrigenEnEsquinas(){
+    /*
+    PROPOSITO: Copia las bolitas la celda actual y pega en las celdas de las esquinas.
+    PRECONDICION: Ninguna
+    OBSERVACION: Es un recorrido de transformacion sobre las esquinas, pegando la cantidad de bolitas de la celda actual y pegando en las esquinas.
+    */
+    nroBolitasAzul := nroBolitas(Azul)
+    nroBolitasVerde := nroBolitas(Verde)
+    nroBolitasRojo := nroBolitas(Rojo)
+    nroBolitasNegro := nroBolitas(Negro)
+   dirActual:=minDir()
+   IrAEsquinaAl_Y_(dirActual, siguiente(dirActual))
+   while(dirActual/=maxDir()){
+        
+        Poner_BolitasDeColorAzul_BolitasDeColorVerde_BolitasDeColorRojo_BolitasDeColorNegro(nroBolitasAzul, nroBolitasVerde, nroBolitasRojo, nroBolitasNegro)
+        IrAEsquinaAl_Y_(dirActual, siguiente(dirActual))
+        dirActual:=siguiente(dirActual)
+       
+   }
+   Poner_BolitasDeColorAzul_BolitasDeColorVerde_BolitasDeColorRojo_BolitasDeColorNegro(nroBolitasAzul, nroBolitasVerde, nroBolitasRojo, nroBolitasNegro)
+}
+
+
+procedure Poner_BolitasDeColorAzul_BolitasDeColorVerde_BolitasDeColorRojo_BolitasDeColorNegro(nroBolitasAzul, nroBolitasVerde, nroBolitasRojas, nroBolitasNegro){
+    /*
+    PROPOSITO:
+    PRECONDICION:
+    OBSERVACION:
+    */
+    VaciarCelda()
+    Poner_DeColor_(nroBolitasAzul, Azul)
+    Poner_DeColor_(nroBolitasVerde, Verde)
+    Poner_DeColor_(nroBolitasRojas, Rojo)
+    Poner_DeColor_(nroBolitasNegro, Negro)
+    
+}
+
+procedure IrAEsquinaAl_Y_(primeraDirección,segundaDirección) {
+/*BIBLIOTECA*/
+    IrAlBorde(primeraDirección)
+    IrAlBorde(segundaDirección)
+}
+
+procedure VaciarCelda(){
+    /*BIBLIOTECA*/
+    SacarTodasLasDeColor_(Rojo)
+    SacarTodasLasDeColor_(Negro)
+    SacarTodasLasDeColor_(Azul)
+    SacarTodasLasDeColor_(Verde)
+}
+
+procedure SacarTodasLasDeColor_(colorASacar){
+    /*BIBLIOTECA*/
+    Sacar_DeColor_(nroBolitas(colorASacar),colorASacar)
+}
+procedure Sacar_DeColor_(cantidadASacar,colorASacar) {
+ /*BIBLIOTECA*/
+    repeat (cantidadASacar) {
+        Sacar(colorASacar)
+    }
+}
+
+procedure Poner_DeColor_(cantAPoner, colorAPoner){
+    /*BIBLIOTECA*/
+    repeat(cantAPoner){
+        Poner(colorAPoner)
+    }
+}
+
+function esCeldaVacia(){
+    /*BIBLIOTECA*/
+    return(not(hayBolitas(Rojo)||hayBolitas(Azul)||hayBolitas(Verde)||hayBolitas(Negro)))
+}
