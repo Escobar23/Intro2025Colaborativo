@@ -75,7 +75,7 @@ function  listaCon_Repetido_Veces(elemento, número){
     Proposito:  Describe una lista que tiene tantos elementos como el número *número*, cada elemento es *elemento*.
     Precondicion: número debe ser mayor a 0
     Parametro: elemento: Elemento
-}               número: Número
+               número: Número
     Tipo: Lista de Elementos
     */
     lista:=[]

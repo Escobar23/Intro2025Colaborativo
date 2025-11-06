@@ -4,74 +4,217 @@ function laLista_Ordenada(lista){
 }
 
 function estáOrdenada_(lista){
-
+    /**/
 }
 
 function sinDuplicados_(lista){
-
+    /**/
 }
 
-function elementosEn_SinPrimeraApariciónDe_{
-
+function elementosEn_SinPrimeraApariciónDe_(lista, elementoAExcluir){
+    /*
+    Proposito: Describe la lista dada sin la primera aparición del elemento a excluir.
+    Precondicion: Ninguna
+    Parametro: lista: Lista de Elementos
+                elementoAExcluir: Elemento
+    Tipo: Lista de Elementos
+    */
+    listaPorAhora:[]
+    elementoExcluido:=false
+    while(listaPorAhora /=lista){
+        listaHastaAhora:=  listaHastaAhora ++ [primero(lista)]
+        lista:= resto(lista)
+    }
+    return(listaPorAhora)
 }
 
 function elementosEn_DespuésDe_(lista, índiceInicio){
-
+    /**/
 }
 
 function elementosEn_Desde_(lista, índiceInicio){
-
+    /**/
 }
+
+
 
 function elementosEn_AntesDe_(lista, índiceFin){
+    /*
+    Proposito:Describe la lista *lista* antes del índice *índiceFin*,sin incluir el elemento en dicho índice.
+    Precondicion: El índice *índiceFin* debe ser mayor o igual a 0
+    Parametro: lista: Lista de Elementos
+                índiceFin: Número
+    Tipo: Lista de Elementos
+    */
 
 }
 
-funtion elementosEn_Hasta_(lista, índiceInicio, índiceFin){
-
+funtion elementosEn_Hasta_(lista, índice){
+    /*
+    Proposito: Describe la lista *lista* hasta el índice *índice* (sin incluir el elemento en dicho índice).
+    Precondicion: El índice *índice* debe ser mayor o igual a 0
+    Parametro: lista: Lista de Elementos
+                índice: Número
+    Tipo: Lista de Elementos
+    */
+    listaHastaAhora:=lista
+    contadorDeÍndices:=índice
+    while(contadorDeÍndices > 0){
+        listaHastaAhora:=  listaHastaAhora ++ [primero(lista)]
+        lista:= resto(lista)
+        contadorDeÍndices:= contadorDeÍndices - 1
+    }
+    return(listaHastaAhora)
 }
 
 function máximoElementoEn_(lista){
-
+    /*
+    Proposito: Describe el número máximo de la lista dada.
+    Precondicion: La lista no es vacía.
+    Parametro: lista: Lista de Números
+    Tipo: Número
+    */
+    máximoActual:=primero(lista)
+    foreach elemento in resto(lista){
+        máximoActual:= singular_Si_(elemento, elemento > máximoActual)
+    }
+    return(máximoActual)
 }
 
 function minimoElementoEn_(lista){
-
+    /*
+    Proposito: Describe el número mínimo de la lista dada.
+    Precondicion: La lista no es vacía.
+    Parametro: lista: Lista de Números
+    Tipo: Número
+    */
+    mínimoActual:=primero(lista)
+    foreach elemento in resto(lista){
+        mínimoActual:= singular_Si_(elemento, elemento < mínimoActual)
+    }
+    return(mínimoActual)
 }
 
 //importante
 function indiceEn_De_(lista, elemento){
-    
+    /*
+    Proposito: Indica el índice de la primera aparición del elemento *elemento* en la lista *lista*.
+    Precondicion: El elemento *elemento* debe estar en la lista *lista*
+    Parametro: lista: Lista de Elementos
+                elemento: Elemento
+    Tipo: Número
+    Obs: Es un recorrido de búsqueda sobre elementos de una lista buscando el elemento *elemento
+    */
+    índiceActual:=0
+    listaRestante:=lista
+    while(primero(listaRestante) /= elemento){
+        índiceActual:= índiceActual + 1
+        listaRestante:= resto(listaRestante)   
+    }
+    return(índiceActual)
 }
 
 //importante
 function contiene_A_(lista, elemento){
-
+    /*
+    Proposito: Indica si la lista *lista* contiene el elemento *elemento*.
+    Precondicion: Ninguna
+    Parametro: lista: Lista de Elementos
+                elemento: Elemento
+    Tipo: Booleano
+    Obs: Es un recorrido de busqueda sobre elementos de una lista buscando el elemento *elemento*
+    */
+    listaRestante := lista
+    while(not esVacía(listaRestante)&&primero(listaRestante) /= elemento){
+        listaRestante := resto(listaRestante)
+    }
+    return(?)
 }
 
 function elementosDe_SinAparicionesDe_(lista, elementoAExcluir){
-
+    /*
+    Proposito: Describe la lista dada sin las apariciones del elemento a excluir.
+    Precondicion: Ninguna
+    Parametro: lista: Lista de Elementos
+                elementoAExcluir: Elemento  
+    Tipo: Lista de Elementos
+    */
+    listaPorAhora:[]
+    foreach elemento in lista{
+        listaPorAhora:= listaPorAhora ++ singular_Si_(elemento, elemento /= elementoAExcluir)  
+    }
+    return(listaPorAhora)
 }
 
 function reversoDe_(lista){
-
+    /*
+    Proposito: Describe la lista inversa de la dada.
+    Precondicion: Ninguna
+    Parametro: lista: Lista de Elementos
+    Tipo: Lista de Elementos
+    */
+    listaPorAhora:[]
+    foreach elemento in lista{
+        listaPorAhora:= [elemento] ++ listaPorAhora 
+    }
+    return(listaPorAhora)
 }
 
-//importante
-function siguientesDe_{
-
+//importante   
+function siguientesDe_(lista){
+    /*
+    Proposito: Describe la lista donde cada elemento es el siguiente del dado.
+    Precondicion: Ninguna
+    Parametro: lista: Lista de Elementos
+    Tipo: Lista de Elementos
+    */
+    listaPorAhora:[]
+    foreach elemento in lista{
+        listaPorAhora:=listaPorAhora ++ [siguienteDe_(elemento)]
+    }
+    return(listaPorAhora)
 }
 
 function opuestasDe_(listaDeDirecciones){
-
+    /*
+    Proposito: Describe la lista donde cada dirección es la opuesta del dado.
+    Precondicion: Ninguna
+    Parametro: listaDeDirecciones: Lista de Direcciones
+    Tipo: Lista de Direcciones
+    */
+    listaPorAhora:[]
+    foreach dirección in listaDeDirecciones{
+        listaPorAhora:=listaPorAhora ++ [opuesto(dirección)]
+    }
+    return(listaPorAhora)
 }
 
 function productoriaDe_(lista){
-
+    /*
+    Proposito: Describe el producto de todos los elementos de la lista dada.
+    Precondicion: Ninguna
+    Parametro: lista: Lista de Números
+    Tipo: Número
+    */
+    producto:=0
+    foreach elemento in lista{
+        producto:=producto * elemento
+    }
+    return(producto)
 }
 
 function sumatoriaDe_(lista){
-    
+    /*
+    Proposito: Describe la suma de todos los elementos de la lista dada.
+    Precondicion: Ninguna
+    Parametro: lista: Lista de Números
+    Tipo: Número
+    */
+    suma:=0
+    foreach elemento in lista{
+        suma:=suma + elemento
+    }
+    return(suma)
 }
 
 function longitudDe_(lista){
@@ -140,18 +283,4 @@ function esSingular_(lista){
     Tipo: Booleano
     */
     return(not esVacía(lista)&&esVacía(resto(lista)))
-}
-
-function siguientesDe_(lista){
-    /*
-    Proposito: Describe la lista donde cada elemento es el siguiente del dado.
-    Precondicion: Ninguna
-    Parametro: lista: Lista de Elementos
-    Tipo: Lista de Elementos
-    */
-    listaPorAhora:[]
-    foreach elemento in lista{
-        listaPorAhora:=listaPorAhora ++ [siguienteDe_(elemento)]
-    }
-    return(listaPorAhora)
 }
