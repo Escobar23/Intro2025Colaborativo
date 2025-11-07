@@ -1,0 +1,11 @@
+/*
+cadena_ConComputadoraId_MejoradaCon_DeRam
+describe la misma cadena pero con la computadora 3 actualizada
+estrateggia partir la lista
+ejercicio 32 guia 11
+
+*/
+program{
+    cadena:=CadenaDeVenta(locales<-[], computadoras<-computadoras())
+return(cadena_ConComputadoraId_MejoradaCon_DeRam(cadena, 3, 1000))
+}

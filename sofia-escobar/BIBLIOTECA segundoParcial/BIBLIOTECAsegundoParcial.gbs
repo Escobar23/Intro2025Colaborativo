@@ -49,7 +49,7 @@ function elementosEn_AntesDe_(lista, índiceFin){
 
 }
 
-funtion elementosEn_Hasta_(lista, índice){
+function elementosEn_Hasta_(lista, índice){
     /*
     Proposito: Describe la lista *lista* hasta el índice *índice* (sin incluir el elemento en dicho índice).
     Precondicion: El índice *índice* debe ser mayor o igual a 0

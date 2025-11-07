@@ -2,6 +2,14 @@
 los variant se pueden comparar
 */
 
+type ChefGobiano is record {
+/* 
+PROPÓSITO: Modela un chef de comida gobiana.
+*/
+field nombre // tipo String
+field recetas // tipo Lista de ComidaGobiana
+}
+
 type ComidaGobiana is record {
 /* PROPÓSITO: Modela una comida que come un gobiano.
 INVARIANTES DE REPRESENTACIÓN:
@@ -21,9 +29,91 @@ case Europa {}
 case Oceanía {}
 }
 
+
+//Ejercicio 12
+function es_MuyLight(chef){
+    /*
+    SIN TERMINAR
+    Proposito: Indica si el chef gobiano *chef* es muy light.
+    Precondiciones: Ninguna.
+    Parametros: chef: ChefGobiano - el chef a evaluar
+    Tipo: Booleano
+    Obs: Un chef gobiano es muy light si ninguna de sus recetas es pulenta.
+    OBS:
+    */
+    listaDeRecetas:=recetas(chef)
+    while(listaDeRecetas/=[]&&not(calorias(primero(listaDeRecetas))>500)){
+        listaDeRecetas:=resto(listaDeRecetas)
+    }
+    
+}
+
+//Ejercicio 11
+function simonBolitas(){
+    /*
+    Proposito: Describe un chef gobiano llamado Simón que tiene como recetas las bolitas de fraile y las bolitas de queso.
+    Precondiciones: Ninguna.
+    Tipo: ChefGobiano
+    */
+    return(ChefGobiano(nombre <- "Simón", recetas <- [bolitasDeFraile(), bolitasDeQueso()]));
+}    
+
+//Ejercicio 10
+function comidasPulentaDe_(listaDeComidas){
+    /*
+    Proposito: Describe una lista con las comidas gobianas en la lista *listaDeComidas* que son pulentas.
+    Precondiciones: Ninguna.
+    Parametros: listaDeComidas: Lista de ComidaGobiana - la lista a evaluar
+    Tipo: Lista de ComidaGobiana
+    Obs: Una comida gobiana es pulenta si tiene mas de 500 calorías.
+    */
+    listaPulenta:=[]
+    foreach comida in listaDeComidas{
+        listaPulenta:=listaPulenta ++ singular_Si_(comida, calorías(comida)>500)
+    }
+    return(listaPulenta)
+    */
+}
+
+
+//Ejercicio 9
+function comidasDe_Enmantecadas(listaDeComidas){
+    /*
+    Proposito: Describe una lista con las comidas gobianas en la lista *listaDeComidas* enmantecadas.
+    Precondiciones: Ninguna.
+    Parametros: listaDeComidas: Lista de ComidaGobiana - la lista a evaluar
+    Tipo: Lista de ComidaGobiana
+    Obs: Utiliza la función comida_enmantecada.
+    */
+    listaEnmantecada:=[]
+    foreach comida in listaDeComidas{
+        listaEnmantecada:=listaEnmantecada ++ [comida_enmantecada(comida)]
+    }
+    return(listaEnmantecada)
+}
+
+
+//Ejercicio 8
+function cantidadDeCaloriasDe_(listaDeComidas){
+    /*
+    Proposito: Describe la cantidad total de calorías de las comidas gobianas en la lista *listaDeComidas*.
+    Precondiciones: Ninguna.
+    Parametros: listaDeComidas: Lista de ComidaGobiana - la lista a evaluar
+    Tipo: Número
+    Obs: x
+    */
+    totalCalorias:=0
+    foreach comida in listaDeComidas{
+        totalCalorias:=totalCalorias + calorías(comida)
+    }
+    return(totalCalorias)
+}
+
+
 //Ejercicio 7
 function hayUnaBolitaDeFraileEn_(listaDeComidas){
     /*
+    CREO QUE ESTA MAL
     Proposito: Indica si en la lista de comidas gobianas *listaDeComidas* hay al menos una bolita de fraile.
     Precondiciones: Ninguna.
     Parametros: listaDeComidas: Lista de ComidaGobiana - la lista a evaluar
@@ -42,14 +132,17 @@ function hayUnaBolitaDeFraileEn_(listaDeComidas){
 //Ejercicio 6
 function albondigueada(){
     /*
+    MAL
     Proposito: Describe una lista con comidas gobianas que representa a la albondigueada.
     Precondiciones: Ninguna.
     Tipo: Lista de ComidaGobiana
     */
-    albondigueadaPorAhora:=[]
-    foreach caloria in [3..7]{
-        albondigueadaPorAhora:=albondigueadaPorAhora ++ []
+    albondigueadaPorAhora:=[ComidaGobiana(nombre<-"Albóndigas", origen<-Europa, calorías<-700)]
+    repeat(4){
+        albondigueadaPorAhora:=[ComidaGobiana(nombre<-"Albóndigas", origen<-Europa, 
+        calorías<-(calorías(primero(albondigueadaPorAhora))-100))]++albondigueadaPorAhora
     }
+
     
 }
 
@@ -63,7 +156,7 @@ function comida_enmantecada(comida){
     Obs: La comida enmantecada tiene 200 calorías más que la comida original.
     */
     //funcion modificadora
-    return(ComidaGobiana(ComidaGobiana(comida | calorías <- calorías(comida)+200)));
+    return(ComidaGobiana(comida | calorías <- calorías(comida)+200));
 }
 
 //Ejercicio 4
