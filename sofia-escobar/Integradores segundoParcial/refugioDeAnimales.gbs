@@ -1,0 +1,58 @@
+type Refugio is record { 
+    /*
+    PROPÓSITO: Modelar un refugio de animales.
+    INV. REP.:
+    * La lista **animales** no tiene animales con el mismo nombre.
+    * La lista **cuidadores** no tiene cuidadores con el mismo nombre.
+    * Todo animal de la lista **animales** tiene asignado uno o más cuidadores de la lista **cuidadores**.
+    * Cada nombre de animal asignado a un cuidador de la lista
+    **cuidadores** corresponde al nombre de un animal de la lista
+    **animales**.
+    */
+    field animales // [Animal]
+    field cuidadores // [Cuidador]
+}
+type Especie is variant { 
+    /*
+    PROPÓSITO: Modelar las especies de animales del refugio.
+    */
+    case Yaguareté {}
+    case Vicuña {}
+    case Yarará {}
+    case Hornero {}
+    case Condor {}
+    case Carpincho {}
+}
+type Cuidador is record { 
+    /*
+    PROPÓSITO: Modelar un cuidador de animales.
+    INV.REP.:
+    * **nombre** no es un string vacío.
+    * La lista **nombresACargo** no tiene repetidos.
+    */
+    field nombre // String
+    field nombresACargo // [String]
+}
+type Animal is record { 
+    /*
+    PROPÓSITO: Modelar un animal.
+    INV. REP.:
+    * **nombre** no es un string vacío.
+    * **peso** es mayor a cero.
+    */
+    field nombre // String
+    field especie // Especie
+    field peso // Número
+}
+//Punto 1
+function refugio_SinAnimalLlamado_(refugio, nombreAnimal){
+    /*
+    Proposito: Describe el refugio *refugio* sin el animal llamado *nombreAnimal*.
+    Precondiciones: Ninguna.
+    Parámetros:
+    * refugio: Refugio - el refugio a modificar.
+    * nombreAnimal: String - el nombre del animal a eliminar.
+    Tipo: Refugio    
+    */
+
+}
