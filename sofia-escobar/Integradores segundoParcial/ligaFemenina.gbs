@@ -1,0 +1,106 @@
+type LigaFemenina is record { /*
+PROPÓSITO: Modelar una liga femenina de fútbol.
+INV. REP.:
+* La lista **equipos** no tiene equipos con el mismo nombre.
+* La lista **sponsors** no tiene sponsors con el mismo nombre.
+* Todo equipo de la lista **equipos** es apoyado por uno o más sponsors de la lista **sponsors**.
+* Cada nombre de sponsor que apoya a un equipo de la lista
+**equipos** corresponde al nombre de un sponsor de la lista
+**sponsors**.
+*/
+field sponsors // [sponsor]
+field equipos // [Equipo]
+}
+type Rubro is variant { 
+/*
+PROPÓSITO: Modelar los rubros de los sponsors de la liga.
+*/
+case Cripto {}
+case Seguros {}
+case Bebidas {}
+case Salud {}
+case Automotriz {}
+}
+type Equipo is record { /*
+PROPÓSITO: Modelar un equipo de la liga.
+INV.REP.:
+* **nombre** no es un string vacío.
+* La lista **nombreDeSponsors** no tiene
+repetidos.
+*/
+field nombre // String
+field nombresDeSponsors // [String]
+}
+type Sponsor is record { /*
+PROPÓSITO: Modelar un sponsor.
+INV. REP.:
+* **nombre** no es un string vacío.
+* **montoAportado** es mayor a cero.
+*/
+field nombre // String
+field rubro // Rubro
+field montoAportado // Número
+}
+
+/*
+CLASE 10/11 DOUGLAS
+
+sponsors_() funcion de los sponsors sin el sponsor buscado
+busqueda sabiendo que existe
+listaPorVer
+listaVista
+while(nombre(sponsor)/=nombreSponsor){
+listaVista:=listaVista++primero(listaporVer)
+listaporVer:=resto(listaporVer)
+}   
+return(listaVista++resto(listaPorVer))
+
+equipos sin el sponsor buscado
+listaRes:=[]
+foreach equipo in equipos{
+listaRes:=listaRes++equipo_SInSponsorLlamado_(equipo,nombreSponsor)
+}
+return(listaRes)
+
+equipo_SinSponsorLlamado_(equipo,nombreSponsor){
+elementosDe_SInAparicionDe_(equipo,nombreSponsor)
+
+}
+*/
+
+//Punto 1
+function liga_SinSponsorLlamado_(liga, sponsor){
+     /*
+     Proposito:Describe la liga *liga* sin el sponsor *sponsor*, así como de todos aquellos equipos que pudieran tenerlo como sponsor.
+     Precondicion: debe existir
+     Tipo: LigaFemenina
+     Obs:
+     */
+     sponsors:=sponsors(liga)
+     nuevosSponsors:=[]
+     equiposDeLaLiga_SinSponsorLlamado_(liga, sponsor)
+     foreach sponsor in sponsors{
+         nuevosSponsors:= nuevosSponsors ++ singular_Si_(sponsor, nombre(sponsor)/= sponsor)
+     }
+     return(LigaFemenina(sponsor <- nuevosSponsors, equipos <- equiposDeLaLiga_SinSponsorLlamado_(equipos(liga),sponsor)))
+
+    return(LigaFemenina(
+         sponsors <- nuevosSponsors,
+         equipos <- equiposDeLaLiga_SinSponsorLlamado_(equipos(liga),sponsor)
+     ))
+ }
+ 
+ function equiposDeLaLiga_SinSponsorLlamado_(equipos, sponsor){
+     /*
+     Proposito: Describe los equipos *equipos* sin el sponsor *sponsor*
+     Precondicion:
+     Parametros:
+     *equipos*: Lista de Equipos -
+     *sponsor*: String - 
+     Tipo: Lista de Equipos
+     */
+     
+     
+ }
+ 
+ 
