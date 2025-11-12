@@ -1,14 +1,53 @@
 //Segundo Parcial Biblioteca
 function laLista_Ordenada(lista){
+    /*
+    PROPÓSITO: Describe una nueva lista con los elementos de **listaDeNúmeros** ordenados de menor a mayor.
+    PRECONDICIÓN: Ninguna.
+    PARÁMETROS:
+        - listaDeNúmeros: Lista de Número.
+    TIPO: Lista de Número.
+    OBS: Es un recorrido de transformación sobre números de una listaDeNúmeros generando el orden de menor a mayor.
+    */
 
+    listaPorOrdenar := listaDeNúmeros
+    listaOrdenada := []
+
+    while(not esVacía(listaPorOrdenar)){
+        númeroMínimo := minimoElementoEn_(listaPorOrdenar)
+        listaOrdenada := listaOrdenada ++ [númeroMínimo]
+        listaPorOrdenar := elementosEn_SinPrimeraApariciónDe_(listaPorOrdenar, númeroMínimo)
+    }
+
+    return(listaOrdenada)
 }
 
 function estáOrdenada_(lista){
-    /**/
+     /*PROPOSITO: Indicar si la lista **listaDeNúmero** esta ordenada de menor a mayor
+      PRECONDICION: **listaDeNúmero** - Lista de Número
+      TIPO: Booleano.
+      OBS: Es un recorrido de búsqueda sobre números de una lista de número para saber si esta ordenada.
+    */
+    númerosPorVer := listaDeNúmero
+    while(not esVacía(resto(númerosPorVer)) && primero(númerosPorVer) <= primero(resto(númerosPorVer))){
+        númerosPorVer := resto(númerosPorVer)
+    }
+    return(esVacía(resto(númerosPorVer)))
 }
 
 function sinDuplicados_(lista){
-    /**/
+     /*PROPOSITO: Describe la lista **unaListaDeElementos** sin duplicados. 
+      PRECONDICION:  Ninguna. 
+      PARAMETROS: **unaListaDeElementos** - Lista de Elemento.
+      TIPO: Lista de Elemento.
+      OBS: es un Recorrido de transformacion sobre elemento de una lista de elemento para quitar todos los elementos con duplicados.
+    */
+    resultadoHastaAhora := []
+    elementosPorVer := unaListaDeElementos
+    foreach elemento in unaListaDeElementos{
+        resultadoHastaAhora := resultadoHastaAhora ++ singular_Si_(primero(elementosPorVer), not contiene_A_(resultadoHastaAhora, primero(elementosPorVer)))
+        elementosPorVer := resto(elementosPorVer)
+    }
+    return(resultadoHastaAhora)
 }
 
 function elementosEn_SinPrimeraApariciónDe_(lista, elementoAExcluir){
@@ -32,7 +71,20 @@ function elementosEn_DespuésDe_(lista, índiceInicio){
 }
 
 function elementosEn_Desde_(lista, índiceInicio){
-    /**/
+   /*PROPOSITO: Describe la lista de todos los elementos de lista **listaDeElementos** desde el indice **unIndice**
+    PRECONDICION: Ninguna. 
+    PARAMETROS: **listaDeElementos** - Lista de Elementos.
+                 **unIndice** - Número
+    TIPO: Lista de Elementos. 
+    OBS: Es un recorrido de transformacion sobre elementos de una lista de elementos para devolver la lista de elementos desde el indice dado.
+    */
+    númeroDelIndiceHastaAhora := 0
+    elementosDesdeElIndice := []
+    foreach elemento in listaDeElementos{
+        númeroDelIndiceHastaAhora := númeroDelIndiceHastaAhora + 1
+        elementosDesdeElIndice := elementosDesdeElIndice ++ singular_Si_(elemento, (númeroDelIndiceHastaAhora >= unIndice)) 
+    }
+    return(elementosDesdeElIndice)
 }
 
 
@@ -49,21 +101,22 @@ function elementosEn_AntesDe_(lista, índiceFin){
 }
 
 function elementosEn_Hasta_(lista, índice){
-    /*
-    Proposito: Describe la lista *lista* hasta el índice *índice* (sin incluir el elemento en dicho índice).
-    Precondicion: El índice *índice* debe ser mayor o igual a 0
-    Parametro: lista: Lista de Elementos
-                índice: Número
-    Tipo: Lista de Elementos
+    /*PROPOSITO:Describe la lista de todos los elementos en la lista **listaDeElementos** hasta el indice **unIndice**
+    PRECONDICION: Ninguna. 
+    PARAMENTROS: **listaDeElementos** - Lista de Elementos.
+                 **unIndice** - Número
+    TIPO: Lista de Elementos.
+    OBS: Es un recorrido de Transformacion sobre elementos de una Lista de Elementos para devolver la lista de elementos hasta el indice dado. 
     */
-    listaHastaAhora:=lista
-    contadorDeÍndices:=índice
-    while(contadorDeÍndices > 0){
-        listaHastaAhora:=  listaHastaAhora ++ [primero(lista)]
-        lista:= resto(lista)
-        contadorDeÍndices:= contadorDeÍndices - 1
+    elementosVistos := 0
+    elementosVistosHastaAhora := []
+    elementosPorVer := listaDeElementos
+    while(not esVacía(elementosPorVer) && not (elementosVistos == unIndice)){
+        elementosVistosHastaAhora := elementosVistosHastaAhora ++ [primero(elementosPorVer)]
+        elementosPorVer := resto(elementosPorVer)
+        elementosVistos := elementosVistos + 1
     }
-    return(listaHastaAhora)
+    return(elementosVistosHastaAhora)
 }
 
 function máximoElementoEn_(lista){
