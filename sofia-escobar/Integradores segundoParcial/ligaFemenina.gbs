@@ -68,39 +68,125 @@ elementosDe_SInAparicionDe_(equipo,nombreSponsor)
 }
 */
 
+//Punto 2
+function mejorLigaEntre_ParaSponsor_(listaDeLigas, sponsor){
+    /*
+    Proposito: Describe la liga de *listaDeLigas* que tiene menos el  menor numero de equipos con sponsors del rubro del sponsor *sponsor*.
+    Precondicion:
+    Parametros:
+        *listaDeLigas*: Lista de LigaFemenina -
+        *sponsor*: String -
+    Tipo: LigaFemenina
+    Obs:
+    rubro(sponsor)
+    */
+    ligaMejor:=primero(listaDeLigas)
+    foreach liga in listaDeLigas{
+        ligaMejor:= ligaConMenosSponsorsDelRubro_Entre_Y_(rubro(sponsor), ligaMejor,liga)
+    }
+    return(ligaMejor)
+}
+
+function ligaaConMenosSponsorsDelRubro_Entre_(rubro, liga1, liga2){
+    /*
+    Proposito: Describe la liga entre *liga1* y *liga2* que tiene menos equipos con sponsors del rubro del sponsor *sponsor*.
+    Precondicion:
+    Parametros:
+        *rubro*: Rubro - rubro a evaluar
+        *liga1*: LigaFemenina - liga a evaluar
+        *liga2*: LigaFemenina - liga a evaluar
+    Tipo: LigaFemenina
+    Obs:
+    rubro(sponsor)
+    */
+    return(choose liga1 when(nroDeSponsorsDelRubro_DeLaLiga_(rubro, liga1)<nroDeSponsorsDelRubro_DeLaLiga_(rubro, liga2))
+            liga2 otherwise)
+}
+
+function nroDeSponsorsDelRubro_DeLaLiga_(rubro, liga){
+    /*
+    Proposito: Describe el numero de equipos con sponsors del rubro *rubro* del sponsor *sponsor* en la liga *liga*.
+    Precondicion:
+    Parametros:
+        *liga*: LigaFemenina - liga a evaluar
+        *rubro*: Rubro - rubro a evaluar
+    Tipo: Número
+    Obs:
+    rubro(sponsor)
+    */
+    contador:=0
+    foreach sponsor in sponsors(liga){
+        contador:=contador + unoSi_ceroSiNo_(rubro(sponsor)==rubro)
+    }
+    return(contador)
+}
+
+
 //Punto 1
 function liga_SinSponsorLlamado_(liga, sponsor){
      /*
      Proposito:Describe la liga *liga* sin el sponsor *sponsor*, así como de todos aquellos equipos que pudieran tenerlo como sponsor.
-     Precondicion: debe existir
+     Precondicion: debe existir el sponsor *sponsor* en la liga *liga*.
+     Parametros: 
+        *liga*: LigaFemenina - liga a modificar
+        *sponsor*: String - sponsor a eliminar de la liga
      Tipo: LigaFemenina
      Obs:
      */
-     sponsors:=sponsors(liga)
-     nuevosSponsors:=[]
-     equiposDeLaLiga_SinSponsorLlamado_(liga, sponsor)
-     foreach sponsor in sponsors{
-         nuevosSponsors:= nuevosSponsors ++ singular_Si_(sponsor, nombre(sponsor)/= sponsor)
-     }
-     return(LigaFemenina(sponsor <- nuevosSponsors, equipos <- equiposDeLaLiga_SinSponsorLlamado_(equipos(liga),sponsor)))
-
     return(LigaFemenina(
-         sponsors <- nuevosSponsors,
+         sponsors <- sponsorsDeLaLiga_SinSponsorLlamado_(sponsors(liga),sponsor),
          equipos <- equiposDeLaLiga_SinSponsorLlamado_(equipos(liga),sponsor)
      ))
  }
  
+function sponsorsDeLaLiga_SinSponsorLlamado_(sponsors, sponsorAEliminar){
+    /*
+        busqueda sabiendo que existe
+        Proposito: Describe los sponsors *sponsors* sin el sponsor *sponsor*
+        Precondicion:
+        Parametros:
+        *sponsors*: Lista de Sponsors -
+        *sponsor*: String - 
+        Tipo: Lista de Sponsors
+    */
+    listaPorVer:=sponsors
+    listaVista:=[]
+    while(not(esVacía(listaPorVer))&&nombre(sponsor)/=nombreSponsor){
+        listaVista:=listaVista++primero(listaporVer)
+        listaporVer:=resto(listaporVer)
+    }   
+    return(listaVista++resto(listaPorVer))
+     
+ }
+
  function equiposDeLaLiga_SinSponsorLlamado_(equipos, sponsor){
+    /*
+        Proposito: Describe los equipos *equipos* sin el sponsor *sponsor*
+        Precondicion:
+        Parametros:
+            *equipos*: Lista de Equipos -
+            *sponsor*: String - 
+        Tipo: Lista de Equipos
+    */
+    listaDeEquiposSinELSponsor:=[]
+     foreach equipo in equipos{
+        listaDeEquiposSinELSponsor:=listaDeEquiposSinELSponsor++equipo_SinSponsorLlamado_(equipo,nombreSponsor)
+    }
+    return(listaDeEquiposSinELSponsor) 
+ }
+ 
+ function equipo_SinSponsorLlamado_(equipo, nombreSponsor){
      /*
-     Proposito: Describe los equipos *equipos* sin el sponsor *sponsor*
+     Proposito: Describe el equipo *equipo* sin el sponsor *sponsor*
      Precondicion:
      Parametros:
-     *equipos*: Lista de Equipos -
+     *equipo*: Equipo -
      *sponsor*: String - 
      Tipo: Lista de Equipos
      */
-     
-     
+    return(Equipo(
+        nombre <- nombre(equipo),
+        nombresDeSponsors <- elementosDe_SinAparicionDe_(nombresDeSponsors(equipo),nombreSponsor)
+    ))
+    
  }
- 
- 
