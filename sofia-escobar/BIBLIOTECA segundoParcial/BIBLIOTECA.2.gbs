@@ -1,0 +1,520 @@
+//EJERCICIO 3
+
+//BIBLIOTECA
+
+function esSingular_(unaLista){
+    /*PROPOSITO: Indicar si la lista **unaLista** es singular.
+    PRECONDICION: Lista **unaLista** no de ser vacia.
+    PARAMETROS: **unaLista** - Lista de Elementos. 
+    TIPO: Booleano. 
+    */
+    return(not esVacía(unaLista) && esVacía(resto(unaLista)))
+}
+
+
+//CONSTRUYENDO LISTAS-------------------------------------------------------------------------------------------------------------------------------------
+
+//EJERCICIO 7
+
+//BIBLIOTECA
+
+function listaCon_Repetido_Veces(unElemento, unNúmero){
+    /*PROPOSITO: Decribe una lista que tiene tantos elementos **unElemento** como el número **unNúmero**
+    PRECONDICION: Ninguna. 
+    PARAMETROS: **unElemento** - Elemento
+                **unNúmero** - Número.
+    TIPO:Lista de Elementos. 
+    */
+    elementoAEnlistar := unElemento
+    elementoListado := []
+    repeat(unNúmero){
+        elementoListado := elementoListado ++ [unElemento]
+    }
+    return(elementoListado)
+}
+
+
+//EJERCICIO 8
+
+//BIBLIOTECA
+
+function listaDesde_Hasta_(primerEnumerativo, segundoEnumerativo){
+    /*PROPOSITO: Describe la lista que va desde **orimerEnumerativo** hasta el **segundoEnumerativo**
+    PRECONDICION: **segundoEnumerativo** Debe ser mayor a **primerEnumerativo**
+    PARAMETROS: **orimerEnumerativo** - Elemento
+                **segundoEnumerativo** - Elemento
+    TIPO: Lista de Elementos. 
+    */
+    listaTotalDeElementos := [primerEnumerativo]
+    elementoAEnListar := primerEnumerativo
+    while (elementoAEnListar /= segundoEnumerativo){
+        listaTotalDeElementos := listaTotalDeElementos ++ [siguiente(elementoAEnListar)]
+        elementoAEnListar := siguiente(elementoAEnListar)
+    }
+    return(listaTotalDeElementos)
+}
+
+//Ejercicio 9
+
+//BIBLIOTECA
+
+function singular_Si_(unElemento, unaCondición){
+    /*PROPOSITO: Describe una lista de elemento **unElemento** si la condición **unaCondición** es verdadera.
+    sino devuelve lista vacia.
+    PRECONDICION: Ninguna. 
+    PARAMETROS: **unElemento** - Elemento.
+                **unaCondición** - Booleano.
+    TIPO: Lista de Elemento
+    */
+    return(choose [unElemento] when (unaCondición)
+                    [] otherwise)
+}
+
+
+//RECORRIENDO LISTAS Y ACUMULANDO-----------------------------------------------------------------------------------------------------------------------------
+
+//EJERCICIO 10
+
+//BIBLIOTECA
+
+function longitudDe_(unaLista){
+    /*PROPOSITO: Describe la cantidad de elementos de la lista **unaLista**
+    PRECONDICION: Ninguna. 
+    PARAMENTROS: **unaLista** - Lista de Elementos. 
+    TIPO:  Número. 
+    obs: Es un Recorrido de Acumulación sobre los Elementos de una lista para saber la cantidad
+    de elementos que tiene. 
+    */
+    cantidadDeElementos := 0
+    foreach elemento in unaLista {
+        cantidadDeElementos := cantidadDeElementos + 1
+    }
+    return(cantidadDeElementos)
+}
+
+//EJERCICIO 11
+
+//BIBLIOTECA
+
+function sumatoriaDe_(unaListaDeNúmeros){
+    /*PROPOSITO: Describe el resultado de la suma de todos los elementos de la lista **unaListaDeNúmeros**
+    PRECONDICION: **unaListaDeNúmeros** debe ser una lista de Números.
+    PARAMETROS: **unaListaDeNúmeros** - Lista de Números
+    TIPO: Número.
+    obs: Es una Recorrido de Acumulación sobre los números de una lista de números para saber cual es la 
+    sumatoria total. 
+    */
+    sumaTotalDeElementos := 0
+    foreach número in unaListaDeNúmeros{
+        sumaTotalDeElementos := sumaTotalDeElementos + número
+    }
+    return(sumaTotalDeElementos)
+} 
+
+
+//EJERCICIO 12
+
+//BIBLIOTECA
+
+function productoriaDe_(unaListaDeNúmeros){
+    /*PROPOSITO: Describe el producto de todos los elementos de la lista **unaListaDeNúmeros**
+    PRECONDICION: **unaListaDeNúmeros** debe ser una lista de Números. 
+    PARAMETROS: **unaListaDeNúmeros** - Lista de Números.
+    TIPO: Número.
+    obs: Es una Recorrido de Acumulación sobre los números de una lista de Números para saber cual es
+    el producto totol.
+    */
+    productoTotal := 1
+    foreach número in unaListaDeNúmeros{
+        productoTotal := productoTotal * número
+    }
+    return(productoTotal)
+}
+
+//EJERCICIO 15
+
+//BIBLIOTECA
+
+function opuestaDe_(unaListaDeDirecciones){
+    /*PROPOSITO: Describe una lista con las direcciones opuestas a la lista **unaListaDeDirecciones**
+    PRECONDICION:**unaListaDeDirecciones** debe ser una lista de Direcciones.
+    PARAMETROS: **unaListaDeDirecciones** - Lista de Direcciones.
+    TIPO: Lista de Dirreciones.
+    OBS: Es un recorrido de transformacion sobre direciones de una lista de direcciones cambiando la direcciones por 
+    su opuesto. 
+    */
+    elementosCambiados := []
+    foreach dirección in unaListaDeDirecciones{
+        elementosCambiados := elementosCambiados ++ [opuesto(dirección)]
+    }
+    return(elementosCambiados)
+}
+
+//EJERCICIO 16
+
+//BIBLIOTECA
+
+function siguienteDe_(listaDeEnumerativos){
+    /*PROPOSITO: Describe la lista donde cada elementos de la lista **listaDeEnumerativos** es el siguiente.
+    PRECONDICION: **listaDeEnumerativos** debe ser una lista de elementos enumerativos. 
+    PARAMETROS: **listaDeEnumerativos** - Lista de Enumerativos.
+    TIPO: Lista de Enumerativos. 
+    obs: Es un recorrido de transformación sobre elementos enumerativos de una lista de Enumerativos para obtener el 
+    la lista del siguiente de cada uno.
+    */
+    siguienteDeCadaElemento := []
+    foreach elemento in listaDeEnumerativos{
+        siguienteDeCadaElemento := siguienteDeCadaElemento ++ [siguiente(elemento)]
+    }
+    return(siguienteDeCadaElemento)
+}
+
+//EJERCICIO 18
+
+//BIBLIOTECA
+
+function reversoDe_(listaDeElementos){
+    /*PROPOSITO: Describre una lista que los reversos de los elementos de la lista **listaDeElementos**
+    PRECONDICION: Ninguna. 
+    PARAMETROS: **listaDeElementos** - Lista de Elementos.
+    TIPO: Lista de Elementos.
+    OBS: Es una recorrido de transformacion sobre elementos de una lista de elementos para cambiar el orden 
+    por su reverso. 
+    */
+    reversoDeLista := []
+    foreach elemento in listaDeElementos{
+        reversoDeLista := [elemento] ++ reversoDeLista
+    }
+    return(reversoDeLista)
+}
+
+// EJERCICIO 21
+
+//BIBLIOTECA
+
+function elementosDe_SinAparicionesDe_(listaDeElementos, unElemento){
+    /*PROPOSITO: Describe la lista **listaDeElementos** sin las apariciones del elemento **unElemento**
+    PRECONDICION: Ninguna,
+    PARAMETROS: **listaDeElementos** - Lista de Elementos. 
+                **unElemento** - Elemento.
+    TIPO: lista de Elementos.
+    OBS: Es una recorrido de filtrado sobre elementos de una lista de elementos para obtener la lista de elementos sin 
+    elementos **unElementos**
+    */
+    elementosSinApariciones := []
+    foreach elemento in listaDeElementos{
+        elementosSinApariciones := elementosSinApariciones ++ singular_Si_(elemento, (elemento /= unElemento))
+    }
+    return(elementosSinApariciones)
+}
+
+//BUSCANDO EN LISTAS--------------------------------------------------------------------------------------------------------------------------------
+
+
+//EJERCICIO 23
+
+//BIBLIOTECA
+
+function contiene_A_(unaListaDeElementos, unElemento){
+    /*PROPOSITO: Indicar si el elementos **unElemento** se encuentra en la lista **unaListaDeElementos**
+    PRECONDICION: **unaListaDeElementos** debe ser una lista del mismo tipo del elemento **unElemento**
+    PARAMENTROS: **unaListaDeElementos** - Lista de Elementos.
+                 **unElemento** - Elemento.
+    TIPO: Booleano. 
+    OBS: Es un recorrido de busqueda sobre los elementos de una lista de elementos para saber si el elemento **unElemento**
+    se encuentra en ella. 
+    */
+    elementosPorVer := unaListaDeElementos
+    while(not esVacía(elementosPorVer) && not (primero(elementosPorVer) == unElemento)){
+        elementosPorVer := resto(elementosPorVer)
+    }
+    return(not esVacía(elementosPorVer))
+}
+
+//EJERCICIO 24 
+
+//BIBLIOTECA
+
+function indiceEn_De_(unaListaDeElementos, unElemento){
+    /*PROPOSITO: Describe la ubicación en la lista **unaListaDeElementos** en donde se encuentra el elemento **unElemento**
+    PRECONDICION: **unaListaDeElementos** y **unElemento** deben ser del mismo tipo de elemento. 
+    PARAMENTROS: **unaListaDeElementos** - Lista de Elementos. 
+                 **unElemento** - Elemento.
+    TIPO: Número.
+    OBS: Es un recorrido de busqueda sobre elementos de una lista de elementos sin saber si el elemento buscado se encuentra la lista. 
+    devolviendo el número de su ubicación en caso de encontrarlo. 
+    */
+    elementosPorVer := unaListaDeElementos
+    elementosVistosHastaAhora := 1
+    while(not esVacía(elementosPorVer) && not (primero(elementosPorVer) == unElemento)){
+        elementosVistosHastaAhora:= elementosVistosHastaAhora + 1
+        elementosPorVer := resto(elementosPorVer)
+    }
+    return(elementosVistosHastaAhora)
+}
+
+//MAXIMOS Y MINIMOS---------------------------------------------------------------------------------------------------------------------------
+
+//EJERCICIO 27
+
+//BIBLIOTECA
+
+function minimoElementoEn_(unaListaDeNúmeros){
+    /*PROPOSITO: Describe el número minimo de la lista **unaListaDeNúmeros**
+    PRECONDICION: Ninguna.
+    PARAMETROS: **unaListaDeNúmeros** - Lista de Números.
+    TIPO: Número
+    OBS: Es un recorrido de minimos sobre números de una lista de números para encontrar al número minimo.
+    */
+    númeroMinimoHastaAhora := primero(unaListaDeNúmeros)
+    foreach número in unaListaDeNúmeros{
+        númeroMinimoHastaAhora := mínimoEntre_Y_(número, númeroMinimoHastaAhora)
+    }
+    return(númeroMinimoHastaAhora)
+}
+
+//EJERCICIO 28
+
+//BIBLIOTECA
+
+function máximoElementoEn_(unaListaDeNúmeros){
+    /*PROPOSITO: Describir el número maximo en la lista **unaListaDeNúmeros**
+    PRECONDICION: Niguna.
+    PARAMETROS: **unaListaDeNúmeros** - Lista de Números.
+    TIPO: Número
+    OBS: Es una recorrido de máximo sobre números de una lista de números para encontrar al número máximo. 
+    */
+    númeroMáximoHastaAhora := primero(unaListaDeNúmeros)
+    foreach número in unaListaDeNúmeros{
+        númeroMáximoHastaAhora := máximoEntre_Y_(número, númeroMáximoHastaAhora)
+    }
+    return(númeroMáximoHastaAhora)
+}
+
+//EJERCICIO 30
+
+//BIBLIOTECA
+
+function elementosEn_Hasta_(listaDeElementos, unIndice){
+    /*PROPOSITO:Describe la lista de todos los elementos en la lista **listaDeElementos** hasta el indice **unIndice**
+    PRECONDICION: Ninguna. 
+    PARAMENTROS: **listaDeElementos** - Lista de Elementos.
+                 **unIndice** - Número
+    TIPO: Lista de Elementos.
+    OBS: Es un recorrido de Transformacion sobre elementos de una Lista de Elementos para devolver la lista de elementos hasta el indice dado. 
+    */
+    elementosVistos := 0
+    elementosVistosHastaAhora := []
+    elementosPorVer := listaDeElementos
+    while(not esVacía(elementosPorVer) && not (elementosVistos == unIndice)){
+        elementosVistosHastaAhora := elementosVistosHastaAhora ++ [primero(elementosPorVer)]
+        elementosPorVer := resto(elementosPorVer)
+        elementosVistos := elementosVistos + 1
+    }
+    return(elementosVistosHastaAhora)
+}
+
+//EJERCICIO 31
+
+//BIBLIOTECA
+
+function elementosEn_Desde_(listaDeElementos, unIndice){
+    /*PROPOSITO: Describe la lista de todos los elementos de lista **listaDeElementos** desde el indice **unIndice**
+    PRECONDICION: Ninguna. 
+    PARAMETROS: **listaDeElementos** - Lista de Elementos.
+                 **unIndice** - Número
+    TIPO: Lista de Elementos. 
+    OBS: Es un recorrido de transformacion sobre elementos de una lista de elementos para devolver la lista de elementos desde el indice dado.
+    */
+    númeroDelIndiceHastaAhora := 0
+    elementosDesdeElIndice := []
+    foreach elemento in listaDeElementos{
+        númeroDelIndiceHastaAhora := númeroDelIndiceHastaAhora + 1
+        elementosDesdeElIndice := elementosDesdeElIndice ++ singular_Si_(elemento, (númeroDelIndiceHastaAhora >= unIndice)) 
+    }
+    return(elementosDesdeElIndice)
+}
+// CATEDRA - SOLUCIÓN
+
+    elementosPorVer := listaDeElementos
+    índiceHastaAhora := 0
+    while(índiceHastaAhora < unIndice){
+        elementosPorVer := resto(elementosPorVer)
+        índiceHastaAhora := índiceHastaAhora + 1
+    }
+    return(elementosPorVer)
+}
+
+
+//BIBLIOTECA VIEJA
+
+function  unoSi_ceroSiNo(condicionAVerificar){
+    /*PROPOSITO: Describre si se cumple la condicion **condicionAVerificar**.
+    PRECONDICION: Ninguna. Operacion total. 
+    PARAMETROS: **condicionAVerificar** Booleano a verificar su valor de verdad.
+    TIPO: Número.
+    OBS: Devuelve 1 si es verdadero y 0 si es falso. 
+    */
+    return(choose 1 when (condicionAVerificar) 0 otherwise)
+}
+
+//BIBLIOTECA
+
+function elementosEn_DespuésDe_(listaDeElementos, unIndice){
+    /*PROPOSITO: Describe la lista de todos los elementos de lista **listaDeElementos** desde el indice **unIndice**
+    PRECONDICION: Ninguna. 
+    PARAMETROS: **listaDeElementos** - Lista de Elementos.
+                 **unIndice** - Número
+    TIPO: Lista de Elementos. 
+    OBS: Es un recorrido de transformacion sobre elementos de una lista de elementos para devolver la lista de elementos desde el indice dado.
+    */
+    númeroDelIndiceHastaAhora := 0
+    elementosDesdeElIndice := []
+    foreach elemento in listaDeElementos{
+        númeroDelIndiceHastaAhora := númeroDelIndiceHastaAhora + 1
+        elementosDesdeElIndice := elementosDesdeElIndice ++ singular_Si_(elemento, (númeroDelIndiceHastaAhora > unIndice)) 
+    }
+    return(elementosDesdeElIndice)
+}
+
+//BIBLIOTECA
+
+function elementosEn_SinPrimeraApariciónDe_(listaDeElementos, unElemento){
+    /*PROPOSITO: Describe la lista **listaDeElementos** sin la primer aparación del elemento **unElemento**
+    PRECONDICION: Ninguna. 
+    PARAMETROS: **unaListaDeElementos** - Lista de Elementos. 
+                 **unElemento** - Elemento.
+    TIPO: lista de Elementos. 
+    OBS: Es un recorrido de Filtrado sobre elementos de una lista de elementos quitando la primer aparición del elemento dado. 
+    */
+    //aparicionesDelElemento := 1
+    //listaResultadoHastaAhora := []
+
+    //foreach elemento in listaDeElementos {
+       // listaResultadoHastaAhora := listaResultadoHastaAhora 
+           // ++ singular_Si_(elemento, (aparicionesDelElemento == 0 || elemento /= unElemento))
+        
+       // aparicionesDelElemento := aparicionesDelElemento - unoSi_ceroSiNo(elemento == unElemento)
+    //}
+
+   // return(listaResultadoHastaAhora)
+//}
+
+// SOLUCIÓN - CATEDRA
+
+    listaResultadoHastaAhora := []
+    elementosPorVer := listaDeElementos
+    while(primero(elementosPorVer) /= unElemento){
+        listaResultadoHastaAhora := listaResultadoHastaAhora ++ [primero(elementosPorVer)]
+        elementosPorVer := resto(elementosPorVer)
+    }
+    return(listaResultadoHastaAhora ++ resto(elementosPorVer))
+}
+
+//EJERCICIO 33
+
+// BIBLIOTECA
+
+function sinDuplicados_(unaListaDeElementos){
+    /*PROPOSITO: Describe la lista **unaListaDeElementos** sin duplicados. 
+      PRECONDICION:  Ninguna. 
+      PARAMETROS: **unaListaDeElementos** - Lista de Elemento.
+      TIPO: Lista de Elemento.
+      OBS: es un Recorrido de transformacion sobre elemento de una lista de elemento para quitar todos los elementos con duplicados.
+    */
+    resultadoHastaAhora := []
+    elementosPorVer := unaListaDeElementos
+    foreach elemento in unaListaDeElementos{
+        resultadoHastaAhora := resultadoHastaAhora ++ singular_Si_(primero(elementosPorVer), not contiene_A_(resultadoHastaAhora, primero(elementosPorVer)))
+        elementosPorVer := resto(elementosPorVer)
+    }
+    return(resultadoHastaAhora)
+}
+
+//EJERCICIO 35
+
+//BIBLIOTECA
+
+function estáOrdenada_(listaDeNúmero){
+    /*PROPOSITO: Indicar si la lista **listaDeNúmero** esta ordenada de menor a mayor
+      PRECONDICION: **listaDeNúmero** - Lista de Número
+      TIPO: Booleano.
+      OBS: Es un recorrido de búsqueda sobre números de una lista de número para saber si esta ordenada.
+    */
+    númerosPorVer := listaDeNúmero
+    while(not esVacía(resto(númerosPorVer)) && primero(númerosPorVer) <= primero(resto(númerosPorVer))){
+        númerosPorVer := resto(númerosPorVer)
+    }
+    return(esVacía(resto(númerosPorVer)))
+}
+
+//EJERCICIO 36
+
+//BIBLIOTECA
+
+function laLista_Ordenada(listaDeNúmeros){
+    /*
+    PROPÓSITO: Describe una nueva lista con los elementos de **listaDeNúmeros** ordenados de menor a mayor.
+    PRECONDICIÓN: Ninguna.
+    PARÁMETROS:
+        - listaDeNúmeros: Lista de Número.
+    TIPO: Lista de Número.
+    OBS: Es un recorrido de transformación sobre números de una listaDeNúmeros generando el orden de menor a mayor.
+    */
+
+    listaPorOrdenar := listaDeNúmeros
+    listaOrdenada := []
+
+    while(not esVacía(listaPorOrdenar)){
+        númeroMínimo := minimoElementoEn_(listaPorOrdenar)
+        listaOrdenada := listaOrdenada ++ [númeroMínimo]
+        listaPorOrdenar := elementosEn_SinPrimeraApariciónDe_(listaPorOrdenar, númeroMínimo)
+    }
+
+    return(listaOrdenada)
+}
+
+
+
+//BIBLIOTECA
+
+type Conjunto is record {
+    /*
+    PROPÓSITO: Modela un conjunto, en el sentido matemático.
+    INVARIANTE DE REPRESENTACIÓN: No puede haber duplicados en la lista.
+    */
+    field elementos // Lista de Elemento
+}
+
+
+function conjuntoCon_(unaLista){
+    /*
+    PROPÓSITO: Describe un conjunto a partir de la lista **unaLista**, eliminando duplicados.
+    */
+    return(Conjunto(elementos <- sinDuplicados_(unaLista)))
+}
+
+
+function unionDe_Con_(primerConjunto, segundoConjunto){
+    /*
+    PROPÓSITO: Describe un conjunto con todos los elementos de **primerConjunto** y **segundoConjunto**, sin duplicados.
+    */
+    primerLista := primerConjunto
+    segundaLista := segundoConjunto
+    return(Conjunto(elementos <- sinDuplicados_(lista1 ++ lista2)))
+}
+
+
+function intersecciónDe_Con_(primerConjunto, segundoConjunto){
+    /*
+    PROPÓSITO: Describe un conjunto con los elementos comunes a **primerConjunto** y **segundoConjunto**.
+    */
+    primerLista := primerConjunto
+    segundaLista := segundoConjunto
+    intersección := []
+    foreach elemento in primerLista {
+        intersección := intersección ++ singular_Si_(elemento, contiene_A_(segundaLista, elemento))
+    }
+
+    return(Conjunto(elementos <- intersección))
+}
