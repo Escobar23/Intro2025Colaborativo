@@ -1,0 +1,79 @@
+type Marca is variant {
+/*
+PROPÓSITO: Modela marcas de computadoras.
+*/
+case Panafonics {}
+case Gaxio {}
+case Sonby {}
+case Lebovo {}
+case HB {}
+}
+type Computadora is record {
+/*
+PROPÓSITO: Modela una computadora.
+INVARIANTES DE REPRESENTACIÓN:
+* La memoria, el cpu, el precio son números mayores a cero.
+* El código de venta es un número mayor a cero.
+*/
+field códigoDeVenta // Número
+field marca // Marca
+field memoria // Número - La cantidad de memoria RAM en MB.
+field cpu // Número - La velocidad del CPU en MHz.
+field precio // Número - El precio en dólares.
+}
+type Local is record {
+/*
+PROPÓSITO: Modela uno de los locales de la cadena de venta
+INVARIANTES DE REPRESENTACIÓN:
+* código es mayor a cero y localidad no está vacío
+*/
+field código // Número - Un código único para el local
+field localidad // String - La localidad donde se encuentra el local.
+field computadorasEnStock // [Número] - Las computadoras disponibles en el local, identificadas por su código. Puede contener duplicados (una vez por unidad).
+}
+type CadenaDeVenta is record {
+/*
+PROPÓSITO: Modela la cadena de Compumundo Hiper Mega Red
+INVARIANTES DE REPRESENTACIÓN:
+* Ninguna
+*/
+field locales // [Local] - Los locales de la cadena.
+field computadoras // [Computadora] - Las computadoras que vende la cadena.
+}
+//Ejercicio 1
+function  marcasEn_QuePuedenEncontrarseEn_(cadenaDeVentas, localidad){
+    /*
+    Proposito: Describe la lista de marcas que pueden encontrarse en la localidad *localidad*, sin repetidos.
+    Precondicion:Ninguna //duda duda
+    Parametros:
+    cadenaDeVentas: CadenaDeVenta - La cadena de ventas de computadoras.
+    localidad: String - La localidad a consultar.
+    Tipo: Lista de Marcas
+    */
+   localesPendientesPorVer:=locales(cadenaDeVentas)
+   while(not esVacía(pendientesPorVer)&&not esLocal_DeLaLocalidad_(primero(localesPendientesPorVer)), localidad){
+       localesPendientesPorVer:=resto(localesPendientesPorVer)
+   }
+   return(marcasDelLocal_(primero(localesPendientesPorVer)))
+}
+function esLocal_DeLaLocalidad_(local, localidad){
+    /*
+    Proposito: Indica si el local *local* es de la localidad de *localidad*
+    Precondicion: NInguna
+    Parametros:
+        local: Local - El local a consultar.
+        localidad: String - La localidad a consultar.
+    Tipo: Booleano
+    */
+    return(localidad(local)==localidad)
+}
+function marcasDelLocal_DeLaLocalidad_(local){
+    /*
+    Proposito: Devuelve la lista de marcas que pueden encontrarse en el local *local*, sin repetidos.
+    Precondicion:Ninguna
+    Parametros:
+        local: Local - El local a consultar.
+    Tipo: Lista de Marcas
+    */
+    return()
+}
