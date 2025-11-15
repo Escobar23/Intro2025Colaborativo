@@ -1,0 +1,39 @@
+
+
+Gobspanadas
+Gobspanadas es el sistema de software que utilizan varias empresas denominadas cadenas, que se dedican a la franquicia de locales de ventas as decir, una persona, el franquiciado, adquiere los derechos para el uso de la marca de la cadena en uno o más locales de los que actúa como dueño. Es decir, una franquicia consiste precisamente en todos esos locales y derechos de uso de marca. Cabe aclarar que un franquiciado puede actuar de dueño de muchos locales, pero cada local tiene un único franquiciado que actúa de dueño.
+
+
+Basados en este modelo se pide que agregue las siguientes funcionalidades:
+Ejercicio 1)
+
+Cuando un local se queda sin un gusto de empanadas, y en virtud de no perder ventas, puede derivar todos los pedidos que contengan alguna empanada de ese gusto a otro local en la misma localidad, ya que la cadena de ventas nos asegura que no habrá dos locales de la misma localidad que se queden sin el mismo gusto de empanadas al mismo tiempo (cómo lo logran es un misterio). Para simular este comportamiento se pide implementar cadena_ConPedidos_DeGusto_DeLocal_pasadosAOtro que, dados una cadena de ventas, un gusto de empanadas y un local, describe a la cadena de ventas luego de haber pasado todos los pedidos que tengan el gusto de empanada dado en el local dado hacia otro local de la misma localidad del local dado (cualquiera sea). Para resolver este ejercicio cuenta con la siguiente primitiva:
+function locales_AgregandoPedidos_ALocalDe_(locales, pedidos, localidad) {
+/*
+PROPÓSITO: Describe la lista **locales** luego de agregar los pedidos **pedidos** a uno de los locales de la lista dada que pertenezca a la localidad **localidad**. PRECONDICIÓN: En la lista **locales** hay al menos un local de la localidad **localidad**. PARAMETROS: *locales* - Lista de Local
+*pedidos* - Lista de pedido
+*localidad* - Localidad
+TIPO: Lista de Local
+}
+Ejercicio 2)
+Un pedido se considera "apto vegano" si solo contiene gustos de empanadas que son aptos para veganos. Podemos saber si un gusto es apto para veganos con la función esGusto Apto Vegano, que dado un gusto indica sí es apto para veganos, y que se da como primitiva para este ejercicio.
+Sabiendo esto, se quiere implementar la función gusto De EmpanadasMas Vendido En EnPedidosApto Veganos, que describe el gusto más vendido en total en la cadena dada solamente contando en los pedidos que son "apto vegano" (es decir, por ejemplo sí verdura es un gusto apto vegano y un pedido contiene una de carne y una de verdura, ese pedido no es apto, incluso sí contiene una empanada que sí lo sea, por lo que no se deben contar los gustos vendidos en dicho pedido). En caso de haber más de un gusto con mayor venta se describe uno cualquiera de
+ellos,
+Además de la mencionada esGusto_Apto Vegano, puede hacer uso de la primitiva cantidadDe_VendidasEnPedidos_ que dado un gusto de empanada y una lista de pedidos describe la cantidad de empanadas de dicho gusto vendidas en total en todos los pedidos de la lista dada. Ejercicio 3)
+Dada la siguiente función cuyo contrato es correcto:
+function localSinPedidosEn_ (cadena) {
+PROPÓSITO: Describe el local que no tiene pedidos en la cadena dada. PARAMETROS: * cadena: Cadena
+TIPO: Local
+PRECONDICIÓN: Hay un local que no tiene pedidos de la cadena dada.
+OBSERVACIÓN: Recorrido de búsqueda sobre los locales de la cadena buscando el que no tenga pedidos localSinPedidosAlMomento := []
+*/
+foreach local in locales (cadena) {
+localSinPedidosAlMomento := singular_Si_(local, esVacía (pedidos (local)))
+return (primero (localSinPedidosAlMomento))
+Se pide si:
+b.
+a.
+que determine propuesta es correcta (soluciona el problema planteado en el propósito) o no, y justifiqué en el caso de que no. La
+justificación no puede tener más de 3 renglones.
+La solución propuesta es adecuada (sigue los buenos criterios de programación vistos en la materia), o no, y justifique en el caso de
+que no. La justificación no puede tener más de 3 renglones.
