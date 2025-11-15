@@ -77,11 +77,15 @@ comidas gobianas, indica sí la primera tiene más calorías que la segunda.
 
 function tiene_MásCaloriasQue_(primeraComida,segundaComida){
     /*
+    prop: indica la comida gobiana con mas calorias, en caso de ser iguales retorna la primera
+    prec: una comida es tiene mas calorias que la otra.
+    tipo: booleano
     */
 
-    return(choose primeraComida when ComidaGobiana(primeraComida(calorias)) > ComidaGobiana(segundaComida(calorias))
-        segundaComida when ComidaGobiana(segundaComida(calorias)) primeraComida otherwise)
-}
+    return(choose primeraComida when calorias(primeraComida) > calorias(segundaComida),
+        segundaComida when calorias(primeraComida) > calorias(segundaComida) 
+        primeraComida otherwise)
+
 
 
 /*
@@ -91,6 +95,18 @@ dos comidas gobianas. Para ello, queremos crear la función
 comidaMásSaludableEntre_Y_ que describe la comida gobiana más saludable de las
 dos comidas dadas. La comida más saludable es aquella que tiene menos calorías.
 */
+
+function comidaMasSaludableEntre_Y_(primeraComida,segundaComida) {
+    /*
+    prop: describe la comida gobiana mas saludable en caso de ser iguales devuelve la primera
+    prec: una es mas saludable que otra
+    tipo: ComidaGobiana
+    */
+
+return(choose primeraComida when calorias(primeraComida) < calorias(segundaComida),
+    segundaComida when calorias(primeraComida) > calorias(segundaComida)
+    primeraComida otherwise)
+}
 
 
 /*
@@ -102,7 +118,7 @@ dada una comida y un continente indica si una comida proviene del continente dad
 
 function proviene_De_(unaComidaGobiana,unContinente) {
     /*
-    indica si la comida dada proviene del continente dado
+    prop:indica si la comida dada proviene del continente dado
     tipo: booleano
     */
 
@@ -162,7 +178,18 @@ hayUnaBolitaDeFraileEn_ que dada una lista de comidas, indica si en la pila de c
 hay alguna cuyo nombre sea “Bolita de Fraile”.
 */
 
+function hayUnaBolitaDeFraileEn_(pilaDeComida) {
+    /*
+    prop: indica si hay una bolita de fraile en la pila de "pilaDeComida" si hay se quedan con la pila
+    de lo contrario la descartan
+    prec: ninguna
+    tipo:booleano
+    */
 
+    
+
+
+}
 
 
 /*
@@ -173,6 +200,18 @@ eso, queremos hacer la función cantidadDeCaloriasDe_ que dada una lista de comi
 describe la cantidad total de calorías de los elementos de dicha lista.
 */
 
+function cantidadDeCaloriasDe_(comidas) {
+    /*
+    prop: describe la cantidad de calorias de comidas de "comidas" para saber si no se esta pasando de la cantidad 
+    de calorias que puede consumir un ser humano normal
+    tipo: 
+    */
+
+    
+
+}
+
+
 /*
 Ejercicio 9)
 Los fanáticos de la manteca son tan obsesivos, que si les das un montón de comida, la
@@ -181,6 +220,18 @@ comidasDe_Enmantecadas que dada una lista de comidas, describe una lista del
 mismo tamaño que la original, donde cada elemento se corresponde con la comida en
 dicha lista, pero enmantecada.
 */
+
+
+function comidasDe_Enmantecadas(comidas) {
+    /*
+    prop: describe una lista igual a la lista "comidas" pero dicha lista esta enmantecada
+    tipo: ComidasGobianas
+    */
+
+
+
+
+}
 
 
 /*
