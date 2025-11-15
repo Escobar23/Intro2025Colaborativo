@@ -1,0 +1,91 @@
+program{
+
+}
+type Cadena is record { 
+    /*
+    PROPÓSITO: Modela una empresa de cadena de venta de empanadas.
+    INV. REP.:
+    ***nombre** no es un string vacío.
+    ***locales** no contiene dos elementos que tengan el mismo número de **idLocal**. ****franquiciados** no contiene dos elementos con el mismo número de **dni**.
+    *Cada franquiciado en franquiciados** contiene en la lista de **idLocales** solo números que se corresponden a un **idLocal** presente en uno de los locales de la lista locales**.
+    *Cada local en la lista de **locales** tiene su id en en la lista **idLocales** de un y solo un franquiciado de la lista **franquiciados**.
+    */
+    field nombre// String
+    field locales // Lista de Local
+    field franquiciados // Lista de Franquiciado
+}
+type GustoEmpanada is variant{
+    /*
+    Proposito: modelar los sabores de empanadas.
+    */
+    case Humita{}
+    case CarneSuave{}
+    case CarnePicante{}
+    case Verdura{}
+    case JamónYQueso{}
+}
+type Local is record { 
+    /*
+    PROPOSITO: Mode la un local de la cadena de venta de empanadas.
+    INV. REP.:
+    ***idLocal** es mayor a cero.
+    ***precioPorUnidad
+    */
+    field idLocal // Número
+    field localidad // Localidad
+    field pedidos // Lista de Pedido
+    field precioPorUnidad // Número
+    field gustos // Lista de GustoEmpanada
+}
+type Franquiciado is record { 
+    /*
+    PROPOSITO: Modela una persona dueño de uno de los locales (franquiciado). INV. REP.:
+    ***dni** es un número de DNI válido.
+    */
+    field dni
+    field nombre // String
+    field idLocales // Lista de Número
+}
+type Pedido is record { 
+    /*
+    PROPÓSITO: Modela un pedido de empanadas. INV. REP.:
+    ***importe** es mayor a 0.
+    ***gustos** no es una lista vacía.
+    */
+    field importe // Número
+    field gustos // Lista de GustoEmpanada
+}
+function minGusto(){
+/*PROPÓSITO: Describe el primer gusto en
+un recorrido sobre gustos de empanadas. PRECONDICIONES: Ninguna.
+TIPO: GustoDeEmpanada
+*/
+}
+function maxGusto (){
+    /*
+PROPÓSITO: Describe el último gusto en un recorrido sobre gustos de empanadas. PRECONDICIONES: Ninguna.
+TIPO: GustoDeEmpanada
+*/
+}
+function siguienteGusto (gusto){
+/*
+PROPÓSITO: Describe el gusto siguiente al
+dado en un recorrido sobre gustos de empanadas. PRECONDICIONES: Ninguna.
+PARÁMETROS:
+*gusto*: GustoDeEmpanada - gusto de empanada
+para el cual se describe su siguiente.
+TIPO: GustoDeEmpanada
+*/
+}
+function cadena_ConPedidos_DeGusto_DeLocal_pasadosAOtro(cadenaDeVentas,gusto, local){
+    /*
+    Proposito:Describe la cadena de ventas **
+    Precondiciones: Ninguna.
+    Parámetros:
+    * cadenaDeVentas: Cadena - la cadena de venta de empanadas a analizar.
+    * gusto: GustoEmpanada - el gusto de empanada a buscar en los pedidos.
+    * local: Localidad - la localidad del local a analizar.
+    Tipo: Cadena
+    */
+
+}

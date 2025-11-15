@@ -1,0 +1,163 @@
+program{
+    return(cajaMenosOcupadaDe_([cajaPrueba(), cajaDosPrueba()]))
+}
+type TipoDePago is variant {
+/* PROP: modelar Tipos de pago aceptados */
+case Tarjeta {}
+case MartPago {}
+case Efectivo {}
+}
+type Producto is record{
+/* PROP: modelar productos
+INV.REP.: precio > 0 */
+field nombre // String
+field marca // String
+field precio // Número
+}
+type Cliente is record {
+/* PROP: modelar clientes */
+field dni // String
+field tipoDePago // TipoDePago
+field productos // [Producto]
+}
+type Caja is record {
+/* PROP: modelar cajas
+INV.REP.: número > 0
+facturado >= 0 */
+field número // Número
+field clientesEsperando // [Cliente]
+field aceptaPagos // [TipoDePago]
+field esRápida // Bool
+field facturado // Número
+}
+//necesario para probar
+function cajaDosPrueba(){
+    return(Caja(número<- 2,
+                clientesEsperando<- [clienteUno(), clienteDos(), clienteTres()],
+                aceptaPagos<-[Tarjeta, MartPago, Efectivo],
+                esRápida<-True,
+                facturado<-24000))
+}
+function cajaPrueba(){
+    return(Caja(número<- 1,
+                clientesEsperando<- [clienteUno(), clienteDos()],
+                aceptaPagos<-[Tarjeta, MartPago, Efectivo],
+                esRápida<-True,
+                facturado<-34000))
+}
+function clienteUno(){
+    return(Cliente(dni<-34567098, tipoDePago<-Efectivo,productos<-[productoUno(),productoDos()]))
+}
+function clienteDos(){
+    return(Cliente(dni<-34567032, tipoDePago<-Efectivo,productos<-[productoUno(),productoDos()]))
+}
+function clienteTres(){
+    return(Cliente(dni<-34567032, tipoDePago<-Efectivo,productos<-[productoUno(),productoDos()]))
+}
+function productoUno(){
+    return(Producto(nombre<-"Papel", marca<-"Fulano", precio<-3000))
+}
+function productoDos(){
+    return(Producto(nombre<-"Servilleta", marca<-"Fulana", precio<-4000))
+}
+//d) muy dificil
+function gobsMart_conIngresosDe_(listaDeCajas, listaDeClientes){
+    /*
+        Proposito: Describe la lista de cajas *listaDeCajas* con los ingresos de los clientes de la lista *listaDeClientes*.
+        Precondiciones: La lista *listaDeCajas* no es vacía.
+        Parámetros:
+        * listaDeCajas: Lista de Cajas - la lista de cajas a modificar.
+        * listaDeClientes: Lista de Clientes - la lista de clientes a ingresar.
+        Tipo: Lista de Cajas
+    */
+    
+}
+
+//c) SIn probar pero creo que esta bien
+function gobsMart_conIngresoDe_aCaja_(listaDeCajas, cliente, numero){
+    /*
+        Proposito: Describe la lista de cajas *listaDeCajas* con el ingreso del cliente *cliente* a la caja número *numero*.
+        Precondiciones: La lista *listaDeCajas* no es vacía.
+        Parámetros:
+        * listaDeCajas: Lista de Cajas - la lista de cajas a modificar.
+        * cliente: Cliente - el cliente a ingresar.
+        * numero: Número - el número de la caja a la que se ingresa el cliente
+        Tipo: Lista de Cajas
+    */
+    cajasHastaElMomento:=[]
+    foreach caja in listaDeCajas{
+        cajasHastaElMomento:=cajasHastaElMomento ++ caja_SiEsLaNumero_ConCliente_(caja, numero, cliente)
+    }
+    return(cajasHastaElMomento)
+}
+function caja_SiEsLaNumero_ConCliente_(caja, numero, cliente){
+    /*
+    Proposito: Describe la caja *caja* con el ingreso del cliente *cliente* si su número es *numero*, sino la describe igual.
+    Precondiciones: Ninguna.
+    Parámetros:
+    * caja: Caja - la caja a modificar.
+    * numero: Número - el número de la caja a consultar.
+    * cliente: Cliente - el cliente a ingresar.
+    Tipo: Caja
+    */
+    return(choose caja when(número(caja)/=numero)
+                caja_ConCliente_(caja, cliente) otherwise
+                )
+}
+function caja_ConCliente_(caja, cliente){
+    /*
+    Proposito: Describe la caja *caja* con el ingreso del cliente *cliente*.
+    Precondiciones: Ninguna.
+    Parámetros:
+    * caja: Caja - la caja a modificar.
+    * cliente: Cliente - el cliente a ingresar.
+    Tipo: Caja
+    */
+    return(Caja(número<- número(caja),
+                clientesEsperando<- clientesEsperando(caja) ++ [cliente],
+                aceptaPagos<- aceptaPagos(caja),
+                esRápida<- esRápida(caja),
+                facturado<- facturado(caja)))
+}
+//b)
+function cajaMenosOcupadaDe_(listaDeCajas){
+    /*
+        Proposito: Describe la caja menos ocupada de la lista de cajas *listaDeCajas*.
+        Precondiciones: La lista *listaDeCajas* no es vacía.
+        Parámetros:
+        * listaDeCajas: Lista de Cajas - la lista de cajas a consultar.
+        Tipo: Caja
+    */
+    cajaMenosOcupadaHastaAhora := primero(listaDeCajas)
+    foreach caja in listaDeCajas{
+        cajaMenosOcupadaHastaAhora := cajaMenosClientesEsperandoEntre_Y_(cajaMenosOcupadaHastaAhora, caja)
+    }
+    return(cajaMenosOcupadaHastaAhora)
+}
+function cajaMenosClientesEsperandoEntre_Y_(caja1, caja2){
+    /*
+    Proposito: Describe la caja menos ocupada entre *caja1* y *caja2*.
+    Precondiciones: Ninguna.
+    Parámetros:
+    * caja1: Caja - la primera caja a comparar.
+    * caja2: Caja - la segunda caja a comparar.
+    Tipo: Caja
+    */
+    return(choose caja1 when(cantidadDeClientesEsperandoEn_(caja1)<cantidadDeClientesEsperandoEn_(caja2))
+                caja2 otherwise)
+}
+//a) easy peasy
+function cantidadDeClientesEsperandoEn_(caja){
+    /*
+    Proposito:
+    Precondiciones: Ninguna.
+    Parámetros:
+    * caja: Caja - la caja a consultar.
+    Tipo: Número
+    */
+    cantidadDeClientesEsperandoHastaAhora := 0
+    foreach cliente in clientesEsperando(caja){
+        cantidadDeClientesEsperandoHastaAhora := cantidadDeClientesEsperandoHastaAhora + 1
+    }
+    return(cantidadDeClientesEsperandoHastaAhora)
+}
