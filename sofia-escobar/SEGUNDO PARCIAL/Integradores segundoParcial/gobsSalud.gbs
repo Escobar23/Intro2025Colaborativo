@@ -1,0 +1,86 @@
+type EmpresaMedica is record {
+ /*
+ Proposito: Modelar una empresa de prestaciones medicas
+ In Rep:
+ *No hay dos prestaciones en **prestaciones** con el mismo id
+ *MNo hay dos socios en **socios** con el mismo numero de dni
+ *Todas las autoprizaciones de los socios en **socios** �ene un nombrePrestador y un �po que
+ coincide con el nombre y el �po de prestadora en el campo "prestaciones" que �ene el id
+ igual al idDePrestaciones de dicha autorizacion
+ *Todas las autorizaciones en los socios en "socios" �ene un numero de des�no de "idDePrestacion"
+ que ademas coincide con el id de alguna prestacion del campo "prestaciones"
+ */
+ field prestaciones // [Prestacion]
+ field socios // [socio]
+}
+type Prestacion is record {
+ /*
+ Proposito: Modelar una prestacion medica
+ In Rep:
+ * **nombreDePrestador** no es un string vacio
+ * **id** es mayor a cero
+ * **costoENBonos** es mayor o igual a cero
+ */
+ field id // numero
+ field nombrePrestador // string
+ field costoEnBonos // Numero
+ field tipo // TipoDePrestacion
+}
+type Pedido is record {
+ /*
+ Proposito: Modelar un pedido de prestacion medica
+ */
+ field tipo //TipoDePrestacion
+ field diagnostico // string
+}
+type Autorizacion is record {
+ /*
+ Proposito: Modelar una autorizacion de prestacion medica
+ */
+ field tipo //TipoDePrestacion
+ field diagnostico // string
+field idDePrestacion //Numero
+ field nombrePrestador // string
+}
+type Socio is record {
+ /*
+ Proposito: Modelar un socio de la empresa de salud
+Inv.Rep:
+* **dniSocio** no es un string vacio
+* **can�dadDeBonos** es mayor o igual a cero
+ */
+ field dniSocio // String
+ field can�dadDeBonos // Numero
+ field solicitudesPendientes // [Pedido]
+ field autorizacionesDadas // [autorizaciones]
+}
+type TipoDePrestacion is variant {
+/*
+ Proposito: Modelar un socio de la empresa de salud
+Inv.Rep:
+* **dniSocio** no es un string vacio
+* **can�dadDeBonos** es mayor o igual a cero
+ */
+ case Consulta { }
+ case Receta { }
+case Derivacion { }
+case Estudio { }
+}
+function empresa_ConCambioDePrestadora_Por(empresa, nombreDePrestadorComprada, prestadoraCompradora){
+    /*
+    Proposito:Describbe la empresa *empresa* con el nombre de prestadora *nombreDePrestadorComprada* cambiado por
+    *prestadoraCompradora* en todas las prestaciones y autorizaciones de la empresa.
+    Precondiciones:
+    Parametros:
+    - empresa: EmpresaMedica
+    - nombreDePrestadorComprada: String
+    - prestadoraCompradora: String
+    Tipo: EmpresaMedica
+    */
+    return(EmpresaMedica             
+        (prestaciones<-prestaciones_ConPrestadora_CambiadaA_(prestaciones(empresa), nombreDePrestadorComprada, prestadoraCompradora),
+        socios<- socios_ConCambioDePrestadora_Por_(socios(empresa), nombreDePrestadorComprada, prestadoraCompradora)))
+}
+function socios_ConCambioDePrestadora_Por_(){
+    
+}
