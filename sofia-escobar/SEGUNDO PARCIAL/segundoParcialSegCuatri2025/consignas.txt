@@ -1,0 +1,113 @@
+Universidad Nacional de Quilmes
+Segundo Parcial
+Introducción a la Programación
+2do Semestre 2025
+
+Project Gomboids
+Project Gomboids es un juego de supervivencia en el que los jugadores deben mantenerse con vida mientras los zombies tratan de devorarlos. Crear una base, buscar aliados, proveer medicinas, alimentos y agua potable son algunas de las acciones esenciales para mantenerse con vida.
+Vamos a implementar en Gobstones el juego Project Gomboids. Para ello se definió el tipo Sobreviviente que permite llevar el registro de toda la información relevante de un personaje controlado por un jugador:
+type Sobreviviente is record {
+/*
+PROPOSITO: Modela un sobreviviente del juego.
+INV. REP.
+***armaEnMano** es un objeto de la
+categoria Arma.
+***nombre** no es un string vacio.
+*/
+field nombre // String
+field zombisAsesinados // Número
+field contenidoDeLaMochila // Lista de Objeto 
+field armaEnMano // Objeto
+field heridas // Lista de Herida
+}
+type CategoriaHerida is variant { 
+    /* 
+    PROPOSITO: Modela las categorías de heridas posibles que puede sufrir un sobreviviente.
+    "/
+case Rasguño {}
+case Laceración {}
+case Hemorragia {}
+case Mordida {}
+case Quemaduras {}
+case Fracturas {}
+}
+type Herida is record {
+    /*
+PROPOSITO: Modela las heridas que puede sufrir
+un sobreviviente
+INV. REP.:
+***cantidadDolor** es un número entre 0 y 10.
+*/
+field categoria // CategoriaHerida
+field estado // EstadoHerida
+field cantidadDolor // Número
+}
+type Clan is record { 
+    /*
+    PROPÓSITO: Modela un clan del juego. INV. REP.:
+    ***nombre** no es un string vacío.
+*/
+field nombre // String
+field miembros // Lista de Sobreviviente 
+}
+type Objeto is record { 
+    /*
+PROPOSITO: Modela los objetos que se pueden encontrar en project Gomboids.
+INV. REP.:
+***nombre** no es un string vacio.
+***valoracion** es un número mayor o igual a 0.
+*/
+field categoria // Categoria0bjeto
+field nombre // String
+field valoracion // Numero
+}
+type Categoria0bjeto is variant { 
+    /* 
+    PROPÓSITO: Modela las categorías de los objetos que se pueden encontrar en project Gomboids.
+    */
+case Arma {}
+case Comida {}
+case LibroDeHabilidad {}
+case Herramienta {}
+case Material {}
+}
+type EstadoHerida is variant { 
+    /*
+    PROPÓSITO: Modela los posibles estados en los que se puede encontrar una herida que puede tener un sobreviviente.
+    */
+case Sangrando {}
+case Vendada {}
+case Infectada {}
+case Curada {}
+}
+
+Basados en este modelo se pide:
+Ejercicio 1)
+Para que un clan sobreviva a veces se deben tomar decisiones dificiles, y cada cierto período, los miembros que son sospechosos de gombificación son obligados a dejar el clan. Por eso se pide implementar la función clan_PurgandoPosiblesInfectados que dado un clan, describe el mismo clan sin los sospechosos de gombificación. A un sobreviviente se lo considera como posible sospechoso de gombificación cuando entre sus heridas tiene una mordida o cuando tiene alguna herida infectada.
+Ejercicio 2)
+En Project Gomboids no sólo debés cuidarte de las infecciones, sino también de los clanes hostiles que compiten por recursos, y para ello, cada clan acumula distintos objetos (armas, comida, libros, herramientas y materiales). Los objetos acumulados por un clan son los que llevan sus miembros en la mochila y en la mano.
+Podemos decir que un clan lidera en una categoría de objeto cuando la suma de valoraciones de los objetos de dicha categoría que acumula ese clan es la mayor entre todos los clanes.
+Queremos identificar qué clan lidera en cada categoría de objetos. Para eso, implemente la función listaDeClanes LíderesPorCategoria DeObjetos que dada una lista de clanes, y asumiendo que en esa lista existe exactamente un clan que lidera en cada categoría de objeto, describe los clanes que lideran en cada una de las categorías de objetos, en el orden en el que se recorren las categorías de objetos.
+Para resolver este problema puede hacer uso de las siguientes funciones primitivas: minCategoria Objeto maxCategoriaObjeto y siguiente Categoria Objeto, que describen a la primer categoría, a la última y a la siguiente de la dada en un recorrido sobre categorías de objetos.
+Además dispone de la siguiente función primitiva objetosEntre_DeCategoría que dada una lista de objetos y una categoría de objeto, describe los objetos de la lista dada que sean de la categoría dada.
+Ejercicio 3)
+Al momento de planear un ataque queremos saber si todos los miembros de un clan están debidamente armados y es preferible que todos tengan armas de largo alcance.
+Considere la siguiente implementación de hayMiembroDelCLan_SinArmaDeLargoAlcance (clan), asuma que el contrato es correcto y la existencia del procedimiento esArma_DeLargoAlcance que, dada un arma indica si esta es de largo alcance.
+precedure hayMiembroDelCLan_SinArmaDeLargoAlcance (clan) {
+*/
+1*
+PROPÓSITO: Indica si hay algún miembro del clan dado que no posee
+como arma principal un arma de largo alcance.
+PRECONDICIONES: Ninguna.
+PARAMETROS: - clan: Clan
+TIPO: Booleano
+OBSERVACIONES: Recorrido de búsqueda sobre los miembros del clan dado.
+miembrosConArmaLarga := False
+foreach sobreviviente in miembros (clan) (1
+miembrosConArmaLarga := miembros ConArmaLarga || not esArma_DeLargoAlcance (
+}
+return (not miembrosConArmaLarga)
+armaEnMano (sobreviviente) )
+Sabiendo esto se pide que
+a) determine si la implementación propuesta es correcta (soluciona el problema planteado).
+b) determina si la implementación es adecuada (sigue los buenos criterios trabajado en la materia). JUSTIFICAR brevemente sus respuestas (no más de 5 renglones).

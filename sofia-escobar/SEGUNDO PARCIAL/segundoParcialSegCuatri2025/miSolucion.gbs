@@ -1,0 +1,63 @@
+//Ejercicio 1)
+function clan_PurgandoPosiblesInfectados(clan){
+    /*
+    Proposito: Describe el  clan *clan* sin los posibles infectados
+    Precondicion:
+    Parametros:
+        *clan*: Clan - clan a purgar
+    Tipo: Clan
+    */
+    return(Clan(clan | miembros<- miembrosDelClan_SinPosiblesInfectados_(miembros(clan))))
+}
+funtion miembrosDelClan_SinPosiblesInfectados_(miembros){
+    /*
+    Proposito: Describe los miembros *miembros* sin los posibles infectados
+    Precondicion: *miembros* no puede estar vacia.
+    Parametros:
+        *miembros*: Lista de Sobrevivientes - miembros a purgar
+    Tipo: Lista de Sobrevivientes
+    */
+    listaDeMiembrosSinPosiblesInfectados:=[]
+    foreach sobreviviente in miembros{
+        listaDeMiembrosSinPosiblesInfectados:=listaDeMiembrosSinPosiblesInfectados++singular_Si_(sobreviviente, not es_PosibleInfectado(sobreviviente))
+    }
+    return(listaDeMiembrosSinPosiblesInfectados)
+}
+function es_PosibleInfectado(sobreviviente){
+    /*
+    Proposito: Indica si el sobreviviente *sobreviviente* es un posible infectado
+    Precondicion:Ninguna
+    Parametros:
+        *sobreviviente*: Sobreviviente - sobreviviente a evaluar
+    Tipo: Booleano
+    */
+    return(tieneMordida_(heridas(sobreviviene))||estaInfectado_(heridas(sobreviviene)))
+}
+function tieneMordida_(heridas){
+    /*
+    Proposito: Indica si la lista de heridas *heridas* contiene una mordida
+    Precondicion:*heridas* no puede estar vacia
+    Parametros:
+        *heridas*: Lista de Herida - heridas a evaluar
+    Tipo: Booleano
+    */
+    listaPorVer:=heridas
+    while(not(esVacía(listaPorVer))&&categoria(primero(listaPorVer))/=Mordida){
+        listaPorVer:=resto(listaPorVer)
+    }
+    return(not esVacía(listaPorVer))
+}
+function estaInfectado_(heridas){
+    /*
+    Proposito: Indica si la lista de heridas *heridas* contiene una herida infectada
+    Precondicion:*heridas* no puede estar vacia
+    Parametros:
+        *heridas*: Lista de Herida - heridas a evaluar
+    Tipo: Booleano
+    */
+    listaPorVer:=heridas
+    while(not(esVacía(listaPorVer))&&not estado(primero(listaPorVer))/=Infectada){
+        listaPorVer:=resto(listaPorVer)
+    }
+    return(not esVacía(listaPorVer))
+}
