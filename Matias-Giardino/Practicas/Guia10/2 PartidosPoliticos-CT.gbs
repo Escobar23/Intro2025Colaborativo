@@ -1,8 +1,6 @@
-// 2.-
-
-type PartidoPolitico is variant {
+type PartidoPolítico is a variant {
     /*
-    proposito: modelar un partido politico
+    prop: modela un partido politico
     */
 
     case DemocraciaPorLaVerdad{}
@@ -10,44 +8,43 @@ type PartidoPolitico is variant {
     case LiberalesPorLaLibertad{}
     case IzquierdaDeLosObreros{}
 
-
 }
 
+A)
 
-// 2.- A)
-
-function tieneMasVotantes_Que_(primerPartidoPolitico, segundoPartidoPolitico) {
+function tieneMásVotantes_Que_(primeroPartido, segundoPartido) {
     /*
-    proposito: describe quien tiene mas votos entre "primerPartidoPolitico" y "segundoPartidoPolitico"
-    precondiciones: uno de los dos debe tener mas votos que el otro
+    prop: indica si el el partido "primerPartido" tiene mas votantes que el partido "segundoPartido"
+    prec: ninguno
+    tipo:booleano
     parametros:
-    primerPartidoPolitico - PartidoPolitico - primer partido politico a comparar
-    segundoPartidoPolitico - PartidoPolitico - segundo partido politico a comparar
-    tipo: PartidoPolitico
-    observaciones: 
+    primerPartido: PartidoPolitico - indica el primer partido politico a evaluar
+    segundoPartido: PartidoPolitico . indica el segundo partido politico a evaluar
     */
 
-    return(choose primerPartidoPolitico when cantidadDeVotosDe_(primerPartidoPolitico) > cantidadDeVotosDe_(segundoPartidoPolitico)) 
-        segundoPartidoPolitico otherwise
+    return(cantidadDeVotosDe_(primerPartido) > cantidadDeVotosDe_(segundoPartido))
 }
 
+B)
 
-// 2.- B)
-
-function function elQueTieneMasVotos() {
+function elQueTieneMásVotos() {
     /*
-    proposito: indica la cantidad de votos que recibio un partido
-    tipo: partidopolitico
-    precondicion: es un recorrido de maximo y minimo entre partidos politicos en busca del partido que tiene mas votos
+    prop: describe el partido politico con mas votos
+    prec:hay un partido politico con mas votos que los demas
+    tipo: PartidoPolitico
+    observaciones: es un recorrido de maximo entre PartidosPoliticos en busca del partido con mas votos
     */
 
-    partidoActual : = minPartido()
-    elMasVotadoHastaAhora := partidoActual
-    while(partidoACtual /= maxPartido) {
+
+    partidoActual := minPartido()
+    partidoConMasVotantesHastaAhora := partidoActual
+    while(partidoActual /= maxPartido()) {
         partidoActual := siguiente(partidoActual)
-        elMasVotadoHastaAhora := tieneMasVotantes_Que_(partidoActual, elMasVotadoHastaAhora)
+        partidoConMasVotantesHastaAhora:= tieneMasVotantes_Que_(partidoActual, partidoConMasVotantesHastaAhora)
     }
-    return(elMasVotadoHastaAhora)
+    return(partidoConMasVotantesHastaAhora)
+
+}
 
 }
 
