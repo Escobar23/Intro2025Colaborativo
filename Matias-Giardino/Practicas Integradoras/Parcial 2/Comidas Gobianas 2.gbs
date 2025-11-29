@@ -149,7 +149,7 @@ function comida_Enmantecada(unaComida) {
     param: 
     unaComida: ComidaGobiana - ComidaGobiana que se va a enmantecar
     */
-
+    //usaste la funcion observadora sin el record: calorias(unaComida)
     return(ComidaGobiana(unaComida | calorias <- calorias() + 200))
 
 }
