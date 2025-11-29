@@ -1,63 +1,172 @@
+/*
+    Segundo Parcial - Solucion (ya corregido)
+    Sofía Escobar
+    Nota final: 9
+*/
 //Ejercicio 1)
 function clan_PurgandoPosiblesInfectados(clan){
     /*
-    Proposito: Describe el  clan *clan* sin los posibles infectados
+    Proposito: Describe al clan *clan* sin los posibles infectados
     Precondicion:
     Parametros:
         *clan*: Clan - clan a purgar
     Tipo: Clan
     */
-    return(Clan(clan | miembros<- miembrosDelClan_SinPosiblesInfectados_(miembros(clan))))
+    return(Clan(clan | miembros<- sobrevivientes_SinSospechososDeInfección(miembros(clan))))
 }
-funtion miembrosDelClan_SinPosiblesInfectados_(miembros){
+funtion sobrevivientes_SinSospechososDeInfección(sobrevivientes){
     /*
-    Proposito: Describe los miembros *miembros* sin los posibles infectados
-    Precondicion: *miembros* no puede estar vacia.
+    Proposito: Describe la lista de sobrevivientes *sobrevivientes* sin los sospechosos de gombificación
+    Precondicion: *sobrevivientes* no puede estar vacia.
     Parametros:
-        *miembros*: Lista de Sobrevivientes - miembros a purgar
+        *sobrevivientes*: Lista de Sobrevivientes - listra a filtrar
     Tipo: Lista de Sobrevivientes
     */
-    listaDeMiembrosSinPosiblesInfectados:=[]
-    foreach sobreviviente in miembros{
-        listaDeMiembrosSinPosiblesInfectados:=listaDeMiembrosSinPosiblesInfectados++singular_Si_(sobreviviente, not es_PosibleInfectado(sobreviviente))
+    sobrevivientesSinSospechosos:=[]
+    foreach sobreviviente in sobrevivientes{
+        sobrevivientesSinSospechosos:=sobrevivientesSinSospechosos++singular_Si_(sobreviviente, not es_PosibleInfectado(sobreviviente))
     }
-    return(listaDeMiembrosSinPosiblesInfectados)
+    return(sobrevivientesSinSospechosos)
 }
 function es_PosibleInfectado(sobreviviente){
     /*
-    Proposito: Indica si el sobreviviente *sobreviviente* es un posible infectado
-    Precondicion:Ninguna
+    Proposito: Indica si el sobreviviente *sobreviviente* es sospechosos de gombificación
+    Precondicion: Ninguna
     Parametros:
         *sobreviviente*: Sobreviviente - sobreviviente a evaluar
     Tipo: Booleano
     */
-    return(tieneMordida_(heridas(sobreviviene))||estaInfectado_(heridas(sobreviviene)))
+    return(hayMordidaEn_(heridas(sobreviviene))||esInfectadaAlgunaHeridaDe_(heridas(sobreviviene)))
 }
-function tieneMordida_(heridas){
+function hayMordidaEn_(heridas){
     /*
-    Proposito: Indica si la lista de heridas *heridas* contiene una mordida
-    Precondicion:*heridas* no puede estar vacia
+    Proposito: Indica si hay mordida en la lista de heridas *heridas*
+    Precondicion: Ninguna //habia puesto que no tiene que ser vacía pero me corrigio que es prog a la defensiva
     Parametros:
         *heridas*: Lista de Herida - heridas a evaluar
     Tipo: Booleano
+    Obs: Es un recorrido de busqueda sobre las heridas para encontrar una mordida
     */
-    listaPorVer:=heridas
-    while(not(esVacía(listaPorVer))&&categoria(primero(listaPorVer))/=Mordida){
-        listaPorVer:=resto(listaPorVer)
+    heridasARevisar:=heridas
+    while(not(esVacía(heridasARevisar))&&not(esMordida_(primero(heridasARevisar)))){
+        heridasARevisar:=resto(heridasARevisar)
     }
-    return(not esVacía(listaPorVer))
+    return(not esVacía(heridasARevisar))
 }
-function estaInfectado_(heridas){
+
+function esMordida_(herida){
     /*
-    Proposito: Indica si la lista de heridas *heridas* contiene una herida infectada
-    Precondicion:*heridas* no puede estar vacia
+    Proposito: Indica si la herida *herida* es una mordida
+    Precondicion: Ninguna
+    Parametros:
+        *herida*: Herida - herida a evaluar
+    Tipo: Booleano
+    */
+    return(categoria(herida)=Mordida)
+}
+
+function esInfectadaAlgunaHeridaDe_(heridas){
+    /*
+    Proposito: Indica si alguna de las heridas de *heridas* es infectada
+    Precondicion:Ninguna
     Parametros:
         *heridas*: Lista de Herida - heridas a evaluar
     Tipo: Booleano
+    Obs: Es un recorrido de busqueda sobre las heridas para encontrar una infectada
     */
-    listaPorVer:=heridas
-    while(not(esVacía(listaPorVer))&&not estado(primero(listaPorVer))/=Infectada){
-        listaPorVer:=resto(listaPorVer)
+    heridasARevisar:=heridas
+    while(not(esVacía(heridasARevisar))&&not(esInfectada_(primero(heridasARevisar)))){
+        heridasARevisar:=resto(heridasARevisar)
     }
-    return(not esVacía(listaPorVer))
+    return(not esVacía(heridasARevisar))
+}
+
+funcion esInfectada_(herida){
+    /*
+    Proposito: Indica si la herida *herida* esta infectada
+    Precondicion: Ninguna
+    Parametro: *herida* - Herida
+    Tipo: Booleano
+    */
+    return(estado(herida)==Infectada)
+}
+
+//Ejercicio 2
+funcion listaDeClanes_LideresPorCategoriaDeObjetos(clanes){
+    /*
+    Proposito: Describe los clanes de *clanes* que lideran en cada una de las categorias de objetos.
+    Precondicion: *clanes* no es vacia
+    Parametros: clanes - Lista de Clan
+    Tipo: Lista de Clan
+    Obs: Es un recorrido de acumulación sobre categorias de objetos acumulando el clan lider en cada categoria
+    */
+    clanesLideresHastaAhora:=[]
+    categoriaActual:=minCategoria()
+    while(categoriaActual/=maxCategoria()){
+        clanesLideresHastaAhora:=clanesLideresHastaAhora++clanLider_DeLaCategoria_(clanes, categoriaActual)
+    }
+    return(clanesLideresHastaAhora++clanLider_DeLaCategoria_(clanes, categoriaActual))
+}
+
+function clanLider_DeLaCategoria_(clanes, categoria){
+    /*
+    Proposito:Describe una lista con el clan de la lista *clanes* que es lider en la categoria *categoria*
+    Precondicion:*clanes* no es vacia
+    Parametros:
+                *clanes* - Lista de Clan
+                *categoria* - categoriaObjeto
+    Tipo:Lista de Clan
+    Obs:Es un recorrido de maximo minimo sobre los clanes quedandonos con el lider de la categoria *categoria*
+    */
+    clanLiderHastaAhora:=primero(clanes)
+    foreach clan in clanes{
+        clanLiderHastaAhora:= clanLiderEntre_Y_DeLaCategoria_(clanLiderHastaAhora, clan, categoria)
+    }
+    return(clanLiderHastaAhora)
+}
+
+function clanLiderEntre_Y_DeLaCategoria_(primerClan, segundoClan, categoria){
+    /*
+    Proposito: Describe el clan lider entre *primerClan* y *segundoClan* de la categoria *categoria*
+    Precondicion: Ninguna
+    Parametros: primerClan - Clan
+                segundoClan - Clan
+                categoria - categoriaObjeto
+    Tipo: Clan
+    */
+    return(choose primerClan when(valoraciónTotalDeLaCategoria_DelClan_(categoria, primerClan)>
+                                valoraciónTotalDeLaCategoria_DelClan_(categoria, segundoClan))
+                segundoClan otherwise)
+}
+
+function valoraciónTotalDeLaCategoria_DelClan_(categoria, clan){
+    /*
+    Proposito: Describe la valoracion total de la categoria *categoria* del clan *clan*
+    Precondicion: Ninguna
+    Parametros: categoria - categoriaObjeto
+                clan - Clan
+    Tipo: Numero
+    Obs: Es un recorrido de acumulacion sobre los miembros del clan acumulando el valor total de la categoria *categoria*
+    */
+    valoracionTotalHastaAhora:=0
+    foreach sobreviviente in miembros(clan){
+        valoracionTotalHastaAhora:=valoracionTotalHastaAhora+valoracionDeLaCategoria_DelSobreviviente_(categoria, sobreviviente)
+    }
+    return(valoracionTotalHastaAhora)
+}
+
+funcion valoracionDeLaCategoria_DelSobreviviente_(categoria, sobreviviente){
+    /*
+    Proposito: Describe la valoracion de la categoria *categoria* del sobreviviente *sobreviviente*
+    Precondicion: Ninguns
+    Parametros:   categoria - categoriaObjeto
+                sobreviviente - Sobreviviente
+    Tipo: Numero
+    Obs: Es un recorrido de acumulación sobre los objetos del sobreviviente *sobreviviwnte* acumulando el valor total de la categoria *categoria*
+    */
+    valorTotalHastaAhora:=0
+    foreach objeto in objetosEntre_DeCategoria_(contenidoDeLaMochila(sobreviviente)){
+        valorTotalHastaAhora:=valorTotalHastaAhora+valoracion(objeto)
+    }
+    return(valorTotalHastaAhora)
 }
