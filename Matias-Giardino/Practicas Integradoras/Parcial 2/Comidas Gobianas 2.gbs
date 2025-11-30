@@ -8,7 +8,10 @@ type ComidaGobiana is record {
     field calorías // tipo Número
 }
 
-type Continente is variant {
+----
+
+
+    type Continente is variant {
     /* PROPÓSITO: Modela un continente de donde puede
     proceder una comida gobiana. */
 
