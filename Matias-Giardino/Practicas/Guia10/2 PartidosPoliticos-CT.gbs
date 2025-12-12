@@ -7,7 +7,7 @@ type PartidoPolítico is a variant {
     case UnidosPorLaRepublica{}
     case LiberalesPorLaLibertad{}
     case IzquierdaDeLosObreros{}
-
+ddd
 }
 
 A)
