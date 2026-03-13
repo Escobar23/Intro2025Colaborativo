@@ -1,0 +1,11 @@
+program {
+
+}
+
+/*
+a.- ninguna
+b.- debe haber al menos una celda lindante al Este y al Oeste de la celda actual, 
+    En caso de haber una lindante Oeste, debe Tener al menos una bolita de color Azul.
+c.- debe haber al menos 2 celdas hacia el Este, 2 celdas hacia el Oeste, una celda hacia el Sur y una celda hacia el Norte
+*/
+

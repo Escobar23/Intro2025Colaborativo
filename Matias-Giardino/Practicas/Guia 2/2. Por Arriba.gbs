@@ -1,0 +1,76 @@
+program {
+
+}
+
+// A-
+
+procedure DibujarRectanguloRojoYNegroDe5x3() {
+    /*
+    proposito: poner un rectangulo solido de 5 celdas de ancho y 3 celdas de alto. desde la celda actual hacia el este y hacia el norte.
+    precondiciones: 
+    * hay al menos 4 celdas al este y 2 celdas al norte de la celda actual
+    * las celdas contenidas en el rectangulo de 5x3 desde la celda actual hacia el este y hacia el norte estan vacias
+    observaciones:
+    */
+
+    DibujarLineaRojaYNegraDeTamaño5HaciaElEste()
+    Mover(Norte)
+    DibujarLineaRojaYNegraDeTamaño5HaciaElEste()
+    Mover(Norte)
+    DibujarLineaRojaYNegraDeTamaño5HaciaElEste()
+
+
+}
+
+// B-
+
+
+procedure DibujarLineaRojaYNegraDeTamaño5HaciaElEste() {
+    /*
+    proposito: dibuja una linea solida de bolitas rojas y negras de 5 celdas de ancho hacia el Este, al finalizar ubica el cabezal al comienzo
+                de la fila
+    precondiciones: debe haber 4 celdas hacia el Este
+    observaciones: ninguna
+    */
+
+    PonerUnaNegraYUnaRoja()
+    Mover(Este)
+    PonerUnaNegraYUnaRoja()
+    Mover(Este)
+    PonerUnaNegraYUnaRoja()
+    Mover(Este)
+    PonerUnaNegraYUnaRoja()
+    Mover(Este)
+    PonerUnaNegraYUnaRoja()
+    Mover4VecesAlOeste()
+
+}
+
+// C-
+
+procedure PonerUnaNegraYUnaRoja() {
+    /*
+    proposito: poner una bolita roja y negra en la celda actual
+    precondiciones: la celda actual esta vacia
+    observaciones:
+    */
+
+    Poner(Rojo)
+    Poner(Negro)
+}
+
+procedure Mover4VecesAlOeste() {
+    /*
+    proposito: mover el cabezal 4 veces al oeste.
+    precondiciones: debe haber al menos 4 celdas hacia el Oeste del cabezal
+    obsercaiones: ninguna
+    */
+
+    Mover(Oeste)
+    Mover(Oeste)
+    Mover(Oeste)
+    Mover(Oeste)
+}
+
+
+

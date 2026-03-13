@@ -1,0 +1,41 @@
+program {
+
+    DibujarCuadradoVerde3x3()
+
+}
+
+procedure DibujarcuadradoVerde3x3() {
+    /*
+    proposito: dibuja un cuadrado con bolitas Verde con un tamaño de 3 celdas de ancho 
+                por 3 de alto alrededor de la celda actual, el cabezal termina en la celda central
+    precondiciones: debe haber un tablero con un tamaño de al menos de 3 celdas de ancho por 3 celdas de alto
+    observaciones: ninguna
+    */
+
+    Poner(Verde)
+    Mover(Oeste)
+    Poner(Verde)
+    Mover(Norte)
+    Poner(Verde)
+    Mover(Este)
+    Poner(Verde)
+    Mover(Este)
+    Poner(Verde)
+    Mover(Sur)
+    Poner(Verde)
+    Mover(Sur)
+    Poner(Verde)
+    Mover(Oeste)
+    Poner(Verde)
+    Mover(Oeste)
+    Poner(Verde)
+    Mover(Norte)
+    Mover(Este)
+}
+
+
+
+
+/* A-I) si el tablero tenia bolita no afecta en nada ya que siempre se puede agregar bolitas
+   A-II) siempre hay espacio para agregar bolitas.
+*/ 

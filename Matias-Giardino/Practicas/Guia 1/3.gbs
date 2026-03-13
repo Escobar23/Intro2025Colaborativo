@@ -1,0 +1,16 @@
+program {
+
+    PonerBolitaEnCeldaVecina()
+
+}
+
+procedure PonerBolitaEnCeldaVecina() {
+    /*
+    proporsito: poner una bolita de color azul en la celda vecina al Norte e la celda actual
+    precondiciones: debe haber al menos una celda hacia el Norte de la celda actual
+    observaciones: ninguna
+    */
+
+    Mover(Norte)
+    Poner(Azul)
+}

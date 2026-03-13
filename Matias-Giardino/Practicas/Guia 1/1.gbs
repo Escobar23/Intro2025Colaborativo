@@ -1,0 +1,17 @@
+program {
+
+    ReemplazandoBolitas()
+
+}
+
+procedure ReemplazandoBolitas() {
+    /*
+    proposito: reemplazar la bolita roja de la celda actual por una bolita verde
+    precondiciones: ninguna
+    observaciones:
+    */
+
+    Sacar(Rojo)
+    Poner(Verde)
+
+}

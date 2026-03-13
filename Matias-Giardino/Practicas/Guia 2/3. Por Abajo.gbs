@@ -1,0 +1,90 @@
+program {
+
+
+
+}
+
+// a.
+
+procedure PonerUnaDeCada() {
+    /*
+    proposito: pone una bolita de cada color en la celda actual.
+    precondiciones: ninguna
+    observaciones:
+    */
+
+    Poner(Rojo)
+    Poner(Negro)
+    Poner(Verde)
+    Poner(Azul)
+
+}
+
+// b. 
+
+procedure Mover3VecesAlOeste() {
+    /*
+    proposito: mueve el cabezal 3 celdas hacia el Oeste
+    precondiciones: debe haber al menos 3 celdas hacia el oeste.
+    observaciones:
+    */
+
+    Mover(Oeste)
+    Mover(Oeste)
+    Mover(Oeste)
+
+}
+
+// c.
+
+procedure DibujarLineaMulticolorDeLargo4() {
+    /*
+    proposito: dibuja una linea de 4 celdas hacia el este en la que cada celda tenga una bolita de cada color, el cabezal
+                debe quedar en la celda inicial.
+    precondiciones: debe haber al menos 4 celdas hacia el Este
+    observaciones:
+    */
+
+    PonerUnaDeCada()
+    Mover(Este)
+    PonerUnaDeCada()
+    Mover(Este)
+    PonerUnaDeCada()
+    Mover(Este)
+    PonerUnaDeCada()
+    Mover3VecesAlOeste()
+    
+
+}
+
+// d.
+
+procedure DibujarCuadradoMulticolorDeLado4() {
+    /*
+    proposito:dibujar un cuadrado solido de 4x4 celdas en la que cada celda tenga una bolita de cada color, 
+            el cabezal debe quedar en la celda inicial
+    precondiciones: debe haber al menos 4 celdas hacia el Este, y 4 celdas hacia el norte
+    observaciones: ninguna
+    */
+
+    DibujarLineaMulticolorDeLargo4()
+    Mover(Norte)
+    DibujarLineaMulticolorDeLargo4()
+    Mover(Norte)
+    DibujarLineaMulticolorDeLargo4()
+    Mover(Norte)
+    DibujarLineaMulticolorDeLargo4()
+    VolverALaCeldaInicial()
+    
+}
+
+procedure VolverALaCeldaInicial() {
+    /*
+    proposito: ubica el cabezal en la celda inicial
+    precondiciones: ninguna
+    observaciones: ninguna
+    */
+
+    IrAlBorde(Oeste)
+    IrAlBorde(Sur)
+}

@@ -1,0 +1,19 @@
+program {
+
+    MoverBolita()
+
+}
+
+procedure MoverBolita() {
+    /*
+    proposito: mover la bolita negra de la celda actual a la celda vecina al Este
+    precondiciones: debe haber al menos una celda vecina hacia el este
+    observaciones:
+    */
+
+    Sacar(Negro)
+    Mover(Este)
+    Poner(Negro)
+
+
+}

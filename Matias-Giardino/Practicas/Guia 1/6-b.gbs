@@ -1,0 +1,39 @@
+program {
+
+    SacaUnaBolitasDeCuadradoDe3x3()
+
+}
+
+procedure SacaUnaBolitasDeCuadradoDe3x3() {
+    /*
+    proposito: saca de una cuadrado de 3 bolitas por 3 bolitas una bolita Verde de cada celda 
+    precondiciones: debe haber al menos 1 bolita de color verde en la celda actual
+    observaciones: ninguna
+    */
+
+    Sacar(Verde)
+    Mover(Oeste)
+    Sacar(Verde)
+    Mover(Norte)
+    Sacar(Verde)
+    Mover(Este)
+    Sacar(Verde)
+    Mover(Este)
+    Sacar(Verde)
+    Mover(Sur)
+    Sacar(Verde)
+    Mover(Sur)
+    Sacar(Verde)
+    Mover(Oeste)
+    Sacar(Verde)
+    Mover(Oeste)
+    Sacar(Verde)
+    Mover(Norte)
+    Mover(Este)
+}
+
+
+/*
+B-I) si no hay al menos 1 bolita verde en las celdas necesarias el programa hace "boom" ya que para poder 
+sacar bolitas siempre debe haber al menos 1 bolita del color indicado
+*/
