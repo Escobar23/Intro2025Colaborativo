@@ -1,0 +1,73 @@
+/*
+
+4. La banda de la gloriosa River Plate
+Escribir DibujarLaBandaGloriosaDeAncho_(ancho) que dibuja una banda diagonal de color
+Rojo de cuatro celdas de alto y de tantas celdas de largo como indique el parámetro ancho (dibujando
+hacia arriba y hacia la derecha). El procedimiento debe poder ser ejecutado en tableros en donde la
+banda entra justa en el tablero como se muestra a continuación:
+
+La imágen muestra el resultado de ejecutar el procedimiento como
+DibujarLaBandaGloriosaDeAncho_(6), con el cabezal posicionado en la esquina
+Sur-Oeste del tablero al inicio.
+Importante: Sí la banda tiene 6 celdas de largo, el argumento pasado debe ser 6, no 5. Tenga en
+cuenta que deberá utilizar expresiones en algún lugar de su código para solucionar el problema.
+
+*/
+
+procedure DibujarLaBandaGloriosaDeAncho_(ancho) {
+    /*
+    proposito: dibuja una banda diagonal de color rojo de cuatro celdas de alto por "ancho" celdas de ancho
+    precondiciones: debe haber al menos 4 celdas hacia el norte y "ancho" celdas hacia el Este
+    parametros:
+    *ancho: numero
+    observaciones: ninguna
+    */
+
+    repeat(ancho) {
+        DibujarColumnaRojaDe4Bolitas_(color)
+        PasarAPRoximaColumna()
+    }
+
+}
+
+procedure DibujarColumnaRojaDe4Bolitas_(color) {
+    /*
+    proposito: dibuja una columna compuesta por 4 bolitas de alto y de color "color"
+    precondiciones: debe haber al menos 4 celdas hacia el norte
+    parametros:
+    *color: Color
+    observaciones: ninguna
+    */
+
+    repeat(3) {
+        Poner(color)
+        Mover(Norte)    
+        IrABaseDeColumna()
+    }
+
+}
+
+procedure IrABaseDeColumna() {
+    /*
+    proposito: posiciona el cabezal nuevamente en la base de la columna
+    precondiciones: Debe Haber 3 celdas libres hacia el Sur
+    observaciones: ninguna
+    */
+
+    repeat(3) {
+        Mover(Sur)
+    }
+
+}
+
+procedure PasarAPRoximaColumna() {
+    /*
+    proposito: posiciona el cabezal en la base de la proxima columna
+    precondiciones: debe haber al menos una celda hacia el este
+    observaciones: ninguna
+    */
+
+    Mover(Norte)
+    Mover(Este)
+
+}

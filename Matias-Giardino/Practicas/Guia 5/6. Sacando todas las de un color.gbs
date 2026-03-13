@@ -1,0 +1,43 @@
+/*
+
+6. Sacando todas las de un color
+BIBLIOTECA Escribir un procedimiento SacarTodasLasDeColor_(colorASacar), que quite de la
+celda actual todas las bolitas del color indicado por el parámetro.
+PISTA: Considerar utilizar el procedimiento Sacar_DeColor_, definido en la práctica anterior. ¿Qué argumentos
+se le deberían pasar?
+
+*/
+
+procedure SacarTodasLasDeColor_(colorASacar) {
+    /*
+
+    proposito: sacar todas las bolita del color "colorASacar" de la celda actual
+    precondiciones: debe haber al menos una bolita de color "colorASacar" en la celda actual
+    parametros:
+    *coloASacar: Color
+    observaciones: ninguna
+    
+    */
+
+    Sacar_DeColor_(nroBolitas(colorASacar), colorASacar)
+
+}
+
+
+procedure Sacar_DeColor_(cantidadASacar, coloASacar) {
+    /*
+    
+    proposito: sacar "cantidadASacar" de bolita de color "colorASacar" de la celda actual
+    precondiciones: debe haber al menos "cantidadASacar" de bolitas de color "colorASacar" en la celda actual
+    parametro:
+    *cantidadASacar: Numero
+    *colorASacar: Color
+    observaciones: ninguna
+    
+    */
+
+    repeat(cantidadASacar) {
+        Sacar(colorASacar)
+    }
+
+}

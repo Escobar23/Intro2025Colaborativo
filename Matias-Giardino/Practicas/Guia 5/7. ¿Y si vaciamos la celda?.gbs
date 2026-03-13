@@ -1,0 +1,24 @@
+/*
+
+7. ¿Y si vaciamos la celda?
+BIBLIOTECA Escribir un procedimiento VaciarCelda() que quite de la celda actual todas las bolitas
+de todos los colores, dejando la celda vacía.
+
+*/
+
+
+procedure VaciarCelda() {
+    /*
+    
+    proposito: quitar las bolitas de todos los colores de la celda actual
+    precondiciones: ninguna
+    observaciones: ninguna
+    
+    */
+
+    SacarTodasLasDeColor_(Rojo)
+    SacarTodasLasDeColor_(Azul)
+    SacarTodasLasDeColor_(Verde)
+    SacarTodasLasDeColor_(Negro)
+}
+

@@ -1,0 +1,87 @@
+/*
+
+9. Aprendiendo a leer y escribir
+Hacer el procedimiento PasarPalabraActualAMayúsculas() que suponiendo que en la fila actual
+se codifica una palabra en minúsculas usando bolitas, ponga la misma palabra en mayúsculas en la
+fila al Norte.
+-
+-
+-
+-
+-
+Cada letra se representa con una cantidad diferente de bolitas negras, según un código
+numérico llamado ASCII.
+En la celda más al Oeste de la fila actual se codifica la cantidad de letras de la palabra, usando
+bolitas rojas.
+La primera letra de la palabra está en la celda lindante al Este de la que contiene la cantidad de
+letras.
+En el código ASCII si las letras mayúsculas se codifican con un número N entonces la misma
+letra minúscula se representa con N+32 (ej. la ‘a’ minúsculas se representa con el número 97 y
+la ‘A’ mayúsculas, con el 65).
+El cabezal se encuentra en la celda más al Oeste de una fila donde hay una palabra
+representada.
+
+
+
+*/
+
+procedure PasarPAlabraActualAMAyusculas() {
+    /*
+    proposito: toma la palabra codificada en la fila actual y la pasa de minuscula a mayuscula escribiendola 
+    en la fila lindante norte, el cabezal finaliza en la celda mas al Oeste
+    precondiciones: 
+    *debe haber al menos 1 celda hacia el norte y tantas celdas como caracteres de la palabra hacia el este de la celda actual.
+    *el cabezal inicia en la celda mas el Oeste de la fila actual
+    *en la celda actual hay tantas bolitas rojas como caracteres tiene la palabra codificada
+    observaciones: 
+    *las letras se representan con bolitas de color negro
+    *en codigo ASCII las letras Mayusculas representadas "N" se diferencias de las minusculas ya que la letra
+    minuscula se representa como "N+32"
+    *En la celda más al Oeste de la fila actual se codifica la cantidad de letras de la palabra, usando
+    bolitas rojas.
+    */
+
+    repeat(nroBolitas(Rojo)) {
+        Mover(Este)
+        CambiarAMayuscula()
+    }
+    IrAlBorde(Oeste)
+
+
+}
+
+procedure CambiarAMayuscula() {
+    /*
+
+    proposito: toma le letra minuscula codificada en la celda actual y la pasa a mayuscula
+    precondiciones: 
+    *todas las letras representadas estan en minusculas
+    observaciones: ninguna
+    
+    */
+
+    TranscribirAlNorte()
+    Mover(Norte)
+    repeat(32) {
+        Sacar(Negro)
+    }    
+    Mover(Sur)
+
+
+}
+
+procedure TranscribirLetraAlNorte() {
+    /*
+    proposito: transcribe la letra codificada de la celda actual en su lindante al norte
+    precondiciones: debe haber al menos una celda hacia el norte
+    observaciones: ninguna
+    */
+
+
+    repeat(nroBolitas(Negro)) {
+        Mover(Norte)
+        Poner(Negro)
+        Mover(Sur)
+        
+    }
+}

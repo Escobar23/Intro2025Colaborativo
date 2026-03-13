@@ -1,0 +1,96 @@
+/*
+
+6.​ ¿Vamos al banco? - Parte 1
+En este ejercicio utilizaremos el tablero de Gobstones para representar cuentas bancarias. Cada celda
+representará a una cuenta bancaria, y en cada una de ellas puede haber dinero en distintas monedas,
+que representaremos con distintos colores:
+●​ bolitas negras para pesos argentinos.
+●​ bolitas verdes para dólares estadounidenses.
+●​ bolitas azules para euros.
+●​ bolitas rojas para yuanes chinos.
+Se pueden hacer tres operaciones: depósitos, extracciones y conversiones a divisa extranjera. Las
+extracciones pueden hacerse en cualquier moneda, pero los depósitos siempre serán en pesos.
+En el caso en que se quiera depositar un monto en una moneda extranjera, se aplicará
+automáticamente la conversión a pesos según el precio de venta dado en la siguiente tabla:
+
+Precios de venta
+1 dólar80 pesos
+1 euro90 pesos
+1 yuan12 pesos
+
+En cuanto a la conversión a divisa extranjera, el banco actualmente aplica las siguientes tarifas para la
+
+compra de divisa:
+Precios de compra
+100 pesos1 dólar
+115 pesos1 euro
+17 pesos1 yuan
+
+Realizar los siguientes procedimientos para poder manipular la cuenta:
+a.​ Depositar_EnMoneda_ComoPesos(cantidadADepositar,moneda), que dada una
+cantidad de dinero a depositar y un color que representa la moneda en la que está representado
+ese monto, agrega a la cuenta la cantidad de pesos equivalente a lo indicado para depositar. En
+este procedimiento hay que aplicar la conversión indicada para el precio de venta.
+b.​ ExtraerHasta_EnMoneda_(cantidadAExtraer, moneda), que dada una cantidad de
+dinero a extraer y un color que representa la moneda en la que se va a extraer, remueve de la
+cuenta la cantidad que se indica. Si no hubiera tanto dinero como el solicitado, se extrae todo lo
+que haya.
+c.​ ConvertirHasta_PesosA_(pesosAConvertir, moneda), que dada una cantidad de
+pesos a convertir y un color que representa la moneda en la cual se quiere convertir, remueve
+los pesos de la cuenta y agrega la moneda solicitada. Si en la cuenta hubiera menos pesos de
+lo solicitado, se convierte todo lo que haya.
+El último ejemplo es interesante: se piden convertir 100 pesos a dólares pero no hay 10 pesos en la
+cuenta, por lo que se va a intentar convertir el total de pesos que haya, 90. Con 90 pesos, no se llega a
+comprar ningún dólar, y como Gobstones solo trabaja con números enteros, no es posible tener medio
+dólar, por lo que queda en cero dólares.
+d.​ RealizarCorridaCambiaria(), que dado un tablero de 1 única fila y 10 columnas, donde
+cada celda representa una cuenta bancaria, se realiza una corrida cambiaria, donde en cada
+cuenta se cambia la totalidad de los pesos a dólares.
+
+
+*/
+
+procedure Depositar_EnMoneda_ComoPesos(cantidadADepositar, moneda) {
+    /*
+    proposito: convierte "cantidadADepositar" de "moneda" en su equivalente a pesos segun la conversion
+    precondiciones: ninguna
+    observaciones: las monedas se representan por colores 
+    ●​ bolitas negras para pesos argentinos.
+    ●​ bolitas verdes para dólares estadounidenses.
+    ●​ bolitas azules para euros.
+    ●​ bolitas rojas para yuanes chinos.
+    parametros:
+    * cantidadADepositar: Numero - representa la cantidad de divisas a depositar
+    * moneda: Color - representa con una bolita de color la divisa a depositar
+    */
+
+    if(moneda == Verde) {
+        Convertir_APesos(cantidadADepositar*100)
+    }
+    elseif (moneda == Azul) {
+        Convertir_APesos(cantidadADepositar*115)
+    }
+    elseif (moneda == Rojo) {
+        Convertir_APesos(cantidadADepositar*17)
+    }
+
+
+
+}
+
+procedure Convertir_APesos(cantidad){
+    /*
+    proposito: convierte la divisa a "cantidad" pesos
+    precondiciones: ninguna
+    observaciones: ninguna
+    parametros:
+    * cantidad: Numero - representa la cantidad de pesos a depositar
+    */
+
+    repeat(cantidad) {
+        Poner(Negro)
+    }
+
+
+}
+

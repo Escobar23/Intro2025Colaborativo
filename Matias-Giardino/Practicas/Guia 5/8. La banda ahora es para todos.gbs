@@ -1,0 +1,28 @@
+/*
+
+8. La banda ahora es para todos
+Los hinchas de otros clubes se quejaron de que la banda que hicimos solo vale para River, y quieren
+poder hacer otras bandas. Escribir entonces DibujarBandaDeAlto_YAncho_DeColor_(alto,
+ancho, color) que dibuja una banda diagonal con los parámetros dados.
+
+La imágen de la izquierda muestra el resultado de ejecutar el procedimiento como
+DibujarBandaDeAlto_YAncho_DeColor_(3, 5, Negro), mientras que el
+tablero de la derecha muestra el resultado de ejecutarlo como
+DibujarBandaDeAlto_YAncho_DeColor_(4, 6, Rojo), siempre partiendo
+de tableros vacíos con el cabezal en el origen1.
+Importante: Nuevamente, debe seguir funcionando el código para casos de borde.
+
+
+*/
+
+
+procedure DibujarBandaDeAlto_YAncho_DeColor_(alto,ancho,color) {
+    /*
+    proposito: dibujar una diagonal de "alto" de alto, por "ancho" de ancho, y de color "color"
+    precondiciones: debe haber al menos "alto" celdas hacia el norte, "ancho" celdas de ancho.
+    observaciones: ninguna
+    */
+
+    
+
+}

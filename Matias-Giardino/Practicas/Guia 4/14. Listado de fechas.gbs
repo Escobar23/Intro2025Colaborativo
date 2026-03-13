@@ -12,3 +12,22 @@ Trabajadores.
 con anterioridad?
 
 */
+
+procedure EscribirListadoDeFechas() {
+    /*
+    proposito: escribir un listado vertical con las fechas indicadas
+    precondiciones: debe haber al menos 4 celdas libres hacia el norte
+    observaciones: ninguna
+    */
+
+    EscribirFechaConDia_Mes_Año_(15,6,1918)
+    PasarAProximaFila()
+    EscribirFechaConDia_Mes_Año_(23,9,1947)
+    PasarAProximaFila()
+    EscribirFechaConDia_Mes_Año_(1,5,1886)
+    PasarAProximaFila()
+    EscribirFechaConDia_Mes_Año_(10,4)
+    PasarAProximaFila()
+    EscribirFechaConDia_Mes_Año_(19,3,1911)
+    
+}

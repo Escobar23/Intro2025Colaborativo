@@ -1,0 +1,12 @@
+/*
+
+2.​ Definiendo mis primeros booleanos
+Definir expresiones que sean verdaderas (describen el valor de verdad Verdadero) para cada uno de los
+siguientes casos.
+a.​ Cuando la celda actual tiene más de 5 bolitas de color Rojo.
+b.​ Cuando la celda actual tiene al menos 9 bolitas en total entre rojas y negras.
+c.​ Cuando la celda actual es la esquina Norte-Este.
+d.​ Cuando la celda actual está vacía.
+e.​ Cuando hay una sola celda en el tablero.
+
+*/
