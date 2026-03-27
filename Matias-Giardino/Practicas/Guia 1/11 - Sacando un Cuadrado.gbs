@@ -1,0 +1,48 @@
+/*
+11. Sacando un cuadrado
+Escriba un programa que saque del tablero un cuadrado multicolor de dos celdas de lado, donde la
+celda actual representa el vértice inferior izquierdo del mismo.
+Recuerde escribir primero el contrato del programa, y luego el código.
+Considere las siguientes preguntas como guía para escribir su programa:
+a. ¿Qué hace el programa? (Determina el propósito del programa)
+b. ¿Cuándo funciona tal cual se espera? (Determina la precondición del programa)
+c. ¿Cómo lo hace? (Determina el código del programa)
+(a) tablero inicial (b) tablero final
+*/program {
+/*
+a)    proposito: sacar un cuadrado multocolor de dos celdas de lado
+b)    precondiciones: debe haber al menos 1 celda hacia el Este y una celda hacia el Norte
+observaciones: ninguna
+*/
+/*
+c)
+*/
+Sacar(Negro)
+Sacar(Verde)
+Sacar(Rojo)
+Sacar(Azul)
+Mover(Norte)
+Sacar(Negro)
+Sacar(Verde)
+Sacar(Rojo)
+Sacar(Azul)
+Mover(Este)
+Sacar(Negro)
+Sacar(Verde)
+Sacar(Rojo)
+Sacar(Azul)
+Mover(Sur)
+Sacar(Negro)
+Sacar(Verde)
+Sacar(Rojo)
+Sacar(Azul)
+Mover(Oeste)
+
+
+
+}
+
+
+
+
+

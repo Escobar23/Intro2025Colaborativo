@@ -1,0 +1,44 @@
+/*
+10. Arcoiris
+EN PAPEL Escribir un programa que ponga un “arco iris”, poniendo una bolita Azul en la celda actual,
+una Negra en la celda siguiente al Este, una Roja en la siguiente al Este, y una Verde en la siguiente al
+Este, dejando el cabezal en la celda inicial.
+Podemos ver un ejemplo en la figura, partiendo del tablero (a) se obtendría el (b):
+(a) tablero inicial (b) tablero final
+Luego contestar las siguientes preguntas
+a. ¿Qué sucedería en otros tableros iniciales?
+b. ¿Cuál es la precondición de este programa?
+c. ¿Puede darse otro programa diferente que cumpla el mismo contrato?
+PISTA: en lugar de poner las bolitas en la ida, considere sí no lo puede hacer a la vuelta.
+d. Pruebe ahora sus programas en la máquina para verificar que funcionan, detectar y errores y
+corregir.
+*/program {
+
+
+
+}
+
+procedure DibujarArcoiris() {
+    /*
+        proposito: dibuja un arcoiris ponienda una bolita azul en la celda actual, una negra en la siguiente al Este,
+                 una roja en la siguiente al Este, una Verde en la siguiente al Este y vuelve a dejar el cabezal 
+                 en la celda inicial.
+        precondiciones: debe haber al menos 3 celdas vacias hacia el Este.
+        observaciones:
+
+    */
+
+    Poner(Azul)
+    Mover(Este)
+    Poner(Negro)
+    Mover(Este)
+    Poner(Rojo)
+    Mover(Este)
+    Poner(Verde)
+    IrAlBorde(Oeste)
+
+}
+
+/* a) siempre y cuando tengan 4 celdas de largo el programa va a poder ejecutarse
+   b) la precondicion es q debe tener al menos 3 celdas vacias hacia el este
+   c) si, siempre y cuando cumpla con la precondicion  
