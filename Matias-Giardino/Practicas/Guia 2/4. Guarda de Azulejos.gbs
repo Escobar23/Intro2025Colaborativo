@@ -1,0 +1,46 @@
+/*
+Guarda de azulejos
+Construir un procedimiento PonerGuardaDe5Azulejos(), que arme una “guarda” horizontal de 5
+azulejos (como las que decoran las paredes). Cada azulejo está conformado por 1 bolita verde, 5
+negras y 9 rojas. A continuación se muestra el resultado de ejecutar este procedimiento teniendo el
+cabezal en la esquina suroeste del tablero. La posición final del cabezal no es relevante.
+Recordar seguir una metodología adecuada para la construcción del código: COMENZAR por escribir el
+contrato completo del procedimiento, luego pensar las subtareas necesarias y darles un nombre
+adecuado, escribir el contrato de las subtareas, LUEGO el código del procedimiento pedido en términos
+de las subtareas, y FINALMENTE, realizar el código de las subtareas siguiendo la misma metodología
+(que denominamos metodología de construcción de programas top-down).
+*/
+
+program {
+
+
+}
+
+procedure PonerGuardaDe5Azulejos() {
+    /*
+    proposito: dibujar una guarda horzontal de 5 azulejos 
+    precondiciones: debe haber al menos 4 celdas hacia el Este o hacia el Oeste
+    observaciones:
+    */
+
+    PonerAzulejo()
+    Mover(Este)
+    PonerAzulejo()
+    Mover(Este)
+    PonerAzulejo()
+    Mover(Este)
+    PonerAzulejo()
+    Mover(Este)
+    PonerAzulejo()
+    IrAlBorde(Oeste)   
+
+}
+
+
+procedure PonerAzulejo() {
+    /*
+    proposito:
+    precondiciones:
+    observaciones:
+    */
+}
