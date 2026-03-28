@@ -1,0 +1,205 @@
+/*
+5. Día de la Memoria
+Utilizando bolitas pueden representarse diversos elementos; un ejemplo de esto es la posibilidad de
+representar una fecha. Una fecha que los argentinos deberíamos recordar, para no repetirla jamás, es
+el 24 de marzo de 1976, hoy constituido como Día de la Memoria por la Verdad y la Justicia en
+Argentina.
+Hacer un procedimiento RegistrarElDíaDeLaMemoria() que:
+● en la celda actual, ponga 24 bolitas Azules, que representan el día,
+● en la celda lindante al Este de la actual, ponga 3 bolitas Rojas, que representan el mes, y
+● en la celda lindante al Este de la anterior, ponga 1976 bolitas Verdes, representando el año.
+Recordar que la solución completa incluye la documentación: propósito, precondición y parámetros,
+los cuales deben ser escritos ANTES de escribir el código.
+Importante: La solución se puede realizar íntegramente utilizando los conceptos vistos en la materia hasta el
+momento, y no se requieren herramientas adicionales. No debe utilizar conceptos aún no vistos en la teoría para
+solucionar el problema
+*/
+
+program {
+
+
+}
+
+procedure RegistrarElDíaDeLaMemoria() {
+    /*
+        proposito: registrar usando 3 celdas del tablero la fecha que corresponde al dia de la memoria
+        precondiciones: debe haber al menos 2 celdas hacia el Este
+        observaciones:  
+    */
+
+    RegistrarElDíaDeLaMemoria()
+    Mover(Este)
+    RegistrarElMesDeLaMemoria()
+    Mover(Este)
+    RegistrarElAñoDeLaMemoria()
+
+
+}
+
+procedure RegistrarElDíaDeLaMemoria() { 
+    /*
+        proposito: registra en la celda actual el dia de la memoria
+        precondiciones: la celda debe estar vacia
+        observaciones: el dia esta representado por 24 bolitas Azules
+    
+    */
+
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+
+
+}
+
+procedure RegistrarElMesDeLaMemoria() {
+    /*
+        proposito: registra el mes de la memoria en la celda actual
+        precondiciones: la celda debe estar vacia
+        observaciones: el mes se representa con 3 bolitas rojas
+    
+    */
+
+    Poner(Rojo)
+    Poner(Rojo)
+    Poner(Rojo)
+
+}
+
+procedure RegistrarElAñoDeLaMemoria() {
+    /*
+        proposito: registra el año de la memoria en la celda actual
+        precondiciones: la celda debe estar vacia
+        observaciones: el año se representa con 1976 bolitas Verdes
+    
+    */
+
+    Poner1000BolitasVerdes()
+    Poner900BolitasVerdes()
+    Poner70BolitasVerdes()
+    Poner6BolitasVerdes()
+
+
+}
+
+procedure Poner1000BolitasVerdes() {
+    /*
+        proposito: coloca 1000 bolitas verdes en la celda actual
+        precondiciones: ninguna
+        observaciones: ninguna
+    
+    */
+
+    Poner900BolitasVerdes()
+    Poner100BolitasVerdes()
+
+}
+
+procedure Poner900BolitasVerdes() {
+    /*
+        proposito: coloca 900 bolitas verdes en la celda actual
+        precondiciones: ninguna
+        observaciones: ninguna
+
+    
+    */
+
+    Poner100BolitasVerdes()
+    Poner100BolitasVerdes()
+    Poner100BolitasVerdes()
+    Poner100BolitasVerdes()
+    Poner100BolitasVerdes()
+    Poner100BolitasVerdes()
+    Poner100BolitasVerdes()
+    Poner100BolitasVerdes()
+    Poner100BolitasVerdes()
+
+
+}
+
+procedure Poner100BolitasVerdes() {
+    /*
+        proposito: coloca 100 bolitas verdes en la celda actual
+        precondiciones: ninguna
+        observaciones: ninguna
+    
+    */
+
+    Poner10BolitasVerdes()
+
+
+}
+
+procedure Poner70BolitasVerdes() {
+    /*
+        proposito: coloca 70 bolitas verdes en la celda actual
+        precondiciones:ninguna
+        observaciones: ninguna
+    */
+
+    Poner10BolitasVerdes()
+    Poner10BolitasVerdes()
+    Poner10BolitasVerdes()
+    Poner10BolitasVerdes()
+    Poner10BolitasVerdes()
+    Poner10BolitasVerdes()
+    Poner10BolitasVerdes()
+
+}
+
+procedure Poner10BolitasVerdes() {
+    /*
+        proposito: coloca 10 bolitas verdes en la celda actual
+        precondiciones: ninguna
+        observaciones: ninguna
+    
+    */
+
+    Poner6BolitasVerdes()
+    Poner(Verde)
+    Poner(Verde)
+    Poner(Verde)
+    Poner(Verde)
+
+    
+
+}
+
+procedure Poner6BolitasVerdes() {
+    /*
+        proposito: coloca 6 bolitas verdes en la celda actual
+        precondiciones: ninguna
+        observcaiones: ninguna
+    
+    */
+
+    Poner(Verde)
+    Poner(Verde)
+    Poner(Verde)
+    Poner(Verde)
+    Poner(Verde)
+    Poner(Verde)
+
+}
+
+

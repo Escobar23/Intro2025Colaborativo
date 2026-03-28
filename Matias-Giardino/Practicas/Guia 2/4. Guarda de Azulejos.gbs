@@ -20,7 +20,7 @@ procedure PonerGuardaDe5Azulejos() {
     /*
     proposito: dibujar una guarda horzontal de 5 azulejos 
     precondiciones: debe haber al menos 4 celdas hacia el Este o hacia el Oeste
-    observaciones:
+    observaciones: la posicion final del cabezal no es relevante 
     */
 
     PonerAzulejo()
@@ -32,15 +32,34 @@ procedure PonerGuardaDe5Azulejos() {
     PonerAzulejo()
     Mover(Este)
     PonerAzulejo()
-    IrAlBorde(Oeste)   
+      
 
 }
 
 
 procedure PonerAzulejo() {
     /*
-    proposito:
-    precondiciones:
-    observaciones:
+    proposito: poner un un azulejo en la celda actual
+    precondiciones: la celda debe estar vacia
+    observaciones: un azulejo compuesto por está conformado por 1 bolita verde, 5
+        negras y 9 rojas en la celda actual
     */
+
+
+    Poner(Verde)
+    Poner(Negro)
+    Poner(Negro)
+    Poner(Negro)
+    Poner(Negro)
+    Poner(Negro)
+    Poner(Rojo)
+    Poner(Rojo)
+    Poner(Rojo)
+    Poner(Rojo)
+    Poner(Rojo)
+    Poner(Rojo)
+    Poner(Rojo)
+    Poner(Rojo)
+    Poner(Rojo)
+
 }
