@@ -66,40 +66,6 @@ git pull origin main
 
 Cada estudiante tiene su propia carpeta donde organiza sus ejercicios integradores o prácticas.
 
-## Cómo contribuir
-
-1. Clonar el repositorio
-
-```bash
-git clone [URL-DEL-REPOSITORIO]
-cd [NOMBRE-DEL-REPOSITORIO]
-```
-
-2. Crear tu carpeta personal
-
-Crea una carpeta con tu nombre o identificador (por ejemplo: `juan-perez`):
-
-```bash
-mkdir tu-nombre
-```
-
-3. Organizar tus ejercicios
-
-Dentro de tu carpeta, crea subcarpetas para cada ejercicio:
-
-```bash
-cd tu-nombre
-mkdir ejercicio-1 ejercicio-2
-```
-
-4. Subir tus cambios
-
-```bash
-git add .
-git commit -m "Agrego ejercicio X - [tu nombre]"
-git push origin main
-```
-
 ## Convenciones
 
 - Nombres de carpetas: Usa minúsculas y guiones (ejemplo: `maria-gomez`)
