@@ -1,0 +1,71 @@
+/*
+Guarda de azulejos en L
+Hacer un procedimiento PonerGuardaEnL(), que arme una guarda en L como muestra la figura,
+dejando el cabezal en la posición inicial.
+¿Pensaste en reutilizar el procedimiento definido antes, o empezaste a escribirlo de nuevo? Dado que
+ahora se cuenta con la subtarea definida en el ejercicio anterior, la metodología top-down se puede
+enriquecer con la reutilización de procedimientos ya realizados; esto puede hacer que ciertas
+divisiones en subtareas, que permiten esa reutilización, sean más sencillas que otras.
+
+
+*/
+
+program {
+
+    
+}
+
+
+procedure PonerGuardaEnL() {
+    /*
+        proposito: dibujar una guarda en L dejando el cabezal en la posicion inicial
+        precondiciones: debe haber al menos 2 celdas libres hacia el Este y dos libres hacia el norte de la posicion
+        inicial del cabezal
+        observaciones: ninguna
+    
+    
+    */
+
+    DibujarBaseDeLaGuardaEnL()
+    DibujarAlturaDeLaGuardaEnL()
+
+
+}
+
+procedure DibujarBaseDeLaGuardaEnL() {
+/*
+    proposito: dibuja la base de la guarda en l
+    precondiciones: debe haber al menos 2 celdas libres hacia el Este de la posicion inicial del cabezal
+    observaciones: ninguna
+
+*/
+
+    PonerAzulejo()
+    Mover(Este)
+    PonerAzulejo()
+    Mover(Este)
+    PonerAzulejo()
+    IrAlBorde(Oeste)
+
+
+
+}
+
+
+procedure DibujarAlturaDeLaGuardaEnL() {
+    /*
+        proposito: dibuja la linea de altura de la guarda en l
+        precondiciones: debe haber al menos 2 celdas libres hacia el Norte de la posicion inicial del cabezal
+        observaciones: ninguna
+    */
+
+    PonerAzulejo()
+    Mover(Norte)
+    PonerAzulejo()
+    Mover(Norte)
+    PonerAzulejo()
+    IrAlBorde(Sur)
+
+
+
+}
