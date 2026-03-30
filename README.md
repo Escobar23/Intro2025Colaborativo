@@ -4,6 +4,50 @@ Repositorio colaborativo para compartir y organizar los ejercicios integradores 
 ##  Sobre el repositorio
 Este espacio está diseñado para que cada estudiante comparta sus soluciones a los ejercicios integradores o prácticas, facilitando el aprendizaje colaborativo y el intercambio de ideas entre compañeros.
 
+## 🚀 Mini tutorial (paso a paso para empezar)
+
+Si nunca usaste Git o GitHub, seguí estos pasos:
+
+### 1. Descargar el repositorio en tu compu (una sola vez)
+Instalá Git (si no lo tenés)
+Copiá el link del repositorio (botón verde "Code" en GitHub)
+Abrí una terminal o consola y ejecutá:
+
+```
+git clone [URL-DEL-REPOSITORIO]
+cd [NOMBRE-DEL-REPOSITORIO]
+```
+Esto crea una carpeta con el repo en tu computadora.
+
+### 2. Crear tu carpeta personal
+
+Dentro del repo, creá tu carpeta con tu nombre:
+```
+mkdir tu-nombre
+cd tu-nombre
+```
+Ejemplo:
+```
+mkdir sofia-escobar
+```
+### 3. Agregar tus ejercicios
+Creá carpetas para cada ejercicio o cada guia:
+```
+mkdir ejercicio-1
+```
+### 4. Subir tus cambios a GitHub
+Cada vez que agregues o modifiques algo:
+```
+git add .
+git commit -m "Agrego ejercicio X - [tu nombre]"
+git push origin main
+```
+### ⚠️ IMPORTANTE (antes de empezar a trabajar cada día)
+Para evitar problemas, SIEMPRE traé los últimos cambios antes de empezar:
+```
+git pull origin main
+```
+
 ## Estructura del repositorio
 
 ```
