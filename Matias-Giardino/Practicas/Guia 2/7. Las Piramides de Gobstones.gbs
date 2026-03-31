@@ -1,0 +1,117 @@
+/*
+Las pirámides de Gobstones
+EN PAPEL Escribir un programa para cumplir con los propósitos de cada uno de los ítems que se
+indican más adelante. Para ello, deben utilizarse los procedimientos indicados a continuación.
+p
+*/
+
+procedure DibujarBase()
+/*
+    PROPÓSITO: Dibuja una base de pirámide de 5 celdas de lado
+    PRECONDICIONES:
+    * La celda actual debe estar vacía
+    * Debe haber cuatro celdas vacías al Este del cabezal
+*/
+
+
+procedure DibujarMedio()
+/* 
+    PROPÓSITO: Dibuja un sector del medio de pirámide
+    de 3 celdas de lado
+    PRECONDICIONES:
+    * La celda actual debe estar vacía
+    * Debe haber dos celdas vacías al Este del cabezal
+*/
+procedure DibujarPunta()
+/*
+    PROPÓSITO: Dibuja una punta de pirámide
+    PRECONDICIONES:
+    InPr - P2. Procedimientos y Estrategias de Solución
+    * La celda actual debe estar vacía
+*/
+
+/*
+
+¡Recordar! Para cada ítem que sigue debe comenzarse redactando el contrato correspondiente, y de ser
+necesario, se deben definir subtareas para construir su solución, expresándolas mediante procedimientos (y en
+ese caso se deben escribir primero los contratos de los mismos y utilizarlos ANTES de dar su código).
+a. Una pirámide.
+b. Una pirámide invertida.
+c. Una pirámide estirada a lo alto (con dos segmentos de cada uno).
+d. Una pirámide gigante (con 11 bloques de base y 6 bloques de altura, donde cada segmento es
+dos celdas más chico que el que tiene debajo). Para esto deben reutilizarse los procedimientos
+implementados en los puntos a. y b.
+PISTA: una pirámide gigante se puede conseguir con 4 pirámides comunes, si se las ubica con cuidado.
+
+*/
+
+program {
+
+
+}
+
+
+procedure DibujarUnaPiramide() {
+    /*
+        proposito: dibuja una piramide compuesta por 3 celdas de alto por 5 de ancho
+        precondiciones: debe haber al menos 4 celdas hacia el Este y 2 hacia el Norte de donde inicia el cabezal
+        observaciones: ninguna
+    
+    */
+
+    DibujarBase()
+    IrAlOtroEscalon()
+    DibujarMedio()
+    IrAlOtroEscalon()
+    DibujarPunta()
+
+}
+
+procedure DibujarPiramideInvertida() {
+    /*
+        proposito: dibujar una piramide invertida compuesta por 3 celdas de alto por 5 de ancho
+        precondiciones: debe haber al menos 4 celdas hacia el Este y 2 celdas hacia el Norte del inicio del cabezal
+        observaciones:
+    */
+
+    DibujarPunta()
+    IrAlOtroEscalon()
+    DibujarMedio()
+    IrAlOtroEscalon()
+    DibujarBase()
+    
+
+}
+
+procedure DibujarPiramideEstirada() {
+    /*
+        proposito: dibuja una piramide estirada a lo alto con dos segmento 
+        precondiciones: debe haber al menos 4 celdas hacia el Este y 3 celdas hacia el Norte del inicio del cabezal
+        observaciones:
+    */
+
+    DibujarBase()
+    IrAlOtroEscalon()
+    DibujarMedio()
+    IrAlOtroEscalon()
+    DibujarPunta()
+    IrAlOtroEscalon()
+    DibujarPunta()
+    
+
+}
+
+procedure DibujarUnaPiramideGigante() {
+    /*
+        proposito: Una pirámide gigante (con 11 bloques de base y 6 bloques de altura, donde cada segmento es
+        dos celdas más chico que el que tiene debajo). Para esto deben reutilizarse los procedimientos
+        implementados en los puntos a. y b.
+        precondiciones: debe haber al menos 10 celdas hacia el Este y 5 celdas hacia el Norte de la ubicacion inicial del cabezal
+        observaciones:
+
+    */
+
+    DibujarBaseDePiramideGigante()
+
+
+}
