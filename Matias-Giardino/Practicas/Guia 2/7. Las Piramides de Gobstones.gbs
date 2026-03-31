@@ -53,7 +53,8 @@ program {
 
 procedure DibujarUnaPiramide() {
     /*
-        proposito: dibuja una piramide compuesta por 3 celdas de alto por 5 de ancho
+        proposito: dibuja una piramide compuesta por 3 celdas de alto por 5 de ancho al finalizar el cabezal vuelve 
+        a la celda inicial
         precondiciones: debe haber al menos 4 celdas hacia el Este y 2 hacia el Norte de donde inicia el cabezal
         observaciones: ninguna
     
@@ -69,7 +70,8 @@ procedure DibujarUnaPiramide() {
 
 procedure DibujarPiramideInvertida() {
     /*
-        proposito: dibujar una piramide invertida compuesta por 3 celdas de alto por 5 de ancho
+        proposito: dibujar una piramide invertida compuesta por 3 celdas de alto por 5 de ancho el cabezal vuelve 
+        a la celda inicial
         precondiciones: debe haber al menos 4 celdas hacia el Este y 2 celdas hacia el Norte del inicio del cabezal
         observaciones:
     */
@@ -112,6 +114,41 @@ procedure DibujarUnaPiramideGigante() {
     */
 
     DibujarBaseDePiramideGigante()
+    DibujarPuntaDePiramidegigante()
+    }
 
 
 }
+
+
+procedure DibujarBaseDePiramideGigante() {
+    /*
+        proposito: dibujar la base de la piramida gigante de 11 celdas de largo
+        precondiciones: debe haber al menos 10 celdas libres al Este de la celda actual
+        observaciones:
+    
+    */
+
+    DibujarPiramide()
+    PasarAPiramideInvertida()
+    DibujarPiramideInvertida()
+    PasarAProximaPiramide()
+    DibujarPiramide()
+}
+
+
+procedure PasarAProximaPiramide() {
+    /*
+        proposito: mueve el cabezal hasta donde comienza la proxima piramide
+        precondiciones: debe haber al menos 
+    */
+
+    Mover(Este)
+    Mover(Este)
+    Mover(Este)
+    Mover(Este)
+    Mover(Este)
+    
+
+}
+
