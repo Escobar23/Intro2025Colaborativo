@@ -1,3 +1,68 @@
 program{
-    
+    DibujarLaBandaGloriosaDeAncho_(6)
+}
+
+procedure DibujarLaBandaGloriosaDeAncho_(ancho) {
+    /*
+        PROPÓSITO: Dibujar banda gloriosa de color rojo 
+        PARÁMETROS: 
+            * ancho: número - cantidad de celdas de largo de la banda diagonal a dibujar.
+        PRECONDICIONES:
+            * Debe haber al menos cuatro celdas de alto y debe haber al menos **ancho** celdas de largo.
+    */
+    DibujarColumnaDeLaBandaGloriosa_Veces(4)
+    repeat(ancho - 1){
+        IrALaSiguienteColumnaDeLaBandaGloriosaHaciaEl_(Este)
+        DibujarColumnaDeLaBandaGloriosa_Veces(4)
+    }
+    VolverAlInicioDeLaColumnaDeLaBandaGloriosa(5, Sur)
+}
+
+procedure DibujarColumnaDeLaBandaGloriosa_Veces(cantidad){
+    /*
+        PROPÓSITO: Dibujar columna de la banda gloriosa de la cantida de **cantidad** celdas de alto.
+        PARÁMETROS: 
+            * cantidad: número - cantidad de bolidas de color rojo a poner en la columna.
+        PRECONDICIONES:
+            * Debe haber la cantidad de **cantidad** celdas hacia el norte desde la celda actual.  
+    */
+    Poner(Rojo)
+    repeat (cantidad - 1) {
+        Mover(Norte)
+        Poner(Rojo)
+    }
+    Mover_VecesAl_ (3, Sur)
+}
+
+procedure IrALaSiguienteColumnaDeLaBandaGloriosaHaciaEl_(dirección) {
+    /*
+        PROPÓSITO: Mover el cabezal hacia la siguiente columna de la banda gloriosa en dirección **dirección**
+        PARÁMETROS:
+            * dirección: dirección - Dirección hacia donde se mueve el cabezal hacia la siguiente columna. 
+        PRECONDICIONES:
+            * Debe haber al menos una celda hacia la dirección **dirección**.
+    */
+    Mover(dirección)
+    Mover(previo(dirección))
+}
+
+procedure VolverAlInicioDeLaColumnaDeLaBandaGloriosa(cantidad, dirección) {
+    /*
+        PROPÓSITO: Mover el cabezal la cantidad de **cantidad** veces en la dirección **dirección**
+        PARÁMETROS:
+            * cantidad: número - cantidad de veces que se mueve el cabezal 
+            * dirección: dirección - dirección hacia donde se mueve el cabezal
+        PRECONDICIONES:
+            * 
+    */
+    repeat (cantidad) {
+        Mover(dirección)
+        Mover(siguiente(dirección))
+    }
+}
+
+procedure Mover_VecesAl_ (cantidadAMover, direccionAMover) {
+    repeat (cantidadAMover) {
+        Mover (direccionAMover)
+    }
 }
