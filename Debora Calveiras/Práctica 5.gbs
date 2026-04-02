@@ -1,3 +1,4 @@
+// Ejercicio 4
 program{
     DibujarLaBandaGloriosaDeAncho_(6)
 }
@@ -53,7 +54,7 @@ procedure VolverAlInicioDeLaColumnaDeLaBandaGloriosa(cantidad, dirección) {
             * cantidad: número - cantidad de veces que se mueve el cabezal 
             * dirección: dirección - dirección hacia donde se mueve el cabezal
         PRECONDICIONES:
-            * 
+            * Debe haber al menos una celda en la dirección **dirección**
     */
     repeat (cantidad) {
         Mover(dirección)
@@ -66,3 +67,78 @@ procedure Mover_VecesAl_ (cantidadAMover, direccionAMover) {
         Mover (direccionAMover)
     }
 }
+
+// Ejercicio 8
+
+program {
+    DibujarBandaDeAlto_YAncho_DeColor_(3, 5, Negro)
+}
+
+procedure DibujarBandaDeAlto_YAncho_DeColor_(alto,
+ancho, color) {
+    /*
+        PROPÓSITO: dijar banda de color **color** de **Alto** celdas de alto y **ancho** celdas de ancho.  
+        PARÁMETROS:
+            * alto: número - número de alto de la banda a dibujar
+            * ancho: número - número de ancho de la banda a dibujar
+            * color: color - color de las bolitas a poner
+        PRECONDICIONES:
+            * Debe haber al menos **alto** celdas de alto y **ancho** celdas de ancho. 
+    */
+    DibujarColumnaDeLaBanda_Veces(3)
+    repeat (ancho -1) {
+        IrALaSiguienteColumnaDeLaBandaHaciaEl_(Este)
+        DibujarColumnaDeLaBanda_Veces(3)
+    }
+    VolverAlInicioDeLaColumnaDeLaBanda(4, Sur)
+}
+
+procedure DibujarColumnaDeLaBanda_Veces(cantidad) {
+    /*
+        PROPÓSITO: Dibujar columna de la banda de la cantida de **cantidad** celdas de alto.
+        PARÁMETROS: 
+            * cantidad: número - cantidad de bolidas de color negro a poner en la columna.
+        PRECONDICIONES:
+            * Debe haber la cantidad de **cantidad** celdas hacia el norte desde la celda actual.  
+    */
+    Poner(Negro)
+    repeat (cantidad - 1) {
+        Mover(Norte)
+        Poner(Negro)
+    }
+    Mover_VecesAl_ (2, Sur)
+}
+
+procedure IrALaSiguienteColumnaDeLaBandaHaciaEl_(dirección) {
+    /*
+        PROPÓSITO: Mover el cabezal hacia la siguiente columna de la banda en dirección **dirección**
+        PARÁMETROS:
+            * dirección: dirección - Dirección hacia donde se mueve el cabezal hacia la siguiente columna. 
+        PRECONDICIONES:
+            * Debe haber al menos una celda hacia la dirección **dirección**.
+    */
+    Mover(dirección)
+    Mover(previo(dirección))
+}
+
+procedure VolverAlInicioDeLaColumnaDeLaBanda(cantidad, dirección) {
+    /*
+        PROPÓSITO: Mover el cabezal la cantidad de **cantidad** veces en la dirección **dirección**
+        PARÁMETROS:
+            * cantidad: número - cantidad de veces que se mueve el cabezal 
+            * dirección: dirección - dirección hacia donde se mueve el cabezal
+        PRECONDICIONES:
+            * Debe haber al menos una celda en la dirección **dirección**
+    */
+    repeat (cantidad) {
+        Mover(dirección)
+        Mover(siguiente(dirección))
+    }
+}
+
+procedure Mover_VecesAl_ (cantidadAMover, direccionAMover) {
+    repeat (cantidadAMover) {
+        Mover (direccionAMover)
+    }
+}
+//Ejercicio 
