@@ -130,7 +130,7 @@ procedure DibujarBaseDePiramideGigante() {
     */
 
     DibujarPiramide()
-    PasarAPiramideInvertida()
+    PasarAProximaPiramide()
     DibujarPiramideInvertida()
     PasarAProximaPiramide()
     DibujarPiramide()
@@ -143,11 +143,7 @@ procedure PasarAProximaPiramide() {
         precondiciones: debe haber al menos 
     */
 
-    Mover(Este)
-    Mover(Este)
-    Mover(Este)
-    Mover(Este)
-    Mover(Este)
+    IrAlBorde(Sur)
     
 
 }
