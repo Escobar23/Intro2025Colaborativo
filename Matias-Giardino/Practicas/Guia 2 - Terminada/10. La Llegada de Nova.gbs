@@ -1,0 +1,65 @@
+/*
+
+10. La llegada de Nova
+EN PAPEL En el equipo de programación empezó a trabajar un programador que no tiene formación
+profesional, y al que todos apodaron Nova . En el código que escribió Nova se encontró un1
+procedimiento que no aplica la técnica de división en subtareas, y tampoco tiene contrato. Para poder
+integrar el código con el resto, en este equipo se requiere que los programas sigan buenas prácticas de
+programación. Por eso, se pide corregir este código para que cumpla con las mismas.
+procedure ConstruirEscaleraAzulDe4Escalones() {
+Poner(Azul) Mover(Este) Poner(Azul) Mover(Norte)
+Poner(Azul) Mover(Este) Poner(Azul) Mover(Norte)
+Poner(Azul) Mover(Este) Poner(Azul) Mover(Norte)
+Poner(Azul) Mover(Este) Poner(Azul)
+}
+Comenzar por redactar el contrato y la precondición correspondientes.
+a. Luego aplicar la técnica de división en subtareas expresadas con procedimientos. Dado que no
+se trata de hacer el código de nuevo, se propone identificar partes de código que se repitan,
+darles un buen nombre y extraer esa parte de la estrategia en procedimientos auxiliares. Por
+supuesto, cada procedimiento auxiliar debe tener un nombre adecuado, y debe documentarse
+su propósito y precondición.
+b. ¿Puede apreciar las ventajas de contar con el contrato y de expresar la estrategia como parte
+del código en forma de procedimientos? Hay más de una forma de dividir en subtareas.
+Comparar la solución propuesta con la de otros compañeros, y discutir las ventajas y
+desventajas de la dada con las que resulten diferentes.
+
+*/
+
+
+program {
+
+}
+
+procedure ConstruirEscaleraAzulDe4Escalones() {
+    /*
+        proposito: dibuja una escalera azul de 4 escalones:
+        precondiciones: debe haber al menos 4 celdas libres hacia el Este y 3 celdas libres hacia el norte
+        de donde inicia el cabezal
+        observaciones: ninguna
+    
+    */
+
+    DibujarEscalon()
+    Mover(Norte)
+    DibujarEscalon()
+    PasarASiguienteEscalon()
+    Mover(Norte)
+    PasarASiguienteEscalon()
+    Mover(Norte)
+    PasarASiguienteEscalon()
+
+}
+
+procedure DibujarEscalon() {
+    /*
+        proposito: dibuja un escalon compuesto de dos celdas
+        precondiciones: debe haber al menos una celda hacia el Este y debe estar vacia
+        observaciones: cada escalon esta compuesto por 1 bolita de color azul en cada celda
+    */
+
+    Poner(Azul)
+    Mover(Este)
+    Poner(Azul)
+
+}
+

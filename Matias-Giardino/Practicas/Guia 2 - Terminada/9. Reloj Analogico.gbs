@@ -1,0 +1,118 @@
+/*
+9. Reloj Analógico
+Dibujar un reloj analógico de agujas en un tablero cuadriculado puede ser un desafío. Una
+simplificación posible sería representar solamente algunos de los números que aparecen en el mismo:
+el 12 arriba, el 3 a la derecha, el 9 a la izquierda y el 6 abajo.
+Construir un procedimiento DibujarRelojAnalógicoSimplificado(), que ponga los números
+del reloj tal como se indicó, alrededor del casillero actual. El tamaño del reloj será de 2 celdas de
+“radio” (suponiendo que miramos al reloj como un círculo).
+Utilizar el comando DibujarRelojAnalógicoSimplificado() en un tablero inicial vacío de 5x5
+con la celda inicial en el centro del mismo, es el siguiente:
+¡Recordar! Escribir el contrato en primer lugar, y en caso de utilizar división en subtareas, en seguir la
+metodología top-down para las mismas (primero su nombre y su contrato, usarlas, y recién luego definirlas con la
+misma metodología).
+
+*/
+
+
+program {
+
+
+}
+
+procedure DibujarRelojAnalogicoSimplificado() {
+    /*
+        proposito: dibuja un reloj analogico de agujas al rededor de la celda actual
+        precondiciones: debe haber al menos 2 celdas hacia el Norte,Sur,Este y Oeste de la posicion donde inicia el cabezal
+        observaciones: ninguna
+    */
+
+    DibujarRelojVertical()
+    DibujarRelojHorizontal()
+
+}
+
+procedure DibujarRelojVertical() {
+    /*
+        proposito: dibuja el numero 12 y el numero 6 del reloj analogico. 
+        precondiciones: el cabezal debe tener al menos 2 celdas libres hacia el norte y 2 celdas libres 
+        hacia el sur del inicio dle cabezal
+        observaciones: ninguna
+    */
+
+    IrAlBorde(Norte)
+    PonerNumero12()
+    IrAlBorde(Sur)
+    PonerNumero(6)
+    Mover(Norte)
+    Mover(Norte)
+
+}
+
+procedure DibujarRelojHorizontal() {
+    /*
+        proposito: dibuja los numeros 9 y 3 del reloj analogico.
+        precondiciones: debe haber al menos 2 celdas libres hacia el Oeste y 2 celdas libres hacia el Este
+        de la posicion inicial del cabezal.
+        observaciones: ninguna
+    */
+
+    IrAlBorde(Oeste)
+    PonerNumero9()
+    IrAlBorde(Este)
+    PonerNumero3()
+    Mover(Oeste)
+    Mover(Oeste)
+
+
+}
+
+procedure PonerNumero12() {
+    /*
+        proposito: dibuja el numero 12 en la celda actual.
+        precondiciones: la celda actual debe estar vacia
+        observaciones: el numero 12 se representa con 12 bolitas de color Rojo
+    
+    */
+
+    Poner6BolitasRojas()
+    Poner6BolitasRojas()
+}
+
+procedure PonerNumero9() {
+    /*
+        proposito: dibuja el numero 9 en la celda actual
+        precondiciones: la celda actual debe estar vacia
+        observaciones: el numero 9 se representa con 9 bolitas de color rojo
+    */
+
+    Poner6BolitasRojas()
+    Poner3BolitasRojas()
+    
+}
+
+procedure PonerNumero6() {
+    /*
+        proposito: dibuja el numero 6 en la celda actual
+        precondiciones: la celda actual debe estar vacia.
+        observaciones: el numero 6 se representa con 6 bolitas de color rojo
+    */
+
+    Poner3BolitasRojas()
+    Poner3BolitasRojas()
+
+}
+
+procedure PonerNumero3() {
+    /*
+        proposito: dibuja el numero 3 en la celda actual
+        precondiciones: la celda actual debe estar vacia
+        observaciones: el numero 3 se representa con 3 bolitas de color rojo
+    */
+
+    Poner(Rojo)
+    Poner(Rojo)
+    Poner(Rojo)
+
+
+}

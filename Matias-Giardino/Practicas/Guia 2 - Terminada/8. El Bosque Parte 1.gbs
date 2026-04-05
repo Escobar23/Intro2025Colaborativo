@@ -1,0 +1,111 @@
+/*
+El bosque, parte 1
+En este ejercicio, se usará el tablero para representar un bosque. Cada celda representa a una parcela.
+Cada bolita verde representa un árbol. Cada bolita roja representa una semilla. Una bolita negra
+representa una bomba. Una bolita azul representa una unidad de nutrientes.
+Escribir los siguientes procedimientos de representación, que hacen lo que su nombre indica. Todos
+trabajan siempre sobre la celda actual.
+a.
+PonerUnaSemilla()
+b.
+PonerUnÁrbol()
+c.
+PonerUnaBomba()
+d.
+PonerUnNutriente()
+e.
+SacarUnaSemilla()
+f.
+SacarUnÁrbol()
+g.
+SacarUnaBomba()
+h.
+SacarUnNutriente()
+
+*/
+
+program {
+
+
+
+}
+
+procedure PonerUnaSemilla() {
+    /*
+        proposito: pone una semilla en la celda actual
+        precondiciones: la celda debe estar vacia
+        observaciones: la semilla esta representada con una bolita de color Rojo
+    */
+
+    Poner(Rojo)
+
+}
+
+procedure PonerUnArbol() {
+    /*
+        proposito: pone un Arbol en la celda actual
+        precondiciones: la celda debe estar vacia
+        observaciones: El Arbol esta representada con una bolita de color Verde
+    */
+
+    Poner(Verde)
+
+}
+
+procedure PonerUnaBomba() {
+    /*
+        proposito: pone una Bomba en la celda actual
+        precondiciones: la celda debe estar vacia
+        observaciones: la Bomba esta representada con una bolita de color Negro
+    */
+
+    Poner(Negro)
+
+}
+
+procedure PonerUnNutriente() {
+    /*
+        proposito: pone un Nutriente en la celda actual
+        precondiciones: la celda debe estar vacia
+        observaciones: un Nutriente esta representada con una bolita de color Azul
+    */
+
+    Poner(Azul)
+
+}
+
+procedure SacarUnArbol() {
+    /*
+        proposito: Sacar un Arbol de la celda actual
+        precondiciones: debe haber un arbol en la celda actual
+        observaciones:
+    
+    */
+
+    Sacar(Verde)
+
+}
+
+procedure SacarUnaBomba() {
+    /*
+        proposito: Saca una Bomba de la celda actual
+        precondiciones: debe haber una bomba en la celda actual
+        observaciones: ninguna
+    */
+
+    Sacar(Negro)
+
+}
+
+procedure SacarUnNutriente() {
+    /*
+        proposito: saca un nutriente de la celda actual
+        precondiciones: debe haber un nutriente en la celda actual
+        observaciones: ninguna
+    
+    */
+
+    Sacar(Azul)
+
+
+}
