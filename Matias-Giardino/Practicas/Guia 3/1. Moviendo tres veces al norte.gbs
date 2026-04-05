@@ -1,0 +1,21 @@
+/*
+
+1. Moviendo tres veces al Norte
+Escribir un procedimiento Mover3VecesAlNorte() que mueva el cabezal tres posiciones al Norte de
+la actual
+
+*/
+
+
+procedure Mover3VEcesAlNorte() {
+    /*
+        proposito: mueve el cabezal 3 posiciones al norte de la celda actual
+        precondiciones: debe haber al menos 3 celdas hacia el norte de la posicion actual
+        observaciones: Ninguna
+    
+    */
+
+    repeat(3) {
+        Mover(Norte)
+    }
+}
