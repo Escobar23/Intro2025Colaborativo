@@ -54,3 +54,12 @@ procedure PasarAProximaFila() {
     IrAlBorde(Oeste)
 
 }
+
+
+
+/*
+
+a) la precondicion q debe haber 6 bolitas al este y 2 al norte de la posicion actual del cabezal
+b) se puede empezar de arriba para abajo o desde el Este hasta el oeste
+
+*/

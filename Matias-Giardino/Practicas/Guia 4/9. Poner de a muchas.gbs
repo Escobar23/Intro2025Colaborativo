@@ -1,0 +1,22 @@
+/*
+
+9. Poner de a muchas
+BIBLIOTECA Escribir un procedimiento Poner_DeColor_(cantidadAPoner, colorAPoner) que
+dado un número cantidadAPoner y un color colorAPoner, ponga tantas bolitas como se indica del
+color dado de la celda actual.
+
+*/
+
+procedure Poner_DeColor_(cantidadAPoner, colorAPoner) {
+    /*
+    proposito: poner "cantidadAPoner" bolitas de color "colorAPoner" en la celda actual
+    precondiciones: ninguna
+    observaciones: ninguna
+    */
+
+    repeat(cantidadAPoner) {
+        Poner(colorAPoner)
+    }
+
+}
+    

@@ -1,0 +1,54 @@
+/*
+
+7. Multi Arcoiris
+Utilizando el procedimiento Pintar3Puntos_ definido en el ejercicio anterior, construir el
+procedimiento PintarArcoIris() que ponga el tablero de la derecha cuando el tablero inicial es el
+de la izquierda. ¡A no ser como Nova, y empezar escribiendo el contrato!
+
+*/
+
+procedure PintarArcoIris() {
+    /*
+        proposito: dibujar un arcoiris de 9 celdas de largo por 2 de alto en donde cada celda debe tener 1 solo color de bolita
+        precondiciones: debe haber al menos 8 celdas libres hacia el Este y 1 hacia el Norte
+        observaciones: ninguna
+    */
+
+    Pintar3Puntos_(Negro)
+    PasarAProximoColor()
+    Mover(Este)
+    Pintar3Puntos_(Azul)
+    PasarAProximoColor()
+    Mover(Este)
+    Mover(Este)
+    Pintar3Puntos_(Rojo)
+    PosicionarEnProximoColor()
+    Pintar3Puntos_(Verde)
+
+
+}
+
+procedure PasarAProximoColor() {
+    /*
+        proposito: posiciona el cabezal en la proxima celda vacia para colocar el nuevo color
+        precondiciones: ninguna 
+        observaciones: ninguna
+    */
+
+    IrAlBorde(Oeste)
+
+
+}
+
+procedure PosicionarEnProximoColor() {
+    /*
+        proposito: posicionar el cabezal en la proxima celda para pintar el color Verde del arcoiris
+        precondiciones: debe haber al menos 1 celda hacia el norte de la posicion actual del cabezal
+        observaciones: ninguna
+    */
+
+    Mover(Norte)
+    IrAlBorde(Oeste)
+    Mover(Este)
+
+}

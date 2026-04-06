@@ -1,0 +1,38 @@
+/*
+
+1. Moviendo tres veces a donde quieras
+Escribir un procedimiento Mover3VecesAl_(direcciónAMover) que dada una dirección
+direcciónAMover mueva el cabezal tres posiciones en dicha dirección.
+a. ¿Qué hay que hacer ahora para mover el cabezal tres veces al Norte?
+b. ¿Qué beneficios trae el uso de parámetros?
+c. ¿Cuántos procedimientos puedo ahorrarme haciendo un único procedimiento con un
+parámetro?
+¡Recordar! No olvidar escribir el contrato del procedimiento ANTES de realizar el código (y que los parámetros
+son parte del mismo); también discutir la precondición escrita con sus compañeros para verificar que la misma
+es adecuada y correcta.
+
+*/
+
+procedure Mover3VecesAl_(direccionAMover) {
+    /*
+        proposito: mueve el cabezal tres posiciones hacia el "direccionAMover"
+        precondiciones: debe haber al menos tres posiciones hacia el "direccionAMover"
+        observaciones: ninguna
+    */
+
+    repeat(3) {
+        Mover(direccionAMover)
+    }
+
+}
+
+
+/*
+a) - para que el cabezal se mueva 3 veces hacia el norte hay q invocar el proceso dando de argumento Norte
+    Mover3VecesAl_(Norte)
+
+b) - el uso de parametros da la posibilidad de reutilizar codigo ya que podemos usar el proceso varias veces para diferentes
+    direcciones
+
+c) - muchisimos....
+*/

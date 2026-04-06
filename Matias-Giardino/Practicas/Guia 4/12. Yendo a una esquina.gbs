@@ -1,0 +1,19 @@
+/*
+
+12. Yendo a una esquina
+escribir un procedimiento IrAEsquinaAl_Y_(primeraDirección,segundaDirección) que dadas dos direcciones posiciona el cabezal en la esquina en dichas
+direcciones.
+
+*/
+
+procedure IrAEsquinaAl_Y_(primeraDireccion, segundaDireccion) {
+    /*
+    proposito: posiciona el cabezal en la esquina entre la direccion "primeraDireccion" y la "segundaDireccion"
+    precondiciones: debe haber al menos una celda en direccion hacia el "primeraDireccion" y "segundaDireccion"
+    observaciones: ninguna
+    */
+
+    Mover(primeraDireccion)
+    Mover(segundaDireccion)
+    
+}

@@ -1,0 +1,21 @@
+/*
+
+4. Reemplazando colores
+Escribir ReemplazarUnaDe_Por_(colorAReemplazar, colorPorElCualReemplazar), un
+procedimiento que dado un primer color colorAReemplazar y un segundo color
+colorPorElCualReemplazar, reemplaza una bolita del primer color por una del segundo color (En la
+celda actual).
+
+*/
+
+procedure ReemplazarUnaDe_Por_(colorAReemplazar, colorPorElCualReemplazar) {
+    /*
+    proposito: reemplazar la bolita de color "colorAReemplazar" por una bolita de color "colorPorElCualReemplazar"
+    precondiciones: debe haber al menos una bolita de color "colorAReemplazar"
+    observaciones: ninguna
+    */
+
+    Sacar(colorAReemplazar)
+    Poner(colorPorElCualReemplazar)
+
+}

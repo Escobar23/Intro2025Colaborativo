@@ -1,0 +1,45 @@
+/*
+
+13. Escribiendo fechas
+Construir un procedimiento EscribirFechaConDía_Mes_Año_(día, mes, año), que permita
+representar cualquier fecha dados el día, mes y año (como números). La representación debe ser la
+misma utilizada en el ejercicio anterior donde se registró el Día de la Memoria (Azul para el día, Rojo
+para el mes y Verde para el año, en tres celdas hacia el Este).
+¡Recordar! Debe comenzarse por escribir el contrato; en este caso puede resultar útil escribir también una
+observación con la representación a utilizar.
+
+*/
+
+program {
+
+    EscribirFechaConDia_Mes_Año_(24,3,1976)
+
+}
+
+
+procedimiento EscribirFechaConDia_Mes_Año_(dia, mes, año) {
+    /*
+    proposito: representar cualquier fecha dados el dia "dia", el mes "mes" y el año "año"
+    precondiciones: debe haber al menos 2 celdas hacia el Este
+    observaciones: los dias se representar con bolitas azules, los meses con bolitas rojas y los años con bolitas verdes
+    */
+
+    Poner_Bolitas_(dia, Azul)
+    Mover(Este)
+    Poner_Bolitas_(mes, Rojo)
+    Mover(Este)
+    Poner_Bolitas_(año, Verde)
+
+}
+
+procedure Poner_Bolitas_(cantidad, color) {
+    /*
+    proposito: pone "cantidad" de bolitas color "color" en la celda actual
+    precondiciones: la celda debe estar vacia
+    observcaiones: ninguna
+    */
+
+    repeat(cantidad) {
+        Poner(color)
+    }
+}

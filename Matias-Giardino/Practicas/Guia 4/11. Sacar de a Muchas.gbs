@@ -1,0 +1,23 @@
+/*
+
+11. Sacar de a muchas
+BIBLIOTECA Escribir un procedimiento Sacar_DeColor_(cantidadASacar, colorASacar) que
+dado un número cantidadASacar y un color colorASacar, saque tantas bolitas como se indica del
+color dado de la celda actual.
+
+*/
+
+procedure Sacar_DeColor_(cantidadASacar, colorASacar) {
+    /*
+    proposito: sacar "cantidadASacar" de bolitas de color "colorASacar" de la celda actual
+    precondiciones: debe haber al menos "cantidadASacar" de bolitas de "colorASacar" en la celda actual
+    observaciones: ninguna
+    */
+
+    repeat(cantidadASacar) {
+        Sacar(colorASacar)
+    }
+
+}
+
+

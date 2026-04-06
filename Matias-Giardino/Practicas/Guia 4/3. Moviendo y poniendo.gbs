@@ -1,0 +1,24 @@
+/*
+
+3. Moviendo y poniendo
+Escribir un procedimiento Poner_Al_(colorAPoner, direcciónDondePoner) que dado un color
+colorAPoner y una dirección direcciónDondePoner, ponga una bolita del color dado en la celda
+vecina en la dirección dada, dejando el cabezal en dicha celda.
+a. ¿Cuántos casos distintos habría que considerar si no se usarán parámetros en este caso?
+b. ¿Cómo debería invocar al procedimiento para que ponga una bolita Azul en la celda al Norte?
+c. ¿Y sí quisiera una Azul y una Roja?
+
+*/
+
+procedure Poner_Al_(colorAPoner, direccionDondePoner) {
+    /*
+    proposito: poner una bolita de color "colorAPoner en la celda vecina hacia el "direccionDondePoner
+    precondiciones: debe haber al menos una celda en direccion hacia el "direccionDondePoner
+    observaciones:
+    */
+
+    Mover(direccionDondePoner)
+    Poner(colorAPoner)
+
+
+}

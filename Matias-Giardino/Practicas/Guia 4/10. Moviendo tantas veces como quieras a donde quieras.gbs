@@ -1,0 +1,27 @@
+/*
+
+10. Moviendo tantas veces como quieras a donde quieras
+Mover_VecesAl_(cantidadAMover,
+direcciónAMover),
+BIBLIOTECA
+Escribir
+un
+procedimiento que dado un número cantidadAMover y una dirección direcciónAMover mueva el
+cabezal tantas veces como la dada en dicha dirección.
+
+*/
+
+procedure Mover_VecesAl_(cantidadAMover, direccionAMover) {
+    /*
+    proposito: mover el cabezal "cantidadAMover" celdas hacia el "direccionAMover
+    precondiciones: debe haber al menos "cantidadAMover" celdas hacia el "direccionAMover"
+    observaciones: ninguna
+    */
+
+    repeat(cantidadAMover) {
+        Mover(direccionAMover)
+    }
+
+    
+
+}
