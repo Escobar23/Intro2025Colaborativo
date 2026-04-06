@@ -1,0 +1,21 @@
+/*
+
+4.​ Y 6 Verdes
+Escribir un procedimiento Poner6DeColorVerde() que ponga 6 bolitas de color Verde en la celda
+actual.    
+
+*/
+
+procedure Poner6DeColorVerde() {
+    /*
+
+    proposito: poner 6 bolitas de color verde en la celda actual
+    precondiciones: ninguna
+    observaciones: ninguna
+
+    */
+
+    repeat(6) {
+        Poner(Verde)
+    }
+}

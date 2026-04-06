@@ -1,0 +1,53 @@
+/*
+
+5.​ Dibujando un rectángulo con repeticiones
+Escribir un procedimiento DibujarRectánguloRojoYNegroDe5x3() que dibuje un rectángulo
+sólido de 5 celdas de largo por 3 de alto, similar al realizado en “P2. 2. Por Arriba”, pero esta vez, utilice
+repetición para solucionar el problema.
+
+*/
+
+procedure DibujarRectanguloRojoYNegrode5x3() {
+    /*
+    proposito: dibuja un rectangulo solido de 5 celdas de largo por 3 de alto
+    precondiciones: debe haber al menos 4 celdas libres hacia el Este y 3 celdas libres hacia el Norte
+    observaciones: ninguna
+    
+    */
+
+    repeat(2) {
+    DibujarLineaDeBolitasRojasYNegras()
+    PasarAProximaLinea()
+    }
+    DibujarLineaDeBolitasRojasYNegras()
+    
+
+
+}
+
+procedure DibujarLineaDeBolitasRojasYNegras() {
+    /*
+        proposito: dibujar una linea de 5 celdas de largo en donde cada celda tiene una bolita roja y una negra
+        precondiciones: debe haber al menos 4 celdas libres hacia el Este
+        observaciones: ninguna
+    */
+
+    repeat(4) {
+    PonerUnaNegraYUnaRoja()
+    Mover(Este)
+    }
+    PonerUnaNegraYUnaRoja()
+
+}
+
+procedure PasarAProximaLinea() {
+    /*
+    proposito: ubica el cabezal 1 celda al norte y al borde oeste de la celda actual
+    precondiciones: debe haber al menos 1 celda hacia el norte del cabezal
+    observaciones: ninguna
+    */
+
+    Mover(Norte)
+    IrAlBorde(Oeste)
+
+}

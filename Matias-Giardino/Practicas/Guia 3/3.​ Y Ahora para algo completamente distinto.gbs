@@ -1,0 +1,25 @@
+/*
+
+3.​ Y Ahora para algo completamente distinto
+Escribir un procedimiento Poner6DeColorNegro() que ponga 6 bolitas de color Negro en la celda
+actual.
+
+*/
+
+
+program {
+
+}
+
+procedure Poner6DeColorNegro() {
+    /*
+        proposito: poner 6 bolitas de color Negro en la celda actual
+        precondiciones: ninguna
+        observaciones: ninguna
+    
+    */
+
+    repeat(6) {
+        Poner(Negro)
+    }
+}

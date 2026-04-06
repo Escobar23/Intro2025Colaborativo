@@ -8,6 +8,10 @@ b. ¿Qué cambiaría si quisiera hacer un procedimiento que mueva tres veces al 
 
 */
 
+program {
+
+    
+}
 
 procedure Mover3VecesAlEste() {
     /*
